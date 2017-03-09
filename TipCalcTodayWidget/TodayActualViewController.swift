@@ -76,20 +76,25 @@ class TodayActualViewController: UIViewController {
     fileprivate func setColors() {
         let mainTintColor = TipCalcDataManager.widgetTintColor()
         
-        rateSegmentedControl.tintColor = mainTintColor
+        UISegmentedControl.appearance().tintColor = mainTintColor
+        UIToolbar.appearance().tintColor = mainTintColor
+        UIStepper.appearance().tintColor = mainTintColor
+        UITextField.appearance().tintColor = mainTintColor
+        
+//        rateSegmentedControl.tintColor = mainTintColor
         
         tipLabel.textColor = mainTintColor
         totalLabel.textColor = mainTintColor
         tipPplLabel.textColor = mainTintColor
         totalPplLabel.textColor = mainTintColor
 
-        toolBar.tintColor = mainTintColor
-        pplToolBar.tintColor = mainTintColor
-        
-        pplStepper.tintColor = mainTintColor
-        
-        subtotalField.tintColor = mainTintColor
-        pplField.tintColor = mainTintColor
+//        toolBar.tintColor = mainTintColor
+//        pplToolBar.tintColor = mainTintColor
+//        
+//        pplStepper.tintColor = mainTintColor
+//        
+//        subtotalField.tintColor = mainTintColor
+//        pplField.tintColor = mainTintColor
     }
     
     fileprivate func updateTips() {

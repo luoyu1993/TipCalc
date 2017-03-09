@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import TipCalcKit
 
 class SettingViewController: UITableViewController {
+    
+    @IBOutlet weak var roundSwitch: UISwitch!
+    @IBOutlet weak var roundSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var tintColorView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,24 +23,112 @@ class SettingViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        reloadSettings(animated: false)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    fileprivate func reloadSettings(animated: Bool) {
+        roundSwitch.isOn = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) ?? false
+        roundSegmentedControl.selectedSegmentIndex = (UserDefaults(suiteName: APP_GROUP_NAME)?.integer(forKey: SETTING_ROUND_TYPE))!
+        
+        let mainTintColor = TipCalcDataManager.widgetTintColor()
+        
+        var interval = 0.0
+        if animated {
+            interval = 0.5
+        }
+        UIView.animate(withDuration: interval, animations: {
+            self.tintColorView.backgroundColor = mainTintColor
+            self.roundSwitch.tintColor = mainTintColor
+            self.roundSwitch.onTintColor = mainTintColor
+            self.roundSegmentedControl.tintColor = mainTintColor
+            self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
+        })
+        UISwitch.appearance().tintColor = mainTintColor
+        UISwitch.appearance().onTintColor = mainTintColor
+        UISegmentedControl.appearance().tintColor = mainTintColor
+        UITabBar.appearance().tintColor = mainTintColor
+    }
+    
+    @IBAction func roundSwitchChanged() {
+        UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSwitch.isOn, forKey: SETTING_ROUND_TOTAL)
+    }
+    
+    @IBAction func roundSegmentedControlValueChanged() {
+        UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSegmentedControl.selectedSegmentIndex, forKey: SETTING_ROUND_TYPE)
+    }
+    
+    fileprivate func selectMainTintColor() {
+        let alertController = UIAlertController(title: "Tint color", message: "Select the main tint color of the application", preferredStyle: .actionSheet)
+        let colors = [
+            ("Sky Blue", UIColor.flatSkyBlue),
+            ("Red", UIColor.flatRed),
+            ("Yellow", UIColor.flatYellow),
+            ("Orange", UIColor.flatOrange),
+            ("Green", UIColor.flatGreen),
+            ("Pink", UIColor.flatPink),
+            ("Mint", UIColor.flatMint),
+            ("Magenta", UIColor.flatMagenta)
+        ]
+        for (colorName, color) in colors {
+            let tmpAction = UIAlertAction(title: colorName, style: .default, handler: { action in
+                UserDefaults(suiteName: APP_GROUP_NAME)?.set(NSKeyedArchiver.archivedData(withRootObject: color), forKey: SETTING_WIDGET_TINT_COLOR)
+                self.reloadSettings(animated: true)
+            })
+//            let tmpView = UIView(frame: CGRect(x: 0, y: 0, width: 27, height: 27))
+//            tmpView.backgroundColor = color
+//            let img = getImage(fromView: tmpView)
+//            tmpAction.setValue(img, forKey: "image")
+            alertController.addAction(tmpAction)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            
+        })
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    fileprivate func getImage(fromView view: UIView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        return image
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            switch indexPath.row {
+            case 0:
+                tableView.deselectRow(at: indexPath, animated: false)
+                selectMainTintColor()
+            default:
+                break
+            }
+        default:
+            break
+        }
+    }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

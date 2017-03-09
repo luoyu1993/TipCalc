@@ -11,12 +11,15 @@ import UIKit
 let APP_GROUP_NAME = "group.cmu.yuboqin.tipcalc"
 
 let SETTING_WIDGET_TINT_COLOR = "widgetTintColor"
+let SETTING_ROUND_TOTAL = "roundTotal"
+let SETTING_ROUND_TYPE = "roundType" // 0: standard, 1: down, 2: up
 
 class TipCalcDataManager: NSObject {
     
     class func widgetTintColor() -> UIColor {
         let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
-        if let widgetTintColor = userDefault?.object(forKey: SETTING_WIDGET_TINT_COLOR) {
+        if let widgetTintColorArchieve = userDefault?.object(forKey: SETTING_WIDGET_TINT_COLOR) {
+            let widgetTintColor = NSKeyedUnarchiver.unarchiveObject(with: widgetTintColorArchieve as! Data)
             return widgetTintColor as! UIColor
         } else {
             return UIColor.flatSkyBlue

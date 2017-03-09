@@ -11,10 +11,30 @@ import UIKit
 class TipCalculator: NSObject {
     
     class func tip(of subtotal: Double, rate: Double, splitBy ppl: Int) -> (Double, Double, Double, Double) {
-        let tip = Double(subtotal * rate).roundTo(places: 2)
-        let total = Double(subtotal * (1 + rate)).roundTo(places: 2)
-        let tipPpl = (tip / Double(ppl)).roundTo(places: 2)
-        let totalPpl = (total / Double(ppl)).roundTo(places: 2)
+        var tip = Double(subtotal * rate).roundTo(places: 2)
+        var total = 0.0
+        var tipPpl = 0.0
+        var totalPpl = 0.0
+        
+        if UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) == false {
+            total = Double(subtotal * (1 + rate)).roundTo(places: 2)
+        } else {
+            total = Double(subtotal * (1 + rate))
+            switch UserDefaults(suiteName: APP_GROUP_NAME)!.integer(forKey: SETTING_ROUND_TYPE) {
+            case 0:
+                total.round(.toNearestOrEven)
+            case 1:
+                total.round(.down)
+            case 2:
+                total.round(.up)
+            default:
+                total.round(.toNearestOrEven)
+            }
+            tip = total - subtotal
+        }
+        
+        tipPpl = (tip / Double(ppl)).roundTo(places: 2)
+        totalPpl = (total / Double(ppl)).roundTo(places: 2)
         return (tip, total, tipPpl, totalPpl)
     }
 
