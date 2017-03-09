@@ -59,14 +59,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if activeDisplayMode == .expanded {
-            preferredContentSize = CGSize(width: 0.0, height: 200.0)
+            preferredContentSize = CGSize(width: 0.0, height: 190.0)
         } else if activeDisplayMode == .compact {
             preferredContentSize = maxSize
         }
     }
     
     fileprivate func showActualController() {
-        self.present(actualViewController, animated: true, completion: nil)
+        self.present(actualViewController, animated: false, completion: nil)
     }
     
 }
