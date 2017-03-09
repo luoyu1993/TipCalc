@@ -7,8 +7,6 @@ target 'TipCalc' do
 
   # Pods for TipCalc
   pod 'SnapKit', '~> 3.2.0'
-  pod 'ChameleonFramework', '~> 2.1.0'
-  pod 'BlocksKit', '~> 2.2.5'
 
   target 'TipCalcTests' do
     inherit! :search_paths

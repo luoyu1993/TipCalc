@@ -1,34 +1,12 @@
 PODS:
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - ChameleonFramework (2.1.0):
-    - ChameleonFramework/Default (= 2.1.0)
-  - ChameleonFramework/Default (2.1.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
-  - BlocksKit (~> 2.2.5)
-  - ChameleonFramework (~> 2.1.0)
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 17cff2749af9773c25afac6bf60fbd6e5ed095a2
+PODFILE CHECKSUM: bce729bc6906a5e44a1f41022254a9240ed0e92a
 
 COCOAPODS: 1.2.0

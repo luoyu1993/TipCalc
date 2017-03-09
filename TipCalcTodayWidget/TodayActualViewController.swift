@@ -22,13 +22,23 @@ class TodayActualViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let mainTintColor = TipCalcDataManager.widgetTintColor()
+        
+        rateSegmentedControl.tintColor = mainTintColor
+        
+        tipLabel.textColor = mainTintColor
+        totalLabel.textColor = mainTintColor
+        
         subtotalField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        subtotalField.tintColor = mainTintColor
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
         toolBar.barStyle = .default
         let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBtnItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backgroundTapped))
-        toolBar.setItems([flexibleItem, doneBtnItem], animated: true)
+        let clearBtnItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearTextField))
+        let doneBtnItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        toolBar.setItems([clearBtnItem, flexibleItem, doneBtnItem], animated: true)
+        toolBar.tintColor = mainTintColor
         subtotalField.inputAccessoryView = toolBar
     }
 
@@ -37,8 +47,13 @@ class TodayActualViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func backgroundTapped() {
+    @objc fileprivate func hideKeyboard() {
         subtotalField.resignFirstResponder()
+    }
+    
+    @objc fileprivate func clearTextField() {
+        subtotalField.text = ""
+        updateTips()
     }
     
     fileprivate func updateTips() {
@@ -59,11 +74,11 @@ class TodayActualViewController: UIViewController {
     }
     
     @IBAction func segmentedControlIndexChanged() {
-        self.updateTips()
+        updateTips()
     }
 
     @objc fileprivate func textDidChange() {
-        self.updateTips()
+        updateTips()
     }
 
     /*
