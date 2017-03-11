@@ -49,10 +49,8 @@ class SettingViewController: UITableViewController {
             self.roundSegmentedControl.tintColor = mainTintColor
             self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
         })
-        UISwitch.appearance().tintColor = mainTintColor
-        UISwitch.appearance().onTintColor = mainTintColor
-        UISegmentedControl.appearance().tintColor = mainTintColor
-        UITabBar.appearance().tintColor = mainTintColor
+        
+        TipCalcDataManager.setTintColors()
     }
     
     @IBAction func roundSwitchChanged() {

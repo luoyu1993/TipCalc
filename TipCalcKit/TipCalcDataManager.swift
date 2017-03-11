@@ -25,5 +25,18 @@ class TipCalcDataManager: NSObject {
             return UIColor.flatSkyBlue
         }
     }
+    
+    class func setTintColors() {
+        let mainTintColor = TipCalcDataManager.widgetTintColor()
+        
+        UISegmentedControl.appearance().tintColor = mainTintColor
+        UIToolbar.appearance().tintColor = mainTintColor
+        UIStepper.appearance().tintColor = mainTintColor
+        UITextField.appearance().tintColor = mainTintColor
+        UITabBar.appearance().tintColor = mainTintColor
+        UISwitch.appearance().tintColor = mainTintColor
+        UISwitch.appearance().onTintColor = mainTintColor
+        UISlider.appearance().tintColor = mainTintColor
+    }
 
 }

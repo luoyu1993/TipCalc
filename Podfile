@@ -7,6 +7,7 @@ target 'TipCalc' do
 
   # Pods for TipCalc
   pod 'SnapKit', '~> 3.2.0'
+  pod 'IQKeyboardManagerSwift', '~> 4.0.8'
 
   target 'TipCalcTests' do
     inherit! :search_paths

@@ -31,6 +31,10 @@ class TipCalculator: NSObject {
                 total.round(.toNearestOrEven)
             }
             tip = total - subtotal
+            if tip < 0 {
+                tip += 1
+                total += 1
+            }
         }
         
         tipPpl = (tip / Double(ppl)).roundTo(places: 2)
