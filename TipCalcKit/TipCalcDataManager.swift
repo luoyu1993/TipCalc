@@ -37,6 +37,7 @@ class TipCalcDataManager: NSObject {
         UISwitch.appearance().tintColor = mainTintColor
         UISwitch.appearance().onTintColor = mainTintColor
         UISlider.appearance().tintColor = mainTintColor
+        UIButton.appearance().tintColor = mainTintColor
     }
 
 }

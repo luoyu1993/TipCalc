@@ -91,9 +91,16 @@ class CompleteCalcViewController: UIViewController {
         let pplSlider = UISlider(frame: .zero)
         pplSlider.minimumValue = 1
         pplSlider.maximumValue = 10
-        pplSlider.isContinuous = false
+        pplSlider.isContinuous = true
         pplSlider.addTarget(self, action: #selector(pplSliderChanged), for: .valueChanged)
         return pplSlider
+    }()
+    var clearBtn: UIButton = {
+        let clearBtn = UIButton(type: .system)
+        clearBtn.setTitle("Clear all", for: .normal)
+        clearBtn.addTarget(self, action: #selector(clearBtnPressed), for: .touchUpInside)
+        clearBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        return clearBtn
     }()
     
     @IBOutlet weak var tipLabel: UILabel!
@@ -176,6 +183,8 @@ class CompleteCalcViewController: UIViewController {
         } else {
             if let rate = Double(customTipRateField.text!) {
                 tipRate = rate / 100
+            } else {
+                tipRate = 0
             }
         }
         updateValues()
@@ -190,6 +199,8 @@ class CompleteCalcViewController: UIViewController {
     @objc fileprivate func subtotalFieldChanged() {
         if let subtotalValue = Double(subtotalField.text!) {
             subtotal = subtotalValue
+        } else {
+            subtotal = 0
         }
         updateValues()
     }
@@ -199,6 +210,10 @@ class CompleteCalcViewController: UIViewController {
             taxValue = taxValueDouble
             taxRate = (taxValue / subtotal).roundTo(places: 4)
             taxRateField.text = String(taxRate * 100)
+        } else {
+            taxValue = 0
+            taxRate = 0
+            taxRateField.text = ""
         }
         updateValues()
     }
@@ -208,6 +223,10 @@ class CompleteCalcViewController: UIViewController {
             taxRate = taxRateValue / 100
             taxValue = (subtotal * taxRate).roundTo(places: 2)
             taxValueField.text = String(taxValue)
+        } else {
+            taxRate = 0
+            taxValue = 0
+            taxValueField.text = ""
         }
         updateValues()
     }
@@ -217,7 +236,12 @@ class CompleteCalcViewController: UIViewController {
             tipRate = tipRateValue / 100
             if tipRateValue >= 0 && tipRateValue <= 100 {
                 customTipRateSlider.setValue(Float(tipRateValue), animated: true)
+            } else if tipRateValue > 100 {
+                customTipRateSlider.setValue(100.0, animated: true)
             }
+        } else {
+            tipRate = 0
+            customTipRateSlider.setValue(0, animated: true)
         }
         updateValues()
     }
@@ -236,10 +260,12 @@ class CompleteCalcViewController: UIViewController {
                 if ppl >= 1 && ppl <= 10 {
                     pplSlider.setValue(Float(ppl), animated: true)
                 }
-                updateValues()
             }
+        } else {
+            ppl = 1
+            pplSlider.setValue(1.0, animated: true)
         }
-        
+        updateValues()
     }
     
     @objc fileprivate func pplSliderChanged() {
@@ -251,6 +277,18 @@ class CompleteCalcViewController: UIViewController {
         }
     }
     
+    @objc fileprivate func clearBtnPressed() {
+        let alertController = UIAlertController(title: "Clear all fileds?", message: "Your progress will lost.", preferredStyle: .actionSheet)
+        let clearAction = UIAlertAction(title: "Clear", style: .destructive, handler: { action in
+            self.clearAllValues()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(clearAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     fileprivate func updateValues() {
         var subtotalWithTax = 0.0
         if taxIncludedSwitch.isOn {
@@ -260,14 +298,44 @@ class CompleteCalcViewController: UIViewController {
         }
         
         let (tip, total, tipPpl, totalPpl) = TipCalculator.tip(of: subtotalWithTax, rate: tipRate, splitBy: ppl)
-        tipLabel.text = String(tip)
-        totalLabel.text = String(total)
-        tipPplLabel.text = String(tipPpl)
-        totalPplLabel.text = String(totalPpl)
+        tipLabel.text = "$" + String(tip)
+        totalLabel.text = "$" + String(total)
+        tipPplLabel.text = "$" + String(tipPpl)
+        totalPplLabel.text = "$" + String(totalPpl)
     }
     
     fileprivate func updateSection(_ section: Int) {
         mainTableView.reloadSections(IndexSet(integer: section), with: .automatic)
+    }
+    
+    fileprivate func updateAllSections() {
+        mainTableView.reloadSections(IndexSet(integersIn: 0 ..< 4), with: .automatic)
+    }
+    
+    fileprivate func clearAllValues() {
+        subtotalField.text = ""
+        taxIncludedSwitch.setOn(true, animated: true)
+        taxValueField.text = ""
+        taxRateField.text = ""
+        tipRateTypeSegmentedControl.selectedSegmentIndex = 0
+        commonRateSegmentedControl.selectedSegmentIndex = 0
+        customTipRateField.text = ""
+        customTipRateSlider.setValue(0.0, animated: true)
+        pplField.text = ""
+        pplSlider.setValue(1, animated: true)
+        
+        tip = 0.0
+        total = 0.0
+        tipPpl = 0.0
+        totalPpl = 0.0
+        subtotal = 0.0
+        tipRate = 0.1
+        taxValue = 0.0
+        taxRate = 0.0
+        ppl = 1
+        
+        updateAllSections()
+        updateValues()
     }
     
 
@@ -286,7 +354,7 @@ class CompleteCalcViewController: UIViewController {
 extension CompleteCalcViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -300,6 +368,8 @@ extension CompleteCalcViewController: UITableViewDataSource {
         case 1:
             return 2
         case 2:
+            return 1
+        case 3:
             return 1
         default:
             return 0
@@ -331,7 +401,7 @@ extension CompleteCalcViewController: UITableViewDataSource {
         case 2:
             return 84
         default:
-            return 0
+            return 44
         }
     }
     
@@ -343,6 +413,8 @@ extension CompleteCalcViewController: UITableViewDataSource {
             return "Tip rate"
         case 2:
             return "Split bill"
+        case 3:
+            return "Clear all"
         default:
             return ""
         }
@@ -351,7 +423,21 @@ extension CompleteCalcViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 0:
-            return ""
+            if taxIncludedSwitch.isOn == false {
+                return "Note: you only need to fill one of the two fields of tax value and tax rate."
+            } else {
+                return ""
+            }
+        case 1:
+            if tipRateTypeSegmentedControl.selectedSegmentIndex == 1 {
+                return "You can enter the tip rate if the number is over 100% (WOW)."
+            } else {
+                return ""
+            }
+        case 2:
+            return "You can enter the number of people in case that the number is over 10."
+        case 3:
+            return "Clear all fields. Your progress will lost."
         default:
             return ""
         }
@@ -413,7 +499,7 @@ extension CompleteCalcViewController: UITableViewDataSource {
                 let cell = UITableViewCell(frame: .zero)
                 cell.addSubview(taxRateField)
                 let taxRateLabel = UILabel(frame: .zero)
-                taxRateLabel.text = "Tax rate"
+                taxRateLabel.text = "Tax rate (%)"
                 cell.addSubview(taxRateLabel)
                 taxRateLabel.snp.makeConstraints({ make in
                     make.left.equalToSuperview().offset(16)
@@ -506,6 +592,19 @@ extension CompleteCalcViewController: UITableViewDataSource {
                     make.left.equalToSuperview().offset(16)
                     make.right.equalToSuperview().offset(-16)
                     make.bottom.equalToSuperview().offset(-12)
+                })
+                return cell
+            default:
+                return UITableViewCell()
+            }
+        case 3:
+            switch row {
+            case 0:
+                let cell = UITableViewCell()
+                cell.selectionStyle = .none
+                cell.addSubview(clearBtn)
+                clearBtn.snp.makeConstraints({ make in
+                    make.edges.equalToSuperview()
                 })
                 return cell
             default:
