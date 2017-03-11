@@ -1,15 +1,18 @@
 PODS:
   - IQKeyboardManagerSwift (4.0.8)
+  - LTMorphingLabel (0.4.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 4.0.8)
+  - LTMorphingLabel (~> 0.4.0)
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
+  LTMorphingLabel: d9a85f16ac306f0e07321d6819964deb2dc69638
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: cb8761bd898d3aee3f2e66cfac5e12258b15fcb1
+PODFILE CHECKSUM: 7f0e52a779eb772f4da3dbf415788e526e7271ed
 
 COCOAPODS: 1.2.0

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import TipCalcKit
+import LTMorphingLabel
 
 class CompleteCalcViewController: UIViewController {
     
@@ -103,10 +104,10 @@ class CompleteCalcViewController: UIViewController {
         return clearBtn
     }()
     
-    @IBOutlet weak var tipLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var tipPplLabel: UILabel!
-    @IBOutlet weak var totalPplLabel: UILabel!
+    @IBOutlet weak var tipLabel: LTMorphingLabel!
+    @IBOutlet weak var totalLabel: LTMorphingLabel!
+    @IBOutlet weak var tipPplLabel: LTMorphingLabel!
+    @IBOutlet weak var totalPplLabel: LTMorphingLabel!
     
     fileprivate var tip = 0.0
     fileprivate var total = 0.0
@@ -151,10 +152,27 @@ class CompleteCalcViewController: UIViewController {
     
     fileprivate func setColors() {
         let mainTintColor = TipCalcDataManager.widgetTintColor()
+        let animatedEnabled = TipCalcDataManager.animatedLabel()
+        
         tipLabel.textColor = mainTintColor
+        tipLabel.morphingEffect = .evaporate
+        tipLabel.morphingDuration = 0.25
+        tipLabel.morphingEnabled = animatedEnabled
+        
         totalLabel.textColor = mainTintColor
+        totalLabel.morphingEffect = .evaporate
+        totalLabel.morphingDuration = 0.25
+        totalLabel.morphingEnabled = animatedEnabled
+        
         tipPplLabel.textColor = mainTintColor
+        tipPplLabel.morphingEffect = .evaporate
+        tipPplLabel.morphingDuration = 0.25
+        tipPplLabel.morphingEnabled = animatedEnabled
+        
         totalPplLabel.textColor = mainTintColor
+        totalPplLabel.morphingEffect = .evaporate
+        totalPplLabel.morphingDuration = 0.25
+        totalPplLabel.morphingEnabled = animatedEnabled
     }
     
     @objc fileprivate func taxIncludedSwitchChanged() {

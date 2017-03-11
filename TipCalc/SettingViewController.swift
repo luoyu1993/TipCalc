@@ -14,6 +14,7 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var roundSwitch: UISwitch!
     @IBOutlet weak var roundSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tintColorView: UIView!
+    @IBOutlet weak var animatedSwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class SettingViewController: UITableViewController {
     fileprivate func reloadSettings(animated: Bool) {
         roundSwitch.isOn = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) ?? false
         roundSegmentedControl.selectedSegmentIndex = (UserDefaults(suiteName: APP_GROUP_NAME)?.integer(forKey: SETTING_ROUND_TYPE))!
+        animatedSwitch.isOn = TipCalcDataManager.animatedLabel()
         
         let mainTintColor = TipCalcDataManager.widgetTintColor()
         
@@ -47,6 +49,8 @@ class SettingViewController: UITableViewController {
             self.roundSwitch.tintColor = mainTintColor
             self.roundSwitch.onTintColor = mainTintColor
             self.roundSegmentedControl.tintColor = mainTintColor
+            self.animatedSwitch.tintColor = mainTintColor
+            self.animatedSwitch.onTintColor = mainTintColor
             self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
         })
         
@@ -59,6 +63,10 @@ class SettingViewController: UITableViewController {
     
     @IBAction func roundSegmentedControlValueChanged() {
         UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSegmentedControl.selectedSegmentIndex, forKey: SETTING_ROUND_TYPE)
+    }
+    
+    @IBAction func animatedSwitchChanged() {
+        UserDefaults(suiteName: APP_GROUP_NAME)?.set(animatedSwitch.isOn, forKey: SETTING_ANIMATED_LABEL)
     }
     
     fileprivate func selectMainTintColor() {
@@ -84,9 +92,7 @@ class SettingViewController: UITableViewController {
 //            tmpAction.setValue(img, forKey: "image")
             alertController.addAction(tmpAction)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            
-        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }

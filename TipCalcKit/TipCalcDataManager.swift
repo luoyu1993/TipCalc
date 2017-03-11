@@ -13,6 +13,7 @@ let APP_GROUP_NAME = "group.cmu.yuboqin.tipcalc"
 let SETTING_WIDGET_TINT_COLOR = "widgetTintColor"
 let SETTING_ROUND_TOTAL = "roundTotal"
 let SETTING_ROUND_TYPE = "roundType" // 0: standard, 1: down, 2: up
+let SETTING_ANIMATED_LABEL = "animatedLabel"
 
 class TipCalcDataManager: NSObject {
     
@@ -24,6 +25,14 @@ class TipCalcDataManager: NSObject {
         } else {
             return UIColor.flatSkyBlue
         }
+    }
+    
+    class func animatedLabel() -> Bool {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        if userDefault?.object(forKey: SETTING_ANIMATED_LABEL) == nil {
+            userDefault?.set(true, forKey: SETTING_ANIMATED_LABEL)
+        }
+        return userDefault!.bool(forKey: SETTING_ANIMATED_LABEL)
     }
     
     class func setTintColors() {

@@ -21,6 +21,7 @@
 		E9628CD01E70984A008C9BF6 /* FlatColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */; };
 		E9628CD21E70991E008C9BF6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CD11E70991E008C9BF6 /* SettingViewController.swift */; };
 		E9C63A8A1E738C2400258574 /* CompleteCalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C63A891E738C2400258574 /* CompleteCalcViewController.swift */; };
+		E9C63A8C1E74AD3400258574 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C63A8B1E74AD3400258574 /* AboutViewController.swift */; };
 		E9D031311E707E6000C720B4 /* TodayActualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D0312F1E707E6000C720B4 /* TodayActualViewController.swift */; };
 		E9D031341E70863600C720B4 /* TodayActualViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D031331E70863600C720B4 /* TodayActualViewController.xib */; };
 		E9DDA0C21E6F90770080F791 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DDA0C11E6F90770080F791 /* AppDelegate.swift */; };
@@ -135,6 +136,7 @@
 		E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatColors.swift; sourceTree = "<group>"; };
 		E9628CD11E70991E008C9BF6 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		E9C63A891E738C2400258574 /* CompleteCalcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteCalcViewController.swift; sourceTree = "<group>"; };
+		E9C63A8B1E74AD3400258574 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E9D0312F1E707E6000C720B4 /* TodayActualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayActualViewController.swift; sourceTree = "<group>"; };
 		E9D031331E70863600C720B4 /* TodayActualViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayActualViewController.xib; sourceTree = "<group>"; };
 		E9DDA0BE1E6F90770080F791 /* TipCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +297,7 @@
 				E9DDA0C11E6F90770080F791 /* AppDelegate.swift */,
 				E9C63A891E738C2400258574 /* CompleteCalcViewController.swift */,
 				E9628CD11E70991E008C9BF6 /* SettingViewController.swift */,
+				E9C63A8B1E74AD3400258574 /* AboutViewController.swift */,
 				E9DDA0C51E6F90770080F791 /* Main.storyboard */,
 				E9DDA0C81E6F90770080F791 /* Assets.xcassets */,
 				E9DDA0CA1E6F90770080F791 /* LaunchScreen.storyboard */,
@@ -876,6 +879,7 @@
 				E9C63A8A1E738C2400258574 /* CompleteCalcViewController.swift in Sources */,
 				E9628CD21E70991E008C9BF6 /* SettingViewController.swift in Sources */,
 				E9628CCF1E709849008C9BF6 /* FlatColors.swift in Sources */,
+				E9C63A8C1E74AD3400258574 /* AboutViewController.swift in Sources */,
 				E9DDA13B1E6FCC000080F791 /* TipCalculator.swift in Sources */,
 				E9DDA0C21E6F90770080F791 /* AppDelegate.swift in Sources */,
 				E9628CCC1E70955C008C9BF6 /* TipCalcDataManager.swift in Sources */,
