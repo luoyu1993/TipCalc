@@ -41,5 +41,6 @@ target 'TipCalcTodayWidget' do
 
   # Pods for TipCalcTodayWidget
   pod 'SnapKit', '~> 3.2.0'
+  pod 'LTMorphingLabel', '~> 0.4.0'
 
 end

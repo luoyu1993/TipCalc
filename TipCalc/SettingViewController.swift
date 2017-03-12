@@ -52,6 +52,7 @@ class SettingViewController: UITableViewController {
             self.animatedSwitch.tintColor = mainTintColor
             self.animatedSwitch.onTintColor = mainTintColor
             self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
+            self.navigationController!.navigationBar.tintColor = mainTintColor
         })
         
         TipCalcDataManager.setTintColors()

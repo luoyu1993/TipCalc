@@ -8,15 +8,16 @@
 
 import UIKit
 import TipCalcKit
+import LTMorphingLabel
 
 class TodayActualViewController: UIViewController {
     
     @IBOutlet weak var subtotalField: UITextField!
     @IBOutlet weak var rateSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var tipLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var tipPplLabel: UILabel!
-    @IBOutlet weak var totalPplLabel: UILabel!
+    @IBOutlet weak var tipLabel: LTMorphingLabel!
+    @IBOutlet weak var totalLabel: LTMorphingLabel!
+    @IBOutlet weak var tipPplLabel: LTMorphingLabel!
+    @IBOutlet weak var totalPplLabel: LTMorphingLabel!
     @IBOutlet weak var pplField: UITextField!
     @IBOutlet weak var pplStepper: UIStepper!
     var toolBar: UIToolbar!
@@ -78,20 +79,27 @@ class TodayActualViewController: UIViewController {
         
         TipCalcDataManager.setTintColors()
         
-//        rateSegmentedControl.tintColor = mainTintColor
+        let animatedEnabled = TipCalcDataManager.animatedLabel()
         
         tipLabel.textColor = mainTintColor
+        tipLabel.morphingEffect = .evaporate
+        tipLabel.morphingDuration = 0.25
+        tipLabel.morphingEnabled = animatedEnabled
+        
         totalLabel.textColor = mainTintColor
+        totalLabel.morphingEffect = .evaporate
+        totalLabel.morphingDuration = 0.25
+        totalLabel.morphingEnabled = animatedEnabled
+        
         tipPplLabel.textColor = mainTintColor
+        tipPplLabel.morphingEffect = .evaporate
+        tipPplLabel.morphingDuration = 0.25
+        tipPplLabel.morphingEnabled = animatedEnabled
+        
         totalPplLabel.textColor = mainTintColor
-
-//        toolBar.tintColor = mainTintColor
-//        pplToolBar.tintColor = mainTintColor
-//        
-//        pplStepper.tintColor = mainTintColor
-//        
-//        subtotalField.tintColor = mainTintColor
-//        pplField.tintColor = mainTintColor
+        totalPplLabel.morphingEffect = .evaporate
+        totalPplLabel.morphingDuration = 0.25
+        totalPplLabel.morphingEnabled = animatedEnabled
     }
     
     fileprivate func updateTips() {

@@ -9,14 +9,16 @@
 import UIKit
 
 class AboutViewController: UIViewController {
+    
+    @IBOutlet weak var appNameLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
-        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String)
-        
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String)!
+        appNameLabel.text = "TipS Version \(version) Build \(build)"
         
     }
 
