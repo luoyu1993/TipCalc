@@ -1,5 +1,5 @@
 //
-//  CompleteCalcViewController.swift
+//  TipCalcViewController.swift
 //  TipCalc
 //
 //  Created by Qin Yubo on 2017/3/10.
@@ -11,7 +11,7 @@ import SnapKit
 import TipCalcKit
 import LTMorphingLabel
 
-class CompleteCalcViewController: UIViewController {
+class TipCalcViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var resultsView: UIVisualEffectView!
@@ -324,12 +324,12 @@ class CompleteCalcViewController: UIViewController {
         } else {
             subtotalWithTax = billItem.subtotal * (1 + billItem.taxRate)
         }
+        billItem.subtotal = subtotalWithTax
         
-        (billItem.tip, billItem.total, billItem.tipPpl, billItem.totalPpl) = TipCalculator.tip(of: subtotalWithTax, rate: billItem.tipRate, splitBy: billItem.ppl)
-        tipLabel.text = "$" + String(billItem.tip)
-        totalLabel.text = "$" + String(billItem.total)
-        tipPplLabel.text = "$" + String(billItem.tipPpl)
-        totalPplLabel.text = "$" + String(billItem.totalPpl)
+        tipLabel.text = "$" + String(billItem.result.tip)
+        totalLabel.text = "$" + String(billItem.result.total)
+        tipPplLabel.text = "$" + String(billItem.result.tipPpl)
+        totalPplLabel.text = "$" + String(billItem.result.totalPpl)
     }
     
     fileprivate func updateSection(_ section: Int) {
@@ -353,15 +353,7 @@ class CompleteCalcViewController: UIViewController {
         pplSlider.setValue(1, animated: true)
         pplStepper.value = 1.0
         
-        billItem.tip = 0.0
-        billItem.total = 0.0
-        billItem.tipPpl = 0.0
-        billItem.totalPpl = 0.0
-        billItem.subtotal = 0.0
-        billItem.tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
-        billItem.taxValue = 0.0
-        billItem.taxRate = 0.0
-        billItem.ppl = 1
+        billItem.reset()
         
         updateAllSections()
         updateValues()
@@ -380,7 +372,7 @@ class CompleteCalcViewController: UIViewController {
 
 }
 
-extension CompleteCalcViewController: UITableViewDataSource {
+extension TipCalcViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -651,7 +643,7 @@ extension CompleteCalcViewController: UITableViewDataSource {
     
 }
 
-extension CompleteCalcViewController: UITableViewDelegate {
+extension TipCalcViewController: UITableViewDelegate {
 
     
     

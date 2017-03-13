@@ -20,7 +20,6 @@ class AboutViewController: UIViewController {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String)!
         appNameLabel.text = "\(name) Version \(version) Build \(build)"
-        
     }
 
     override func didReceiveMemoryWarning() {

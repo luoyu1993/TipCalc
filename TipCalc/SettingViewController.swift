@@ -94,10 +94,10 @@ class SettingViewController: UITableViewController {
                 UserDefaults(suiteName: APP_GROUP_NAME)?.set(NSKeyedArchiver.archivedData(withRootObject: color), forKey: SETTING_WIDGET_TINT_COLOR)
                 self.reloadSettings(animated: true)
             })
-//            let tmpView = UIView(frame: CGRect(x: 0, y: 0, width: 27, height: 27))
-//            tmpView.backgroundColor = color
-//            let img = getImage(fromView: tmpView)
-//            tmpAction.setValue(img, forKey: "image")
+            let tmpView = UIView(frame: CGRect(x: 0, y: 0, width: 27, height: 27))
+            tmpView.backgroundColor = color
+            let img = getImage(fromView: tmpView)
+            tmpAction.setValue(img, forKey: "image")
             alertController.addAction(tmpAction)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -107,17 +107,17 @@ class SettingViewController: UITableViewController {
     
     fileprivate func getImage(fromView view: UIView) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
-        let image = renderer.image { ctx in
+        let image = renderer.image { context in
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
-        return image
+        return image.withRenderingMode(.alwaysOriginal)
     }
     
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 1:
+        case 2:
             switch indexPath.row {
             case 0:
                 tableView.deselectRow(at: indexPath, animated: false)

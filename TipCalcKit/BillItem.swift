@@ -10,14 +10,22 @@ import UIKit
 
 class BillItem: NSObject {
     
-    var tip = 0.0
-    var total = 0.0
-    var tipPpl = 0.0
-    var totalPpl = 0.0
     var subtotal = 0.0
     var tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
     var taxValue = 0.0
     var taxRate = 0.0
     var ppl = 1
+    
+    var result: (tip: Double, total: Double, tipPpl: Double, totalPpl: Double) {
+        return TipCalculator.tip(of: subtotal, rate: tipRate, splitBy: ppl)
+    }
+    
+    func reset() {
+        subtotal = 0.0
+        tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
+        taxValue = 0.0
+        taxRate = 0.0
+        ppl = 1
+    }
 
 }

@@ -20,8 +20,10 @@ class TodayActualViewController: UIViewController {
     @IBOutlet weak var totalPplLabel: LTMorphingLabel!
     @IBOutlet weak var pplField: UITextField!
     @IBOutlet weak var pplStepper: UIStepper!
-    var toolBar: UIToolbar!
-    var pplToolBar: UIToolbar!
+    fileprivate var toolBar: UIToolbar!
+    fileprivate var pplToolBar: UIToolbar!
+    
+    fileprivate var billItem = BillItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,7 @@ class TodayActualViewController: UIViewController {
     
     @objc fileprivate func clearTextField() {
         subtotalField.text = ""
+        billItem.subtotal = 0
         updateTips()
     }
     
@@ -72,6 +75,7 @@ class TodayActualViewController: UIViewController {
     @objc fileprivate func resetPplField() {
         pplField.text = ""
         pplStepper.value = 1.0
+        billItem.ppl = 1
         updateTips()
     }
     
@@ -106,13 +110,15 @@ class TodayActualViewController: UIViewController {
     fileprivate func updateTips() {
         if let subtotal = subtotalField.text {
             if let subtotalDouble = Double(subtotal) {
+                billItem.subtotal = subtotalDouble
                 let pplInt = Int(pplField.text!) ?? 1
-                let (tip, total, tipPpl, totalPpl) = TipCalculator.tip(of: subtotalDouble, rate: rateList[rateSegmentedControl.selectedSegmentIndex], splitBy: pplInt)
+                billItem.ppl = pplInt
+
                 DispatchQueue.main.async {
-                    self.tipLabel.text = "$" + String(tip)
-                    self.totalLabel.text = "$" + String(total)
-                    self.tipPplLabel.text = "$" + String(tipPpl)
-                    self.totalPplLabel.text = "$" + String(totalPpl)
+                    self.tipLabel.text = "$" + String(self.billItem.result.tip)
+                    self.totalLabel.text = "$" + String(self.billItem.result.total)
+                    self.tipPplLabel.text = "$" + String(self.billItem.result.tipPpl)
+                    self.totalPplLabel.text = "$" + String(self.billItem.result.totalPpl)
                 }
             } else {
                 DispatchQueue.main.async {
@@ -131,6 +137,7 @@ class TodayActualViewController: UIViewController {
     
     @IBAction func stepperValueChanged() {
         pplField.text = String(Int(pplStepper.value))
+        billItem.ppl = Int(pplStepper.value)
         updateTips()
     }
 
@@ -141,8 +148,10 @@ class TodayActualViewController: UIViewController {
     @objc fileprivate func pplFieldTextDidChange() {
         if let pplInt = Int(pplField.text!) {
             pplStepper.value = Double(pplInt)
+            billItem.ppl = pplInt
         } else {
             pplStepper.value = 1.0
+            billItem.ppl = 1
         }
         updateTips()
     }
