@@ -15,9 +15,15 @@ class BillItem: NSObject {
     var taxValue = 0.0
     var taxRate = 0.0
     var ppl = 1
+    var taxIncluded = true
     
     var result: (tip: Double, total: Double, tipPpl: Double, totalPpl: Double) {
-        return TipCalculator.tip(of: subtotal, rate: tipRate, splitBy: ppl)
+        if taxIncluded {
+            return TipCalculator.tip(of: subtotal.roundTo(places: 2), rate: tipRate, splitBy: ppl)
+        } else {
+            let subtotalWithTax = subtotal * (1 + taxRate)
+            return TipCalculator.tip(of: subtotalWithTax.roundTo(places: 2), rate: tipRate, splitBy: ppl)
+        }
     }
     
     func reset() {
@@ -26,6 +32,7 @@ class BillItem: NSObject {
         taxValue = 0.0
         taxRate = 0.0
         ppl = 1
+        taxIncluded = true
     }
 
 }

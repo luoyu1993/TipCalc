@@ -108,30 +108,16 @@ class TodayActualViewController: UIViewController {
     }
     
     fileprivate func updateTips() {
-        if let subtotal = subtotalField.text {
-            if let subtotalDouble = Double(subtotal) {
-                billItem.subtotal = subtotalDouble
-                let pplInt = Int(pplField.text!) ?? 1
-                billItem.ppl = pplInt
-
-                DispatchQueue.main.async {
-                    self.tipLabel.text = "$" + String(self.billItem.result.tip)
-                    self.totalLabel.text = "$" + String(self.billItem.result.total)
-                    self.tipPplLabel.text = "$" + String(self.billItem.result.tipPpl)
-                    self.totalPplLabel.text = "$" + String(self.billItem.result.totalPpl)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.tipLabel.text = "$0.0"
-                    self.totalLabel.text = "$0.0"
-                    self.tipPplLabel.text = "$0.0"
-                    self.totalPplLabel.text = "$0.0"
-                }
-            }
+        DispatchQueue.main.async {
+            self.tipLabel.text = "$" + String(self.billItem.result.tip)
+            self.totalLabel.text = "$" + String(self.billItem.result.total)
+            self.tipPplLabel.text = "$" + String(self.billItem.result.tipPpl)
+            self.totalPplLabel.text = "$" + String(self.billItem.result.totalPpl)
         }
     }
     
     @IBAction func segmentedControlIndexChanged() {
+        billItem.tipRate = rateList[rateSegmentedControl.selectedSegmentIndex]
         updateTips()
     }
     
@@ -142,6 +128,11 @@ class TodayActualViewController: UIViewController {
     }
 
     @objc fileprivate func textDidChange() {
+        if let subtotalDouble = Double(subtotalField.text!) {
+            billItem.subtotal = subtotalDouble
+        } else {
+            billItem.subtotal = 0.0
+        }
         updateTips()
     }
     

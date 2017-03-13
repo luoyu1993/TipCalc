@@ -177,13 +177,14 @@ class TipCalcViewController: UIViewController {
     @objc fileprivate func taxIncludedSwitchChanged() {
         if taxIncludedSwitch.isOn {
             // Change to On
-            print("Include tax")
+            billItem.taxIncluded = true
             billItem.taxValue = 0.0
             billItem.taxRate = 0.0
             if let subtotalValue = Double(subtotalField.text!) {
                 billItem.subtotal = subtotalValue
             }
         } else {
+            billItem.taxIncluded = false
             if let taxValueDouble = Double(taxRateField.text!) {
                 billItem.taxValue = taxValueDouble
                 billItem.taxRate = billItem.taxValue / billItem.subtotal
@@ -318,14 +319,6 @@ class TipCalcViewController: UIViewController {
     }
     
     fileprivate func updateValues() {
-        var subtotalWithTax = 0.0
-        if taxIncludedSwitch.isOn {
-            subtotalWithTax = billItem.subtotal
-        } else {
-            subtotalWithTax = billItem.subtotal * (1 + billItem.taxRate)
-        }
-        billItem.subtotal = subtotalWithTax
-        
         tipLabel.text = "$" + String(billItem.result.tip)
         totalLabel.text = "$" + String(billItem.result.total)
         tipPplLabel.text = "$" + String(billItem.result.tipPpl)
