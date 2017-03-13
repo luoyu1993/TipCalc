@@ -8,27 +8,44 @@
 
 import UIKit
 
+let rateList = [0.1, 0.12, 0.15, 0.18, 0.2]
+
 class TipCalculator: NSObject {
     
-    class func tip(of subtotal: Double, rate: Double, splitBy ppl: Int) -> (Double, Double, Double, Double) {
+    enum RoundRule: Int {
+        case standard
+        case down
+        case up
+        
+        var rawValue: Int {
+            switch self {
+            case .standard:
+                return 0
+            case .down:
+                return 1
+            case .up:
+                return 2
+            }
+        }
+    }
+    
+    class func tip(of subtotal: Double, rate: Double, splitBy ppl: Int, round: Bool, roundRule: RoundRule) -> (tip: Double, total: Double, tipPpl: Double, totalPpl: Double) {
         var tip = Double(subtotal * rate).roundTo(places: 2)
         var total = 0.0
         var tipPpl = 0.0
         var totalPpl = 0.0
         
-        if UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) == false {
+        if round == false {
             total = Double(subtotal * (1 + rate)).roundTo(places: 2)
         } else {
             total = Double(subtotal * (1 + rate))
-            switch UserDefaults(suiteName: APP_GROUP_NAME)!.integer(forKey: SETTING_ROUND_TYPE) {
-            case 0:
+            switch roundRule {
+            case .standard:
                 total.round(.toNearestOrEven)
-            case 1:
+            case .down:
                 total.round(.down)
-            case 2:
+            case .up:
                 total.round(.up)
-            default:
-                total.round(.toNearestOrEven)
             }
             tip = total - subtotal
             if tip < 0 {
@@ -40,6 +57,12 @@ class TipCalculator: NSObject {
         tipPpl = (tip / Double(ppl)).roundTo(places: 2)
         totalPpl = (total / Double(ppl)).roundTo(places: 2)
         return (tip, total, tipPpl, totalPpl)
+    }
+    
+    class func tip(of subtotal: Double, rate: Double, splitBy ppl: Int) -> (tip: Double, total: Double, tipPpl: Double, totalPpl: Double) {
+        let round = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL)
+        let roundRule = RoundRule(rawValue: UserDefaults(suiteName: APP_GROUP_NAME)!.integer(forKey: SETTING_ROUND_TYPE))
+        return tip(of: subtotal, rate: rate, splitBy: ppl, round: round!, roundRule: roundRule!)
     }
 
 }

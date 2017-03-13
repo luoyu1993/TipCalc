@@ -11,8 +11,6 @@ import SnapKit
 import TipCalcKit
 import LTMorphingLabel
 
-let rateList = [0.1, 0.12, 0.15, 0.18, 0.2]
-
 class CompleteCalcViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
@@ -119,15 +117,7 @@ class CompleteCalcViewController: UIViewController {
     @IBOutlet weak var tipPplLabel: LTMorphingLabel!
     @IBOutlet weak var totalPplLabel: LTMorphingLabel!
     
-    fileprivate var tip = 0.0
-    fileprivate var total = 0.0
-    fileprivate var tipPpl = 0.0
-    fileprivate var totalPpl = 0.0
-    fileprivate var subtotal = 0.0
-    fileprivate var tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
-    fileprivate var taxValue = 0.0
-    fileprivate var taxRate = 0.0
-    fileprivate var ppl = 1
+    fileprivate var billItem = BillItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,22 +155,22 @@ class CompleteCalcViewController: UIViewController {
         
         tipLabel.textColor = mainTintColor
         tipLabel.morphingEffect = .evaporate
-        tipLabel.morphingDuration = 0.25
+        tipLabel.morphingDuration = ANIMATION_DURATION
         tipLabel.morphingEnabled = animatedEnabled
         
         totalLabel.textColor = mainTintColor
         totalLabel.morphingEffect = .evaporate
-        totalLabel.morphingDuration = 0.25
+        totalLabel.morphingDuration = ANIMATION_DURATION
         totalLabel.morphingEnabled = animatedEnabled
         
         tipPplLabel.textColor = mainTintColor
         tipPplLabel.morphingEffect = .evaporate
-        tipPplLabel.morphingDuration = 0.25
+        tipPplLabel.morphingDuration = ANIMATION_DURATION
         tipPplLabel.morphingEnabled = animatedEnabled
         
         totalPplLabel.textColor = mainTintColor
         totalPplLabel.morphingEffect = .evaporate
-        totalPplLabel.morphingDuration = 0.25
+        totalPplLabel.morphingDuration = ANIMATION_DURATION
         totalPplLabel.morphingEnabled = animatedEnabled
     }
     
@@ -188,15 +178,15 @@ class CompleteCalcViewController: UIViewController {
         if taxIncludedSwitch.isOn {
             // Change to On
             print("Include tax")
-            taxValue = 0.0
-            taxRate = 0.0
+            billItem.taxValue = 0.0
+            billItem.taxRate = 0.0
             if let subtotalValue = Double(subtotalField.text!) {
-                subtotal = subtotalValue
+                billItem.subtotal = subtotalValue
             }
         } else {
             if let taxValueDouble = Double(taxRateField.text!) {
-                taxValue = taxValueDouble
-                taxRate = taxValue / subtotal
+                billItem.taxValue = taxValueDouble
+                billItem.taxRate = billItem.taxValue / billItem.subtotal
             }
         }
         updateValues()
@@ -206,12 +196,12 @@ class CompleteCalcViewController: UIViewController {
     @objc fileprivate func tipRateTypeSegmentedControlChanged() {
         if tipRateTypeSegmentedControl.selectedSegmentIndex == 0 {
             // Change to common
-            tipRate = rateList[commonRateSegmentedControl.selectedSegmentIndex]
+            billItem.tipRate = rateList[commonRateSegmentedControl.selectedSegmentIndex]
         } else {
             if let rate = Double(customTipRateField.text!) {
-                tipRate = rate / 100
+                billItem.tipRate = rate / 100
             } else {
-                tipRate = 0
+                billItem.tipRate = 0
             }
         }
         updateValues()
@@ -219,27 +209,27 @@ class CompleteCalcViewController: UIViewController {
     }
     
     @objc fileprivate func commonRateSegmentedControlChanged() {
-        tipRate = rateList[commonRateSegmentedControl.selectedSegmentIndex]
+        billItem.tipRate = rateList[commonRateSegmentedControl.selectedSegmentIndex]
         updateValues()
     }
     
     @objc fileprivate func subtotalFieldChanged() {
         if let subtotalValue = Double(subtotalField.text!) {
-            subtotal = subtotalValue
+            billItem.subtotal = subtotalValue
         } else {
-            subtotal = 0
+            billItem.subtotal = 0
         }
         updateValues()
     }
     
     @objc fileprivate func taxValueFieldChanged() {
         if let taxValueDouble = Double(taxValueField.text!) {
-            taxValue = taxValueDouble
-            taxRate = (taxValue / subtotal).roundTo(places: 4)
-            taxRateField.text = String(taxRate * 100)
+            billItem.taxValue = taxValueDouble
+            billItem.taxRate = (billItem.taxValue / billItem.subtotal).roundTo(places: 4)
+            taxRateField.text = String(billItem.taxRate * 100)
         } else {
-            taxValue = 0
-            taxRate = 0
+            billItem.taxValue = 0
+            billItem.taxRate = 0
             taxRateField.text = ""
         }
         updateValues()
@@ -247,12 +237,12 @@ class CompleteCalcViewController: UIViewController {
     
     @objc fileprivate func taxRateFieldChanged() {
         if let taxRateValue = Double(taxRateField.text!) {
-            taxRate = taxRateValue / 100
-            taxValue = (subtotal * taxRate).roundTo(places: 2)
-            taxValueField.text = String(taxValue)
+            billItem.taxRate = taxRateValue / 100
+            billItem.taxValue = (billItem.subtotal * billItem.taxRate).roundTo(places: 2)
+            taxValueField.text = String(billItem.taxValue)
         } else {
-            taxRate = 0
-            taxValue = 0
+            billItem.taxRate = 0
+            billItem.taxValue = 0
             taxValueField.text = ""
         }
         updateValues()
@@ -260,14 +250,14 @@ class CompleteCalcViewController: UIViewController {
     
     @objc fileprivate func customTipRateFieldChanged() {
         if let tipRateValue = Double(customTipRateField.text!) {
-            tipRate = tipRateValue / 100
+            billItem.tipRate = tipRateValue / 100
             if tipRateValue >= 0 && tipRateValue <= 100 {
                 customTipRateSlider.setValue(Float(tipRateValue), animated: true)
             } else if tipRateValue > 100 {
                 customTipRateSlider.setValue(100.0, animated: true)
             }
         } else {
-            tipRate = 0
+            billItem.tipRate = 0
             customTipRateSlider.setValue(0, animated: true)
         }
         updateValues()
@@ -275,7 +265,7 @@ class CompleteCalcViewController: UIViewController {
     
     @objc fileprivate func customTipRateSliderChanged() {
         let tipRateValue = Double(customTipRateSlider.value).roundTo(places: 2)
-        tipRate = tipRateValue / 100
+        billItem.tipRate = tipRateValue / 100
         customTipRateField.text = String(tipRateValue)
         updateValues()
     }
@@ -283,14 +273,14 @@ class CompleteCalcViewController: UIViewController {
     @objc fileprivate func pplFieldChanged() {
         if let pplValue = Int(pplField.text!) {
             if pplValue > 0 {
-                ppl = pplValue
-                if ppl >= 1 && ppl <= 10 {
-                    pplSlider.setValue(Float(ppl), animated: true)
-                    pplStepper.value = Double(ppl)
+                billItem.ppl = pplValue
+                if billItem.ppl >= 1 && billItem.ppl <= 10 {
+                    pplSlider.setValue(Float(billItem.ppl), animated: true)
+                    pplStepper.value = Double(billItem.ppl)
                 }
             }
         } else {
-            ppl = 1
+            billItem.ppl = 1
             pplSlider.setValue(1.0, animated: true)
             pplStepper.value = 1.0
         }
@@ -299,18 +289,18 @@ class CompleteCalcViewController: UIViewController {
     
     @objc fileprivate func pplStepperChanged() {
         let pplValue = Int(pplStepper.value)
-        ppl = pplValue
-        pplField.text = String(ppl)
-        pplSlider.setValue(Float(ppl), animated: true)
+        billItem.ppl = pplValue
+        pplField.text = String(billItem.ppl)
+        pplSlider.setValue(Float(billItem.ppl), animated: true)
         updateValues()
     }
     
     @objc fileprivate func pplSliderChanged() {
         let pplValue = Int(pplSlider.value)
         if pplValue > 0 {
-            ppl = pplValue
-            pplField.text = String(ppl)
-            pplStepper.value = Double(ppl)
+            billItem.ppl = pplValue
+            pplField.text = String(billItem.ppl)
+            pplStepper.value = Double(billItem.ppl)
             updateValues()
         }
     }
@@ -330,16 +320,16 @@ class CompleteCalcViewController: UIViewController {
     fileprivate func updateValues() {
         var subtotalWithTax = 0.0
         if taxIncludedSwitch.isOn {
-            subtotalWithTax = subtotal
+            subtotalWithTax = billItem.subtotal
         } else {
-            subtotalWithTax = subtotal * (1 + taxRate)
+            subtotalWithTax = billItem.subtotal * (1 + billItem.taxRate)
         }
         
-        let (tip, total, tipPpl, totalPpl) = TipCalculator.tip(of: subtotalWithTax, rate: tipRate, splitBy: ppl)
-        tipLabel.text = "$" + String(tip)
-        totalLabel.text = "$" + String(total)
-        tipPplLabel.text = "$" + String(tipPpl)
-        totalPplLabel.text = "$" + String(totalPpl)
+        (billItem.tip, billItem.total, billItem.tipPpl, billItem.totalPpl) = TipCalculator.tip(of: subtotalWithTax, rate: billItem.tipRate, splitBy: billItem.ppl)
+        tipLabel.text = "$" + String(billItem.tip)
+        totalLabel.text = "$" + String(billItem.total)
+        tipPplLabel.text = "$" + String(billItem.tipPpl)
+        totalPplLabel.text = "$" + String(billItem.totalPpl)
     }
     
     fileprivate func updateSection(_ section: Int) {
@@ -363,15 +353,15 @@ class CompleteCalcViewController: UIViewController {
         pplSlider.setValue(1, animated: true)
         pplStepper.value = 1.0
         
-        tip = 0.0
-        total = 0.0
-        tipPpl = 0.0
-        totalPpl = 0.0
-        subtotal = 0.0
-        tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
-        taxValue = 0.0
-        taxRate = 0.0
-        ppl = 1
+        billItem.tip = 0.0
+        billItem.total = 0.0
+        billItem.tipPpl = 0.0
+        billItem.totalPpl = 0.0
+        billItem.subtotal = 0.0
+        billItem.tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
+        billItem.taxValue = 0.0
+        billItem.taxRate = 0.0
+        billItem.ppl = 1
         
         updateAllSections()
         updateValues()

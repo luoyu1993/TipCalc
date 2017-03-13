@@ -16,6 +16,8 @@ let SETTING_ROUND_TYPE = "roundType" // 0: standard, 1: down, 2: up
 let SETTING_ANIMATED_LABEL = "animatedLabel"
 let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
 
+let ANIMATION_DURATION: Float = 0.25
+
 class TipCalcDataManager: NSObject {
     
     class func widgetTintColor() -> UIColor {

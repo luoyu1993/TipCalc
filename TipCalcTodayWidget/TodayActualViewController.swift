@@ -22,8 +22,6 @@ class TodayActualViewController: UIViewController {
     @IBOutlet weak var pplStepper: UIStepper!
     var toolBar: UIToolbar!
     var pplToolBar: UIToolbar!
-
-    fileprivate let rateList = [0.1, 0.12, 0.15, 0.18, 0.2]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,22 +84,22 @@ class TodayActualViewController: UIViewController {
         
         tipLabel.textColor = mainTintColor
         tipLabel.morphingEffect = .evaporate
-        tipLabel.morphingDuration = 0.25
+        tipLabel.morphingDuration = ANIMATION_DURATION
         tipLabel.morphingEnabled = animatedEnabled
         
         totalLabel.textColor = mainTintColor
         totalLabel.morphingEffect = .evaporate
-        totalLabel.morphingDuration = 0.25
+        totalLabel.morphingDuration = ANIMATION_DURATION
         totalLabel.morphingEnabled = animatedEnabled
         
         tipPplLabel.textColor = mainTintColor
         tipPplLabel.morphingEffect = .evaporate
-        tipPplLabel.morphingDuration = 0.25
+        tipPplLabel.morphingDuration = ANIMATION_DURATION
         tipPplLabel.morphingEnabled = animatedEnabled
         
         totalPplLabel.textColor = mainTintColor
         totalPplLabel.morphingEffect = .evaporate
-        totalPplLabel.morphingDuration = 0.25
+        totalPplLabel.morphingDuration = ANIMATION_DURATION
         totalPplLabel.morphingEnabled = animatedEnabled
     }
     
@@ -111,10 +109,10 @@ class TodayActualViewController: UIViewController {
                 let pplInt = Int(pplField.text!) ?? 1
                 let (tip, total, tipPpl, totalPpl) = TipCalculator.tip(of: subtotalDouble, rate: rateList[rateSegmentedControl.selectedSegmentIndex], splitBy: pplInt)
                 DispatchQueue.main.async {
-                    self.tipLabel.text = String(tip)
-                    self.totalLabel.text = String(total)
-                    self.tipPplLabel.text = String(tipPpl)
-                    self.totalPplLabel.text = String(totalPpl)
+                    self.tipLabel.text = "$" + String(tip)
+                    self.totalLabel.text = "$" + String(total)
+                    self.tipPplLabel.text = "$" + String(tipPpl)
+                    self.totalPplLabel.text = "$" + String(totalPpl)
                 }
             } else {
                 DispatchQueue.main.async {
