@@ -10,6 +10,8 @@ import UIKit
 
 class BillItem: NSObject {
     
+    var title = ""
+    var date = NSDate()
     var subtotal = 0.0
     var tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
     var taxValue = 0.0

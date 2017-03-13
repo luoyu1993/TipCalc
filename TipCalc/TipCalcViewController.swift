@@ -104,6 +104,13 @@ class TipCalcViewController: UIViewController {
         pplSlider.addTarget(self, action: #selector(pplSliderChanged), for: .valueChanged)
         return pplSlider
     }()
+    fileprivate var generateBillBtn: UIButton = {
+        let generateBillBtn = UIButton(type: .system)
+        generateBillBtn.setTitle("Generate bill", for: .normal)
+        generateBillBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        generateBillBtn.addTarget(self, action: #selector(generateBillBtnPressed), for: .touchUpInside)
+        return generateBillBtn
+    }()
     fileprivate var clearBtn: UIButton = {
         let clearBtn = UIButton(type: .system)
         clearBtn.setTitle("Clear all", for: .normal)
@@ -318,6 +325,10 @@ class TipCalcViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    @objc fileprivate func generateBillBtnPressed() {
+        performSegue(withIdentifier: "generateBill", sender: nil)
+    }
+    
     fileprivate func updateValues() {
         tipLabel.text = "$" + String(billItem.result.tip)
         totalLabel.text = "$" + String(billItem.result.total)
@@ -353,22 +364,23 @@ class TipCalcViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "generateBill" {
+            // Mode: OverCurrentContext
+            let billController = segue.destination as! BillViewController
+            billController.billItem = self.billItem
+        }
     }
-    */
 
 }
 
 extension TipCalcViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -384,6 +396,8 @@ extension TipCalcViewController: UITableViewDataSource {
         case 2:
             return 1
         case 3:
+            return 1
+        case 4:
             return 1
         default:
             return 0
@@ -428,6 +442,8 @@ extension TipCalcViewController: UITableViewDataSource {
         case 2:
             return "Split bill"
         case 3:
+            return "Bill"
+        case 4:
             return "Clear all"
         default:
             return ""
@@ -451,6 +467,8 @@ extension TipCalcViewController: UITableViewDataSource {
         case 2:
             return "You can enter the number of people in case that the number is over 10."
         case 3:
+            return ""
+        case 4:
             return "Clear all fields. Your progress will lost."
         default:
             return ""
@@ -617,6 +635,19 @@ extension TipCalcViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
         case 3:
+            switch row {
+            case 0:
+                let cell = UITableViewCell()
+                cell.selectionStyle = .none
+                cell.addSubview(generateBillBtn)
+                generateBillBtn.snp.makeConstraints({ make in
+                    make.edges.equalToSuperview()
+                })
+                return cell
+            default:
+                return UITableViewCell()
+            }
+        case 4:
             switch row {
             case 0:
                 let cell = UITableViewCell()
