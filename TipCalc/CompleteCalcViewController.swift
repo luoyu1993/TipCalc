@@ -11,12 +11,14 @@ import SnapKit
 import TipCalcKit
 import LTMorphingLabel
 
+let rateList = [0.1, 0.12, 0.15, 0.18, 0.2]
+
 class CompleteCalcViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var resultsView: UIVisualEffectView!
     
-    var subtotalField: UITextField = {
+    fileprivate var subtotalField: UITextField = {
         let subtotalField = UITextField(frame: .zero)
         subtotalField.placeholder = "$0.0"
         subtotalField.font = UIFont.boldSystemFont(ofSize: 24.0)
@@ -26,13 +28,13 @@ class CompleteCalcViewController: UIViewController {
         subtotalField.addTarget(self, action: #selector(subtotalFieldChanged), for: .editingChanged)
         return subtotalField
     }()
-    var taxIncludedSwitch: UISwitch = {
+    fileprivate var taxIncludedSwitch: UISwitch = {
         let taxIncludedSwitch = UISwitch()
         taxIncludedSwitch.addTarget(self, action: #selector(taxIncludedSwitchChanged), for: .valueChanged)
         taxIncludedSwitch.isOn = true
         return taxIncludedSwitch
     }()
-    var taxValueField: UITextField = {
+    fileprivate var taxValueField: UITextField = {
         let taxValueField = UITextField(frame: .zero)
         taxValueField.placeholder = "$0.0"
         taxValueField.keyboardType = .decimalPad
@@ -41,7 +43,7 @@ class CompleteCalcViewController: UIViewController {
         taxValueField.addTarget(self, action: #selector(taxValueFieldChanged), for: .editingChanged)
         return taxValueField
     }()
-    var taxRateField: UITextField = {
+    fileprivate var taxRateField: UITextField = {
         let taxRateField = UITextField(frame: .zero)
         taxRateField.placeholder = "0%"
         taxRateField.keyboardType = .decimalPad
@@ -50,19 +52,19 @@ class CompleteCalcViewController: UIViewController {
         taxRateField.addTarget(self, action: #selector(taxRateFieldChanged), for: .editingChanged)
         return taxRateField
     }()
-    var tipRateTypeSegmentedControl: UISegmentedControl = {
+    fileprivate var tipRateTypeSegmentedControl: UISegmentedControl = {
         let tipRateTypeSegmentedControl = UISegmentedControl(items: ["Common", "Custom"])
         tipRateTypeSegmentedControl.selectedSegmentIndex = 0
         tipRateTypeSegmentedControl.addTarget(self, action: #selector(tipRateTypeSegmentedControlChanged), for: .valueChanged)
         return tipRateTypeSegmentedControl
     }()
-    var commonRateSegmentedControl: UISegmentedControl = {
+    fileprivate var commonRateSegmentedControl: UISegmentedControl = {
         let commonRateSegmentedControl = UISegmentedControl(items: ["10%", "12%", "15%", "18%", "20%"])
-        commonRateSegmentedControl.selectedSegmentIndex = 0
+        commonRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         commonRateSegmentedControl.addTarget(self, action: #selector(commonRateSegmentedControlChanged), for: .valueChanged)
         return commonRateSegmentedControl
     }()
-    var customTipRateField: UITextField = {
+    fileprivate var customTipRateField: UITextField = {
         let customTipRateField = UITextField(frame: .zero)
         customTipRateField.placeholder = "0%"
         customTipRateField.keyboardType = .decimalPad
@@ -71,7 +73,7 @@ class CompleteCalcViewController: UIViewController {
         customTipRateField.addTarget(self, action: #selector(customTipRateFieldChanged), for: .editingChanged)
         return customTipRateField
     }()
-    var customTipRateSlider: UISlider = {
+    fileprivate var customTipRateSlider: UISlider = {
         let customTipRateSlider = UISlider(frame: .zero)
         customTipRateSlider.minimumValue = 0.0
         customTipRateSlider.maximumValue = 100.0
@@ -79,7 +81,7 @@ class CompleteCalcViewController: UIViewController {
         customTipRateSlider.addTarget(self, action: #selector(customTipRateSliderChanged), for: .valueChanged)
         return customTipRateSlider
     }()
-    var pplField: UITextField = {
+    fileprivate var pplField: UITextField = {
         let pplField = UITextField(frame: .zero)
         pplField.placeholder = "1"
         pplField.keyboardType = .numberPad
@@ -88,7 +90,15 @@ class CompleteCalcViewController: UIViewController {
         pplField.addTarget(self, action: #selector(pplFieldChanged), for: .editingChanged)
         return pplField
     }()
-    var pplSlider: UISlider = {
+    fileprivate var pplStepper: UIStepper = {
+        let pplStepper = UIStepper()
+        pplStepper.minimumValue = 1
+        pplStepper.stepValue = 1.0
+        pplStepper.maximumValue = 100
+        pplStepper.addTarget(self, action: #selector(pplStepperChanged), for: .valueChanged)
+        return pplStepper
+    }()
+    fileprivate var pplSlider: UISlider = {
         let pplSlider = UISlider(frame: .zero)
         pplSlider.minimumValue = 1
         pplSlider.maximumValue = 10
@@ -96,7 +106,7 @@ class CompleteCalcViewController: UIViewController {
         pplSlider.addTarget(self, action: #selector(pplSliderChanged), for: .valueChanged)
         return pplSlider
     }()
-    var clearBtn: UIButton = {
+    fileprivate var clearBtn: UIButton = {
         let clearBtn = UIButton(type: .system)
         clearBtn.setTitle("Clear all", for: .normal)
         clearBtn.addTarget(self, action: #selector(clearBtnPressed), for: .touchUpInside)
@@ -114,12 +124,10 @@ class CompleteCalcViewController: UIViewController {
     fileprivate var tipPpl = 0.0
     fileprivate var totalPpl = 0.0
     fileprivate var subtotal = 0.0
-    fileprivate var tipRate = 0.1
+    fileprivate var tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
     fileprivate var taxValue = 0.0
     fileprivate var taxRate = 0.0
     fileprivate var ppl = 1
-    
-    fileprivate let rateList = [0.1, 0.12, 0.15, 0.18, 0.2]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,6 +151,7 @@ class CompleteCalcViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setColors()
+        updateValues()
     }
 
     override func didReceiveMemoryWarning() {
@@ -277,12 +286,22 @@ class CompleteCalcViewController: UIViewController {
                 ppl = pplValue
                 if ppl >= 1 && ppl <= 10 {
                     pplSlider.setValue(Float(ppl), animated: true)
+                    pplStepper.value = Double(ppl)
                 }
             }
         } else {
             ppl = 1
             pplSlider.setValue(1.0, animated: true)
+            pplStepper.value = 1.0
         }
+        updateValues()
+    }
+    
+    @objc fileprivate func pplStepperChanged() {
+        let pplValue = Int(pplStepper.value)
+        ppl = pplValue
+        pplField.text = String(ppl)
+        pplSlider.setValue(Float(ppl), animated: true)
         updateValues()
     }
     
@@ -291,6 +310,7 @@ class CompleteCalcViewController: UIViewController {
         if pplValue > 0 {
             ppl = pplValue
             pplField.text = String(ppl)
+            pplStepper.value = Double(ppl)
             updateValues()
         }
     }
@@ -336,18 +356,19 @@ class CompleteCalcViewController: UIViewController {
         taxValueField.text = ""
         taxRateField.text = ""
         tipRateTypeSegmentedControl.selectedSegmentIndex = 0
-        commonRateSegmentedControl.selectedSegmentIndex = 0
+        commonRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         customTipRateField.text = ""
         customTipRateSlider.setValue(0.0, animated: true)
         pplField.text = ""
         pplSlider.setValue(1, animated: true)
+        pplStepper.value = 1.0
         
         tip = 0.0
         total = 0.0
         tipPpl = 0.0
         totalPpl = 0.0
         subtotal = 0.0
-        tipRate = 0.1
+        tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
         taxValue = 0.0
         taxRate = 0.0
         ppl = 1
@@ -594,15 +615,20 @@ extension CompleteCalcViewController: UITableViewDataSource {
                 cell.addSubview(splitByLabel)
                 cell.addSubview(pplField)
                 cell.addSubview(pplSlider)
+                cell.addSubview(pplStepper)
                 splitByLabel.snp.makeConstraints({ make in
                     make.top.equalToSuperview().offset(12)
                     make.left.equalToSuperview().offset(16)
-                    make.width.equalTo(200)
+                    make.width.equalTo(120)
                     make.height.equalTo(22)
+                })
+                pplStepper.snp.makeConstraints({ make in
+                    make.centerY.equalTo(splitByLabel)
+                    make.right.equalToSuperview().offset(-16)
                 })
                 pplField.snp.makeConstraints({ make in
                     make.top.equalToSuperview().offset(12)
-                    make.right.equalToSuperview().offset(-16)
+                    make.right.equalTo(pplStepper.snp.left).offset(-8)
                     make.left.equalTo(splitByLabel.snp.right).offset(8)
                     make.height.equalTo(22)
                 })
@@ -636,8 +662,7 @@ extension CompleteCalcViewController: UITableViewDataSource {
 }
 
 extension CompleteCalcViewController: UITableViewDelegate {
-    
-    
+
     
     
 }

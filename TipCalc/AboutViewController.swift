@@ -16,9 +16,10 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName")!
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String)!
-        appNameLabel.text = "TipS Version \(version) Build \(build)"
+        appNameLabel.text = "\(name) Version \(version) Build \(build)"
         
     }
 

@@ -14,6 +14,7 @@ let SETTING_WIDGET_TINT_COLOR = "widgetTintColor"
 let SETTING_ROUND_TOTAL = "roundTotal"
 let SETTING_ROUND_TYPE = "roundType" // 0: standard, 1: down, 2: up
 let SETTING_ANIMATED_LABEL = "animatedLabel"
+let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
 
 class TipCalcDataManager: NSObject {
     
@@ -33,6 +34,14 @@ class TipCalcDataManager: NSObject {
             userDefault?.set(true, forKey: SETTING_ANIMATED_LABEL)
         }
         return userDefault!.bool(forKey: SETTING_ANIMATED_LABEL)
+    }
+    
+    class func defaultTipRateIndex() -> Int {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        if userDefault?.object(forKey: SETTING_DEFAULT_TIP_RATE_INDEX) == nil {
+            userDefault?.set(0, forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
+        }
+        return userDefault!.integer(forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
     }
     
     class func setTintColors() {

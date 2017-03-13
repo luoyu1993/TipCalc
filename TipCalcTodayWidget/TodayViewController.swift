@@ -66,7 +66,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     fileprivate func showActualController() {
-        self.present(actualViewController, animated: false, completion: nil)
+        present(actualViewController, animated: false, completion: nil)
     }
     
 }

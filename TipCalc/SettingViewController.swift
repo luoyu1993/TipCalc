@@ -15,6 +15,7 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var roundSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tintColorView: UIView!
     @IBOutlet weak var animatedSwitch: UISwitch!
+    @IBOutlet weak var defaultTipRateSegmentedControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class SettingViewController: UITableViewController {
         roundSwitch.isOn = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) ?? false
         roundSegmentedControl.selectedSegmentIndex = (UserDefaults(suiteName: APP_GROUP_NAME)?.integer(forKey: SETTING_ROUND_TYPE))!
         animatedSwitch.isOn = TipCalcDataManager.animatedLabel()
+        defaultTipRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         
         let mainTintColor = TipCalcDataManager.widgetTintColor()
         
@@ -51,6 +53,7 @@ class SettingViewController: UITableViewController {
             self.roundSegmentedControl.tintColor = mainTintColor
             self.animatedSwitch.tintColor = mainTintColor
             self.animatedSwitch.onTintColor = mainTintColor
+            self.defaultTipRateSegmentedControl.tintColor = mainTintColor
             self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
             self.navigationController!.navigationBar.tintColor = mainTintColor
         })
@@ -68,6 +71,10 @@ class SettingViewController: UITableViewController {
     
     @IBAction func animatedSwitchChanged() {
         UserDefaults(suiteName: APP_GROUP_NAME)?.set(animatedSwitch.isOn, forKey: SETTING_ANIMATED_LABEL)
+    }
+    
+    @IBAction func defaultTipRateSegmentedControlValueChanged() {
+        UserDefaults(suiteName: APP_GROUP_NAME)?.set(defaultTipRateSegmentedControl.selectedSegmentIndex, forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
     }
     
     fileprivate func selectMainTintColor() {

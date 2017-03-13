@@ -29,6 +29,9 @@ class TodayActualViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let defaultTipRateIndex = TipCalcDataManager.defaultTipRateIndex()
+        rateSegmentedControl.selectedSegmentIndex = defaultTipRateIndex
+        
         subtotalField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         pplField.addTarget(self, action: #selector(pplFieldTextDidChange), for: .editingChanged)
         
