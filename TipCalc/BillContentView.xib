@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="Kgc-DD-ANw">
-                    <rect key="frame" x="16" y="20" width="342" height="21"/>
+                    <rect key="frame" x="24" y="20" width="334" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="EXe-GK-5az"/>
                     </constraints>
@@ -187,7 +187,7 @@
                 <constraint firstItem="vD3-Yg-GA2" firstAttribute="leading" secondItem="W3h-pr-DBx" secondAttribute="leading" constant="16" id="bRe-94-Dey"/>
                 <constraint firstAttribute="trailing" secondItem="vD3-Yg-GA2" secondAttribute="trailing" constant="16" id="eZ6-Mm-A4C"/>
                 <constraint firstAttribute="trailing" secondItem="Kgc-DD-ANw" secondAttribute="trailing" constant="16" id="j8i-R1-uKO"/>
-                <constraint firstItem="Kgc-DD-ANw" firstAttribute="leading" secondItem="W3h-pr-DBx" secondAttribute="leading" constant="16" id="qme-I4-8nu"/>
+                <constraint firstItem="Kgc-DD-ANw" firstAttribute="leading" secondItem="W3h-pr-DBx" secondAttribute="leading" constant="24" id="qme-I4-8nu"/>
                 <constraint firstAttribute="trailing" secondItem="k0V-9f-JJl" secondAttribute="trailing" constant="16" id="yMD-Dq-TNf"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

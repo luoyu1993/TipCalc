@@ -23,7 +23,7 @@ class BillView: UIView {
     fileprivate let colorBackgroundView: UIView = {
         let bgView = UIView()
         bgView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-        bgView.layer.cornerRadius = 15
+        bgView.layer.cornerRadius = 12
         bgView.layer.masksToBounds = true
         return bgView
     }()
@@ -36,11 +36,9 @@ class BillView: UIView {
         shadowView.layer.shadowOpacity = 0.5
         return shadowView
     }()
-
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    init() {
+        super.init(frame: .zero)
         
         self.addSubview(shadowLayerView)
         shadowLayerView.snp.makeConstraints({ make in
@@ -64,7 +62,21 @@ class BillView: UIView {
         totalLabel.textColor = mainTintColor
         tipPplLabel.textColor = mainTintColor
         totalPplLabel.textColor = mainTintColor
+
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+//    override func draw(_ rect: CGRect) {
+        // Drawing code
+        
+//    }
     
     func setBillItem(item: BillItem) {
         billItem = item

@@ -26,12 +26,14 @@ class TipCalcViewController: UIViewController {
         subtotalField.addTarget(self, action: #selector(subtotalFieldChanged), for: .editingChanged)
         return subtotalField
     }()
+    
     fileprivate var taxIncludedSwitch: UISwitch = {
         let taxIncludedSwitch = UISwitch()
         taxIncludedSwitch.addTarget(self, action: #selector(taxIncludedSwitchChanged), for: .valueChanged)
         taxIncludedSwitch.isOn = true
         return taxIncludedSwitch
     }()
+    
     fileprivate var taxValueField: UITextField = {
         let taxValueField = UITextField(frame: .zero)
         taxValueField.placeholder = "$0.0"
@@ -41,6 +43,7 @@ class TipCalcViewController: UIViewController {
         taxValueField.addTarget(self, action: #selector(taxValueFieldChanged), for: .editingChanged)
         return taxValueField
     }()
+    
     fileprivate var taxRateField: UITextField = {
         let taxRateField = UITextField(frame: .zero)
         taxRateField.placeholder = "0%"
@@ -50,18 +53,21 @@ class TipCalcViewController: UIViewController {
         taxRateField.addTarget(self, action: #selector(taxRateFieldChanged), for: .editingChanged)
         return taxRateField
     }()
+    
     fileprivate var tipRateTypeSegmentedControl: UISegmentedControl = {
         let tipRateTypeSegmentedControl = UISegmentedControl(items: ["Common", "Custom"])
         tipRateTypeSegmentedControl.selectedSegmentIndex = 0
         tipRateTypeSegmentedControl.addTarget(self, action: #selector(tipRateTypeSegmentedControlChanged), for: .valueChanged)
         return tipRateTypeSegmentedControl
     }()
+    
     fileprivate var commonRateSegmentedControl: UISegmentedControl = {
         let commonRateSegmentedControl = UISegmentedControl(items: ["10%", "12%", "15%", "18%", "20%"])
         commonRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         commonRateSegmentedControl.addTarget(self, action: #selector(commonRateSegmentedControlChanged), for: .valueChanged)
         return commonRateSegmentedControl
     }()
+    
     fileprivate var customTipRateField: UITextField = {
         let customTipRateField = UITextField(frame: .zero)
         customTipRateField.placeholder = "0%"
@@ -71,6 +77,7 @@ class TipCalcViewController: UIViewController {
         customTipRateField.addTarget(self, action: #selector(customTipRateFieldChanged), for: .editingChanged)
         return customTipRateField
     }()
+    
     fileprivate var customTipRateSlider: UISlider = {
         let customTipRateSlider = UISlider(frame: .zero)
         customTipRateSlider.minimumValue = 0.0
@@ -79,6 +86,7 @@ class TipCalcViewController: UIViewController {
         customTipRateSlider.addTarget(self, action: #selector(customTipRateSliderChanged), for: .valueChanged)
         return customTipRateSlider
     }()
+    
     fileprivate var pplField: UITextField = {
         let pplField = UITextField(frame: .zero)
         pplField.placeholder = "1"
@@ -88,6 +96,7 @@ class TipCalcViewController: UIViewController {
         pplField.addTarget(self, action: #selector(pplFieldChanged), for: .editingChanged)
         return pplField
     }()
+    
     fileprivate var pplStepper: UIStepper = {
         let pplStepper = UIStepper()
         pplStepper.minimumValue = 1
@@ -96,6 +105,7 @@ class TipCalcViewController: UIViewController {
         pplStepper.addTarget(self, action: #selector(pplStepperChanged), for: .valueChanged)
         return pplStepper
     }()
+    
     fileprivate var pplSlider: UISlider = {
         let pplSlider = UISlider(frame: .zero)
         pplSlider.minimumValue = 1
@@ -104,6 +114,7 @@ class TipCalcViewController: UIViewController {
         pplSlider.addTarget(self, action: #selector(pplSliderChanged), for: .valueChanged)
         return pplSlider
     }()
+    
     fileprivate var generateBillBtn: UIButton = {
         let generateBillBtn = UIButton(type: .system)
         generateBillBtn.setTitle("Generate bill", for: .normal)
@@ -111,6 +122,7 @@ class TipCalcViewController: UIViewController {
         generateBillBtn.addTarget(self, action: #selector(generateBillBtnPressed), for: .touchUpInside)
         return generateBillBtn
     }()
+    
     fileprivate var clearBtn: UIButton = {
         let clearBtn = UIButton(type: .system)
         clearBtn.setTitle("Clear all", for: .normal)
@@ -341,7 +353,7 @@ class TipCalcViewController: UIViewController {
     }
     
     fileprivate func updateAllSections() {
-        mainTableView.reloadSections(IndexSet(integersIn: 0 ..< 4), with: .automatic)
+        mainTableView.reloadSections(IndexSet(integersIn: 0 ..< 3), with: .automatic)
     }
     
     fileprivate func clearAllValues() {
@@ -467,7 +479,7 @@ extension TipCalcViewController: UITableViewDataSource {
         case 2:
             return "You can enter the number of people in case that the number is over 10."
         case 3:
-            return ""
+            return "Generate a bill, then save or share it."
         case 4:
             return "Clear all fields. Your progress will lost."
         default:

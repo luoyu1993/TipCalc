@@ -14,35 +14,52 @@ class BillViewController: UIViewController {
     
     var billItem: BillItem!
 
-    fileprivate var leftBtn: DynamicButton = {
+    fileprivate let leftBtn: DynamicButton = {
         let leftBtn = DynamicButton(style: DynamicButtonStyle.close)
         leftBtn.strokeColor = TipCalcDataManager.widgetTintColor()
         leftBtn.bounceButtonOnTouch = false
         return leftBtn
     }()
 
-    fileprivate var rightBtn: DynamicButton = {
+    fileprivate let rightBtn: DynamicButton = {
         let rightBtn = DynamicButton(style: DynamicButtonStyle.arrowRight)
         rightBtn.strokeColor = TipCalcDataManager.widgetTintColor()
         rightBtn.bounceButtonOnTouch = false
         return rightBtn
     }()
 
-    fileprivate var titleTextField: UITextField = {
+    fileprivate let titleTextField: UITextField = {
         let titleTextField = UITextField(frame: .zero)
-        titleTextField.placeholder = "Please input a name"
+        titleTextField.placeholder = "Please input a title"
         titleTextField.font = UIFont.boldSystemFont(ofSize: 24.0)
         titleTextField.textColor = TipCalcDataManager.widgetTintColor()
         titleTextField.clearButtonMode = .whileEditing
         titleTextField.adjustsFontSizeToFitWidth = true
         titleTextField.minimumFontSize = 8.0
+        titleTextField.returnKeyType = .next
+        titleTextField.addTarget(self, action: #selector(titleTextFieldDidEndEditing), for: .editingDidEndOnExit)
+        titleTextField.inputAccessoryView = UIView()
         return titleTextField
     }()
     
-    fileprivate var billView: BillView = {
+    fileprivate let billView: BillView = {
         let billView = BillView()
         billView.backgroundColor = UIColor.clear
         return billView
+    }()
+    
+    fileprivate let saveBtn: UIButton = {
+        let saveBtn = UIButton(type: .custom)
+        saveBtn.setImage(UIImage(named: "ActionSave"), for: .normal)
+        saveBtn.addTarget(self, action: #selector(saveBtnPressed), for: .touchUpInside)
+        return saveBtn
+    }()
+    
+    fileprivate let shareBtn: UIButton = {
+        let shareBtn = UIButton(type: .custom)
+        shareBtn.setImage(UIImage(named: "ActionShare"), for: .normal)
+        shareBtn.addTarget(self, action: #selector(shareBtnPressed), for: .touchUpInside)
+        return shareBtn
     }()
     
     fileprivate let dynamicButtonDelayInterval = 0.03
@@ -56,8 +73,8 @@ class BillViewController: UIViewController {
         leftBtn.snp.makeConstraints({ make in
             make.top.equalToSuperview().offset(36)
             make.left.equalToSuperview().offset(16)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
+            make.width.equalTo(28)
+            make.height.equalTo(28)
         })
         leftBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchDown)
         
@@ -65,14 +82,14 @@ class BillViewController: UIViewController {
         rightBtn.snp.makeConstraints({ make in
             make.top.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-16)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
+            make.width.equalTo(28)
+            make.height.equalTo(28)
         })
         rightBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchDown)
         
         self.view.addSubview(titleTextField)
         titleTextField.snp.makeConstraints({ make in
-            make.top.equalToSuperview().offset(120)
+            make.centerY.equalToSuperview().offset(-160)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(28)
@@ -86,6 +103,24 @@ class BillViewController: UIViewController {
             make.width.equalToSuperview().offset(-32)
             make.height.equalTo(240)
             make.left.equalToSuperview().offset(16+viewAnimationXShift)
+        })
+        
+        self.view.addSubview(saveBtn)
+        saveBtn.alpha = 0
+        saveBtn.snp.makeConstraints({ make in
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+            make.centerX.equalTo(billView.snp.centerX).offset(-80)
+            make.top.equalTo(billView.snp.bottom).offset(80)
+        })
+        
+        self.view.addSubview(shareBtn)
+        shareBtn.alpha = 0
+        shareBtn.snp.makeConstraints({ make in
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+            make.centerX.equalTo(billView.snp.centerX).offset(80)
+            make.top.equalTo(billView.snp.bottom).offset(80)
         })
     }
 
@@ -133,6 +168,8 @@ class BillViewController: UIViewController {
         UIView.animate(withDuration: 0.4, animations: {
             self.titleTextField.alpha = 0.0
             self.billView.alpha = 1.0
+            self.shareBtn.alpha = 1.0
+            self.saveBtn.alpha = 1.0
             self.view.layoutIfNeeded()
         })
         
@@ -173,6 +210,8 @@ class BillViewController: UIViewController {
         UIView.animate(withDuration: 0.4, animations: {
             self.titleTextField.alpha = 1.0
             self.billView.alpha = 0.0
+            self.saveBtn.alpha = 0.0
+            self.shareBtn.alpha = 0.0
             self.view.layoutIfNeeded()
         })
         
@@ -180,6 +219,28 @@ class BillViewController: UIViewController {
     
     @objc fileprivate func doneBtnPressed() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func saveBtnPressed() {
+        UIImageWriteToSavedPhotosAlbum(billView.billImage(), nil, nil, nil)
+        let alertController = UIAlertController(title: "Saved", message: "Bill saved to camera roll", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func shareBtnPressed() {
+        let shareItems = [billView.billImage()] as [Any]
+        
+        let activityController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        activityController.modalPresentationStyle = .popover
+        activityController.popoverPresentationController?.permittedArrowDirections = .any
+        activityController.popoverPresentationController?.sourceView = shareBtn
+        present(activityController, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func titleTextFieldDidEndEditing() {
+        nextBtnPressed()
     }
     
 
