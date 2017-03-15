@@ -110,6 +110,10 @@ class SettingViewController: UITableViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.permittedArrowDirections = .any
+        alertController.popoverPresentationController?.sourceView = self.tableView.cellForRow(at: IndexPath(row: 0, section: 2))
+        alertController.popoverPresentationController?.sourceRect = self.view.frame
         self.present(alertController, animated: true, completion: nil)
     }
     

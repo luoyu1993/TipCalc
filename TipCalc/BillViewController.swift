@@ -234,6 +234,7 @@ class BillViewController: UIViewController {
         activityController.modalPresentationStyle = .popover
         activityController.popoverPresentationController?.permittedArrowDirections = .any
         activityController.popoverPresentationController?.sourceView = shareBtn
+        activityController.popoverPresentationController?.sourceRect = self.view.frame
         present(activityController, animated: true, completion: nil)
     }
     
