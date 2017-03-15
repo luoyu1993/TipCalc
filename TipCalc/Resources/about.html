@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>About TipCalc</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
+    <div class="container">
+        <div class="col-md-12">
+            <center>
+                <img src="AppIcon.png" class="img-responsive" alt="App icon" style="margin-top: 120px; margin-bottom: 20px; width: 130px; height: 130px;"/>
+                <p id="thank_you_with_name" style="font-size: 18px; color: #666; font-family: sans-serif;">
+                    Thank you for using APP_NAME_PLACEHOLDER
+                </p>
+                <p id="version_build" style="font-size: 14px; color: #888; font-family: sans-serif;">
+                    Version APP_VERSION_PLACEHOLDER Build APP_BUILD_PLACEHOLDER
+                </p>
+            </center>
+            <div style="margin-top: 108px; font-size: 16px; color: #666; font-family: sans-serif;">
+                Buy me a coffee through <a href="https://www.paypal.me/yuboqin">Paypal</a>? I appreciate that!
+                <br /><br />
+                Rate it a five star or share it to your friends? AWESOME! Open the <a href="https://appsto.re/us/GALzib.i">store page</a> and do it!
+                <br /><br />
+                Wanna <a href="mailto:yubo@cmu.edu">send me some feedback</a>? Also highly appreciated!
+            </div>
+            <div style="margin-top: 96px; margin-bottom: 24px; font-size: 14px; color: #999; font-family: Times, serif; font-style: italic; text-align: center;">
+                Presented by Yubo Qin
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function loadAppInfo(name, version, build) {
+            $("#thank_you_with_name").html("Thank you for using " + name);
+            $("#version_build").html("Version " + version + " Build " + build);
+        }
+    </script>
+</body>
+
+</html>

@@ -94,6 +94,7 @@ class BillViewController: UIViewController {
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(28)
         })
+        titleTextField.text = billItem.title
         titleTextField.becomeFirstResponder()
         
         self.view.addSubview(billView)
@@ -222,15 +223,12 @@ class BillViewController: UIViewController {
     }
     
     @objc fileprivate func saveBtnPressed() {
-        UIImageWriteToSavedPhotosAlbum(billView.billImage(), nil, nil, nil)
-        let alertController = UIAlertController(title: "Saved", message: "Bill saved to camera roll", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
+        UIImageWriteToSavedPhotosAlbum(billView.billImage(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
     }
     
     @objc fileprivate func shareBtnPressed() {
-        let shareItems = [billView.billImage()] as [Any]
+        let shareItems = [billItem.shareString, billView.billImage()] as [Any]
         
         let activityController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         activityController.modalPresentationStyle = .popover
@@ -241,6 +239,19 @@ class BillViewController: UIViewController {
     
     @objc fileprivate func titleTextFieldDidEndEditing() {
         nextBtnPressed()
+    }
+    
+    @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved", message: "Bill saved to your photo library.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
 

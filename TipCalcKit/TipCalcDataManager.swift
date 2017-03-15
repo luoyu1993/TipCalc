@@ -15,6 +15,7 @@ let SETTING_ROUND_TOTAL = "roundTotal"
 let SETTING_ROUND_TYPE = "roundType" // 0: standard, 1: down, 2: up
 let SETTING_ANIMATED_LABEL = "animatedLabel"
 let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
+let SETTING_SHAKE_TO_CLEAR = "shakeToClear"
 
 let ANIMATION_DURATION: Float = 0.25
 
@@ -59,6 +60,14 @@ class TipCalcDataManager: NSObject {
         UISlider.appearance().tintColor = mainTintColor
         UIButton.appearance().tintColor = mainTintColor
         UINavigationBar.appearance().tintColor = mainTintColor
+    }
+    
+    class func shakeToClear() -> Bool {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        if userDefault?.object(forKey: SETTING_SHAKE_TO_CLEAR) == nil {
+            userDefault?.set(true, forKey: SETTING_SHAKE_TO_CLEAR)
+        }
+        return userDefault!.bool(forKey: SETTING_SHAKE_TO_CLEAR)
     }
 
 }

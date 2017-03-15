@@ -15,6 +15,16 @@
 		D74C35BD93A76662980A1C1E /* Pods_TipCalcTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC8E3235F8144FA536E3627 /* Pods_TipCalcTests.framework */; };
 		E90EE0631E77330A00B15F31 /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90EE0621E77330A00B15F31 /* BillView.swift */; };
 		E90EE0651E774BD400B15F31 /* BillContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90EE0641E774BD400B15F31 /* BillContentView.xib */; };
+		E9286F961E78CD2700784E2B /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E9286F861E78CD2700784E2B /* about.html */; };
+		E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F891E78CD2700784E2B /* bootstrap-theme.css */; };
+		E9286F981E78CD2700784E2B /* bootstrap-theme.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */; };
+		E9286F991E78CD2700784E2B /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8D1E78CD2700784E2B /* bootstrap.css */; };
+		E9286F9A1E78CD2700784E2B /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8F1E78CD2700784E2B /* bootstrap.min.css */; };
+		E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F921E78CD2700784E2B /* bootstrap.js */; };
+		E9286F9C1E78CD2700784E2B /* bootstrap.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F931E78CD2700784E2B /* bootstrap.min.js */; };
+		E9286F9D1E78CD2700784E2B /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F941E78CD2700784E2B /* jquery.js */; };
+		E9286F9E1E78CD2700784E2B /* npm.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F951E78CD2700784E2B /* npm.js */; };
+		E9286FA01E78D07F00784E2B /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9286F9F1E78D07F00784E2B /* AppIcon.png */; };
 		E9416AD51E771A6600EA17AD /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9416AD41E771A6600EA17AD /* BillViewController.swift */; };
 		E9628CCA1E709555008C9BF6 /* TipCalcDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CC91E709555008C9BF6 /* TipCalcDataManager.swift */; };
 		E9628CCB1E70955A008C9BF6 /* TipCalcDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CC91E709555008C9BF6 /* TipCalcDataManager.swift */; };
@@ -140,6 +150,20 @@
 		DCB84BBB60B92008B1AA04E5 /* Pods_TipCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90EE0621E77330A00B15F31 /* BillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
 		E90EE0641E774BD400B15F31 /* BillContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillContentView.xib; sourceTree = "<group>"; };
+		E9286F861E78CD2700784E2B /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		E9286F891E78CD2700784E2B /* bootstrap-theme.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.css"; sourceTree = "<group>"; };
+		E9286F8A1E78CD2700784E2B /* bootstrap-theme.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.css.map"; sourceTree = "<group>"; };
+		E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.min.css"; sourceTree = "<group>"; };
+		E9286F8C1E78CD2700784E2B /* bootstrap-theme.min.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.min.css.map"; sourceTree = "<group>"; };
+		E9286F8D1E78CD2700784E2B /* bootstrap.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.css; sourceTree = "<group>"; };
+		E9286F8E1E78CD2700784E2B /* bootstrap.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = bootstrap.css.map; sourceTree = "<group>"; };
+		E9286F8F1E78CD2700784E2B /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
+		E9286F901E78CD2700784E2B /* bootstrap.min.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = bootstrap.min.css.map; sourceTree = "<group>"; };
+		E9286F921E78CD2700784E2B /* bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bootstrap.js; sourceTree = "<group>"; };
+		E9286F931E78CD2700784E2B /* bootstrap.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bootstrap.min.js; sourceTree = "<group>"; };
+		E9286F941E78CD2700784E2B /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
+		E9286F951E78CD2700784E2B /* npm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = npm.js; sourceTree = "<group>"; };
+		E9286F9F1E78D07F00784E2B /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		E9416AD41E771A6600EA17AD /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
 		E9628CC91E709555008C9BF6 /* TipCalcDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalcDataManager.swift; sourceTree = "<group>"; };
 		E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatColors.swift; sourceTree = "<group>"; };
@@ -152,7 +176,7 @@
 		E9DDA0BE1E6F90770080F791 /* TipCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DDA0C11E6F90770080F791 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9DDA0C61E6F90770080F791 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E9DDA0C81E6F90770080F791 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9DDA0C81E6F90770080F791 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		E9DDA0CB1E6F90770080F791 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9DDA0CD1E6F90770080F791 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9DDA0D21E6F90770080F791 /* TipCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,11 +296,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E9286F851E78CCEF00784E2B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9286F9F1E78D07F00784E2B /* AppIcon.png */,
+				E9DDA0C81E6F90770080F791 /* Assets.xcassets */,
+				E9286F861E78CD2700784E2B /* about.html */,
+				E9286F871E78CD2700784E2B /* bootstrap */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E9286F871E78CD2700784E2B /* bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				E9286F881E78CD2700784E2B /* css */,
+				E9286F911E78CD2700784E2B /* js */,
+			);
+			path = bootstrap;
+			sourceTree = "<group>";
+		};
+		E9286F881E78CD2700784E2B /* css */ = {
+			isa = PBXGroup;
+			children = (
+				E9286F891E78CD2700784E2B /* bootstrap-theme.css */,
+				E9286F8A1E78CD2700784E2B /* bootstrap-theme.css.map */,
+				E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */,
+				E9286F8C1E78CD2700784E2B /* bootstrap-theme.min.css.map */,
+				E9286F8D1E78CD2700784E2B /* bootstrap.css */,
+				E9286F8E1E78CD2700784E2B /* bootstrap.css.map */,
+				E9286F8F1E78CD2700784E2B /* bootstrap.min.css */,
+				E9286F901E78CD2700784E2B /* bootstrap.min.css.map */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		E9286F911E78CD2700784E2B /* js */ = {
+			isa = PBXGroup;
+			children = (
+				E9286F921E78CD2700784E2B /* bootstrap.js */,
+				E9286F931E78CD2700784E2B /* bootstrap.min.js */,
+				E9286F941E78CD2700784E2B /* jquery.js */,
+				E9286F951E78CD2700784E2B /* npm.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
 		E9416AD11E77190C00EA17AD /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				E9DDA1371E6FC5900080F791 /* TipCalc.entitlements */,
-				E9DDA0C81E6F90770080F791 /* Assets.xcassets */,
 				E9DDA0CD1E6F90770080F791 /* Info.plist */,
 			);
 			name = Main;
@@ -339,6 +408,7 @@
 				E9416AD11E77190C00EA17AD /* Main */,
 				E9416AD31E77191700EA17AD /* Controller */,
 				E9416AD21E77191100EA17AD /* View */,
+				E9286F851E78CCEF00784E2B /* Resources */,
 			);
 			path = TipCalc;
 			sourceTree = "<group>";
@@ -621,9 +691,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9286F9E1E78CD2700784E2B /* npm.js in Resources */,
+				E9286F9D1E78CD2700784E2B /* jquery.js in Resources */,
 				E9DDA0CC1E6F90770080F791 /* LaunchScreen.storyboard in Resources */,
+				E9286F9C1E78CD2700784E2B /* bootstrap.min.js in Resources */,
+				E9286F9A1E78CD2700784E2B /* bootstrap.min.css in Resources */,
 				E90EE0651E774BD400B15F31 /* BillContentView.xib in Resources */,
+				E9286FA01E78D07F00784E2B /* AppIcon.png in Resources */,
+				E9286F991E78CD2700784E2B /* bootstrap.css in Resources */,
+				E9286F981E78CD2700784E2B /* bootstrap-theme.min.css in Resources */,
 				E9DDA0C91E6F90770080F791 /* Assets.xcassets in Resources */,
+				E9286F961E78CD2700784E2B /* about.html in Resources */,
+				E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */,
+				E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */,
 				E9DDA0C71E6F90770080F791 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

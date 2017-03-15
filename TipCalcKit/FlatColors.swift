@@ -10,15 +10,15 @@ import UIKit
 extension UIColor {
     
     public class var flatSkyBlue: UIColor {
-        return UIColor(hue: 0.57, saturation: 0.78, brightness: 0.73, alpha: 1.0)
+        return UIColor(hue: 0.57, saturation: 0.76, brightness: 0.86, alpha: 1.0)
     }
     
     public class var flatGreen: UIColor {
-        return UIColor(hue: 0.40, saturation: 0.78, brightness: 0.68, alpha: 1.0)
+        return UIColor(hue: 0.40, saturation: 0.77, brightness: 0.80, alpha: 1.0)
     }
     
     public class var flatMagenta: UIColor {
-        return UIColor(hue: 0.78, saturation: 0.61, brightness: 0.68, alpha: 1.0)
+        return UIColor(hue: 0.79, saturation: 0.51, brightness: 0.71, alpha: 1.0)
     }
     
     public class var flatMint: UIColor {
@@ -34,7 +34,7 @@ extension UIColor {
     }
     
     public class var flatRed: UIColor {
-        return UIColor(hue: 0.02, saturation: 0.78, brightness: 0.75, alpha: 1.0)
+        return UIColor(hue: 0.02, saturation: 0.74, brightness: 0.91, alpha: 1.0)
     }
     
     public class var flatYellow: UIColor {

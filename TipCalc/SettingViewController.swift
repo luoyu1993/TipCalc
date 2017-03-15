@@ -16,6 +16,7 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var tintColorView: UIView!
     @IBOutlet weak var animatedSwitch: UISwitch!
     @IBOutlet weak var defaultTipRateSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var shakeToClearSwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class SettingViewController: UITableViewController {
         roundSegmentedControl.selectedSegmentIndex = (UserDefaults(suiteName: APP_GROUP_NAME)?.integer(forKey: SETTING_ROUND_TYPE))!
         animatedSwitch.isOn = TipCalcDataManager.animatedLabel()
         defaultTipRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
+        shakeToClearSwitch.isOn = TipCalcDataManager.shakeToClear()
         
         let mainTintColor = TipCalcDataManager.widgetTintColor()
         
@@ -56,6 +58,8 @@ class SettingViewController: UITableViewController {
             self.defaultTipRateSegmentedControl.tintColor = mainTintColor
             self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
             self.navigationController!.navigationBar.tintColor = mainTintColor
+            self.shakeToClearSwitch.tintColor = mainTintColor
+            self.shakeToClearSwitch.onTintColor = mainTintColor
         })
         
         TipCalcDataManager.setTintColors()
@@ -77,17 +81,21 @@ class SettingViewController: UITableViewController {
         UserDefaults(suiteName: APP_GROUP_NAME)?.set(defaultTipRateSegmentedControl.selectedSegmentIndex, forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
     }
     
+    @IBAction func shakeToClearSwitchChanged() {
+        UserDefaults(suiteName: APP_GROUP_NAME)?.set(shakeToClearSwitch.isOn, forKey: SETTING_SHAKE_TO_CLEAR)
+    }
+    
     fileprivate func selectMainTintColor() {
         let alertController = UIAlertController(title: "Tint color", message: "Select the main tint color of the application", preferredStyle: .actionSheet)
         let colors = [
-            ("Sky Blue", UIColor.flatSkyBlue),
             ("Red", UIColor.flatRed),
-            ("Yellow", UIColor.flatYellow),
             ("Orange", UIColor.flatOrange),
+            ("Yellow", UIColor.flatYellow),
             ("Green", UIColor.flatGreen),
-            ("Pink", UIColor.flatPink),
             ("Mint", UIColor.flatMint),
-            ("Magenta", UIColor.flatMagenta)
+            ("Sky Blue", UIColor.flatSkyBlue),
+            ("Magenta", UIColor.flatMagenta),
+            ("Pink", UIColor.flatPink),
         ]
         for (colorName, color) in colors {
             let tmpAction = UIAlertAction(title: colorName, style: .default, handler: { action in

@@ -10,8 +10,11 @@ import UIKit
 import SnapKit
 import TipCalcKit
 import LTMorphingLabel
+import AudioToolbox
 
 class TipCalcViewController: UIViewController {
+    
+    // MARK: - Properties
     
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var resultsView: UIVisualEffectView!
@@ -137,6 +140,8 @@ class TipCalcViewController: UIViewController {
     @IBOutlet weak var totalPplLabel: LTMorphingLabel!
     
     fileprivate var billItem = BillItem()
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,11 +167,32 @@ class TipCalcViewController: UIViewController {
         setColors()
         updateValues()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.resignFirstResponder()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            if TipCalcDataManager.shakeToClear() {
+                clearAllValues()
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+        }
+    }
+    
+    // MARK: - Functions
     
     fileprivate func setColors() {
         let mainTintColor = TipCalcDataManager.widgetTintColor()
@@ -369,7 +395,7 @@ class TipCalcViewController: UIViewController {
         pplSlider.setValue(1, animated: true)
         pplStepper.value = 1.0
         
-        billItem.reset()
+        billItem = BillItem()
         
         updateAllSections()
         updateValues()
@@ -466,22 +492,22 @@ extension TipCalcViewController: UITableViewDataSource {
         switch section {
         case 0:
             if taxIncludedSwitch.isOn == false {
-                return "Note: you only need to fill one of the two fields of tax value and tax rate."
+                return "Note: you only need to fill one of the two fields of tax value and tax rate"
             } else {
                 return ""
             }
         case 1:
             if tipRateTypeSegmentedControl.selectedSegmentIndex == 1 {
-                return "You can enter the tip rate if the number is over 100% (WOW)."
+                return "You can enter the tip rate if the number is over 100% (WOW)"
             } else {
                 return ""
             }
         case 2:
-            return "You can enter the number of people in case that the number is over 10."
+            return "You can enter the number of people in case that the number is over 10"
         case 3:
-            return "Generate a bill, then save or share it."
+            return "Generate a bill, then save or share it"
         case 4:
-            return "Clear all fields. Your progress will lost."
+            return "Clear all fields. Your progress will lost.\nIf \"Shake to clear\" switch is on, you can also shake the device to clear all fields"
         default:
             return ""
         }
