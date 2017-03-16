@@ -28,11 +28,17 @@ class SettingViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         reloadSettings(animated: false)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundReload), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc fileprivate func enterForegroundReload() {
+        reloadSettings(animated: false)
     }
     
     fileprivate func reloadSettings(animated: Bool) {
