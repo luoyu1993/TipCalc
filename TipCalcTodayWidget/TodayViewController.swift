@@ -14,7 +14,7 @@ import TipCalcKit.Swift
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
-    fileprivate let actualViewController: UIViewController = {
+    fileprivate let actualViewController: TodayActualViewController = {
         let actualViewController = TodayActualViewController(nibName: "TodayActualViewController", bundle: nil)
         actualViewController.modalTransitionStyle = .crossDissolve
         return actualViewController
@@ -59,14 +59,19 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         if activeDisplayMode == .expanded {
-            preferredContentSize = CGSize(width: 0.0, height: 190.0)
+            preferredContentSize = CGSize(width: 0.0, height: 220.0)
         } else if activeDisplayMode == .compact {
             preferredContentSize = maxSize
         }
     }
     
     fileprivate func showActualController() {
+        actualViewController.rootController = self
         present(actualViewController, animated: false, completion: nil)
+    }
+    
+    func openOutsideURL(url: URL) {
+        extensionContext?.open(url, completionHandler: nil)
     }
     
 }

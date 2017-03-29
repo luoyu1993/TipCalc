@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Mx-IM-LBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Mx-IM-LBx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                             <tableViewSection headerTitle="Round settings" footerTitle="Standard: round up from 0.5 and round down from 0.49 Down: always round down Up: alywas round up" id="ZmS-e9-ePc">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="upj-p3-ovI">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="upj-p3-ovI" id="Xdb-PO-pgv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -53,7 +53,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DuP-HH-VmS">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DuP-HH-VmS" id="BVy-QO-wvO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -96,7 +96,7 @@
                             <tableViewSection headerTitle="Default Tip Rate" footerTitle="The preferred default tip rate only applies to common tip rates" id="AMd-Vx-iNv">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="z2p-wT-JlJ">
-                                        <rect key="frame" x="0.0" y="252" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="251" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z2p-wT-JlJ" id="qBv-Oy-A3a">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -128,7 +128,7 @@
                             <tableViewSection headerTitle="Appearance" footerTitle="These options change the appearance of application and widget" id="Fjm-06-e6l">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mIE-bh-7wD">
-                                        <rect key="frame" x="0.0" y="388" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="386.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mIE-bh-7wD" id="W6n-K6-zWs">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -161,7 +161,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="adW-Gl-ZlB">
-                                        <rect key="frame" x="0.0" y="432" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="430.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adW-Gl-ZlB" id="3kp-x5-R44">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -196,7 +196,7 @@
                             <tableViewSection headerTitle="Clear fields" footerTitle="While in &quot;Tip&quot; tab, shake the device to clear all fields. The device will vibrate to remind you after clearing" id="y05-z5-v8B">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CS0-eF-pK6">
-                                        <rect key="frame" x="0.0" y="568" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="566" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CS0-eF-pK6" id="4zm-fT-o2v">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -229,10 +229,14 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="About" footerTitle="TipCalc 2017 (C) Yubo Qin" id="QdZ-1O-UZe">
+                            <tableViewSection headerTitle="About" id="QdZ-1O-UZe">
+                                <string key="footerTitle">If you enjoy this app, please rate it on App Store. Thanks!
+
+
+TipCalc 2017 (C) Yubo Qin</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aVE-I1-JC3" style="IBUITableViewCellStyleDefault" id="0ML-Wu-U6v">
-                                        <rect key="frame" x="0.0" y="704" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="701.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ML-Wu-U6v" id="Sam-5T-U2n">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -250,6 +254,23 @@
                                         <connections>
                                             <segue destination="Amq-Jc-B9D" kind="show" id="OPe-g4-vWn"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="MnS-7U-asJ" style="IBUITableViewCellStyleDefault" id="AP6-4q-jER">
+                                        <rect key="frame" x="0.0" y="745.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AP6-4q-jER" id="he5-hy-Xuf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate this app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MnS-7U-asJ">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

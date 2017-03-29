@@ -8,6 +8,7 @@
 
 import UIKit
 import TipCalcKit
+import StoreKit
 
 class SettingViewController: UITableViewController {
     
@@ -140,6 +141,18 @@ class SettingViewController: UITableViewController {
             case 0:
                 tableView.deselectRow(at: indexPath, animated: false)
                 selectMainTintColor()
+            default:
+                break
+            }
+        case 4:
+            switch indexPath.row {
+            case 1:
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                } else {
+                    let url = URL(string: "itms-apps://itunes.apple.com/us/app/tipcalc-quick-tip-calculator-and-bill-splitter/id1214666400")
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                }
             default:
                 break
             }

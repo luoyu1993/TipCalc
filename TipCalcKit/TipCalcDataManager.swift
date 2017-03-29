@@ -17,6 +17,8 @@ let SETTING_ANIMATED_LABEL = "animatedLabel"
 let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
 let SETTING_SHAKE_TO_CLEAR = "shakeToClear"
 
+//let SHARED_BILL_ITEM = "sharedBillItem"
+
 let ANIMATION_DURATION: Float = 0.25
 
 class TipCalcDataManager: NSObject {
@@ -69,5 +71,25 @@ class TipCalcDataManager: NSObject {
         }
         return userDefault!.bool(forKey: SETTING_SHAKE_TO_CLEAR)
     }
+    
+    /**
+    class func setSharedBillItem(item: BillItem) {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
+        userDefault?.set(itemData, forKey: SHARED_BILL_ITEM)
+    }
+    
+    class func removeSharedBillItem() {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        userDefault?.removeObject(forKey: SHARED_BILL_ITEM)
+    }
+    
+    class func sharedBillItem() -> BillItem {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        let itemData = userDefault?.object(forKey: SHARED_BILL_ITEM)
+        let item = NSKeyedUnarchiver.unarchiveObject(with: itemData as! Data)
+        return item as! BillItem
+    }
+    **/
 
 }

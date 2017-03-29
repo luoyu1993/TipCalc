@@ -46,7 +46,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let _ = url.scheme, let query = url.query {
+            let queryDic = query.queryDictionary()
+            
+            let tabBarController = self.window?.rootViewController as! UITabBarController
+            tabBarController.selectedIndex = 0
+            let tipCalcVC = tabBarController.viewControllers?[0] as! TipCalcViewController
+            
+            let item = BillItem()
+            item.tipRate = Double(queryDic["tiprate"]!)!
+            item.subtotal = Double(queryDic["subtotal"]!)!
+            item.ppl = Int(queryDic["ppl"]!)!
+            
+            tipCalcVC.setBillItem(item: item)
+        }
+        
+        return true
+    }
 
 
+}
+
+extension String {
+    
+    func queryDictionary() -> [String: String] {
+        var dic: [String: String] = [:]
+        let kvPairList = self.components(separatedBy: "&")
+        for kvPair in kvPairList {
+            let kv = kvPair.components(separatedBy: "=")
+            if kv.count == 2 {
+                let key = kv[0]
+                let value = kv[1]
+                dic[key] = value
+            }
+        }
+        return dic
+    }
+    
 }
 

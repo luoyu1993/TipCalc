@@ -20,10 +20,13 @@ class TodayActualViewController: UIViewController {
     @IBOutlet weak var totalPplLabel: LTMorphingLabel!
     @IBOutlet weak var pplField: UITextField!
     @IBOutlet weak var pplStepper: UIStepper!
+    
     fileprivate var toolBar: UIToolbar!
     fileprivate var pplToolBar: UIToolbar!
     
     fileprivate var billItem = BillItem()
+    
+    var rootController: TodayViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,6 +150,11 @@ class TodayActualViewController: UIViewController {
         updateTips()
     }
     
+    // MARK: - URL Scheme
+    
+    @IBAction func openInAppBtnTapped() {
+        rootController.openOutsideURL(url: URL(string: "tipcalc://?subtotal=\(billItem.subtotal)&tiprate=\(billItem.tipRate)&ppl=\(billItem.ppl)")!)
+    }
     
 
     /*

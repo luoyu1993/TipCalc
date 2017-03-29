@@ -401,6 +401,42 @@ class TipCalcViewController: UIViewController {
         updateValues()
     }
     
+    // Set an item for TipCalcViewController and update values
+    // Mainly used for open app from URL Scheme
+    func setBillItem(item: BillItem) {
+        billItem = item
+        
+        subtotalField.text = "\(billItem.subtotal)"
+        taxIncludedSwitch.setOn(billItem.taxIncluded, animated: true)
+        taxValueField.text = "\(billItem.taxValue)"
+        taxRateField.text = "\(billItem.taxRate)"
+        tipRateTypeSegmentedControl.selectedSegmentIndex = 0
+        commonRateSegmentedControl.selectedSegmentIndex = {
+            switch billItem.tipRate.roundTo(places: 2) {
+            case 0.10:
+                return 0
+            case 0.12:
+                return 1
+            case 0.15:
+                return 2
+            case 0.18:
+                return 3
+            case 0.20:
+                return 4
+            default:
+                return TipCalcDataManager.defaultTipRateIndex()
+            }
+        }()
+        customTipRateField.text = ""
+        customTipRateSlider.setValue(0.0, animated: true)
+        pplField.text = "\(billItem.ppl)"
+        pplSlider.setValue(Float(billItem.ppl), animated: true)
+        pplStepper.value = Double(billItem.ppl)
+        
+        updateAllSections()
+        updateValues()
+    }
+    
 
     // MARK: - Navigation
 
@@ -507,7 +543,7 @@ extension TipCalcViewController: UITableViewDataSource {
         case 3:
             return "Generate a bill, then save or share it"
         case 4:
-            return "Clear all fields. Your progress will lost.\nIf \"Shake to clear\" switch is on, you can also shake the device to clear all fields"
+            return "Clear all fields. Your progress will get lost\nIf \"Shake to clear\" switch is on, you can also shake the device to clear all fields"
         default:
             return ""
         }
