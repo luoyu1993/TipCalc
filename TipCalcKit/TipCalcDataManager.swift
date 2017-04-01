@@ -72,7 +72,7 @@ class TipCalcDataManager: NSObject {
         return userDefault!.bool(forKey: SETTING_SHAKE_TO_CLEAR)
     }
     
-    /**
+    /*
     class func setSharedBillItem(item: BillItem) {
         let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
         let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
@@ -90,6 +90,6 @@ class TipCalcDataManager: NSObject {
         let item = NSKeyedUnarchiver.unarchiveObject(with: itemData as! Data)
         return item as! BillItem
     }
-    **/
+    */
 
 }

@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TipCalcDataManager.setTintColors()
         IQKeyboardManager.sharedManager().enable = true
         
+        DatabaseUtility.createTable()
+        
         return true
     }
 

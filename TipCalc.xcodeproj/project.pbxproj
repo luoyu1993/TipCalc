@@ -34,6 +34,10 @@
 		E9628CD01E70984A008C9BF6 /* FlatColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */; };
 		E9628CD21E70991E008C9BF6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CD11E70991E008C9BF6 /* SettingViewController.swift */; };
 		E969E6531E79F677007D07F4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E969E6521E79F677007D07F4 /* Settings.bundle */; };
+		E9C5D3111E8DFD38001007EF /* DatabaseUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3101E8DFD38001007EF /* DatabaseUtility.swift */; };
+		E9C5D3151E8F2F60001007EF /* BillsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */; };
+		E9C5D3171E8F2FBD001007EF /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */; };
+		E9C5D3191E8F301B001007EF /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */; };
 		E9C63A8A1E738C2400258574 /* TipCalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C63A891E738C2400258574 /* TipCalcViewController.swift */; };
 		E9C63A8C1E74AD3400258574 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C63A8B1E74AD3400258574 /* AboutViewController.swift */; };
 		E9C73CB71E7628A300D90405 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73CB61E7628A300D90405 /* BillItem.swift */; };
@@ -170,6 +174,10 @@
 		E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatColors.swift; sourceTree = "<group>"; };
 		E9628CD11E70991E008C9BF6 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		E969E6521E79F677007D07F4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		E9C5D3101E8DFD38001007EF /* DatabaseUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseUtility.swift; sourceTree = "<group>"; };
+		E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillsContainerViewController.swift; sourceTree = "<group>"; };
+		E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
+		E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
 		E9C63A891E738C2400258574 /* TipCalcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalcViewController.swift; sourceTree = "<group>"; };
 		E9C63A8B1E74AD3400258574 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E9C73CB61E7628A300D90405 /* BillItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillItem.swift; sourceTree = "<group>"; };
@@ -347,6 +355,7 @@
 		E9416AD11E77190C00EA17AD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E9DDA0C11E6F90770080F791 /* AppDelegate.swift */,
 				E9DDA1371E6FC5900080F791 /* TipCalc.entitlements */,
 				E9DDA0CD1E6F90770080F791 /* Info.plist */,
 				E969E6521E79F677007D07F4 /* Settings.bundle */,
@@ -368,13 +377,23 @@
 		E9416AD31E77191700EA17AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E9DDA0C11E6F90770080F791 /* AppDelegate.swift */,
 				E9C63A891E738C2400258574 /* TipCalcViewController.swift */,
 				E9416AD41E771A6600EA17AD /* BillViewController.swift */,
 				E9628CD11E70991E008C9BF6 /* SettingViewController.swift */,
 				E9C63A8B1E74AD3400258574 /* AboutViewController.swift */,
+				E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */,
+				E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */,
+				E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		E9C5D30F1E8DFD19001007EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E9C5D3101E8DFD38001007EF /* DatabaseUtility.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E9DDA0B51E6F90770080F791 = {
@@ -411,6 +430,7 @@
 				E9416AD11E77190C00EA17AD /* Main */,
 				E9416AD31E77191700EA17AD /* Controller */,
 				E9416AD21E77191100EA17AD /* View */,
+				E9C5D30F1E8DFD19001007EF /* Model */,
 				E9286F851E78CCEF00784E2B /* Resources */,
 			);
 			path = TipCalc;
@@ -1000,13 +1020,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C63A8A1E738C2400258574 /* TipCalcViewController.swift in Sources */,
+				E9C5D3171E8F2FBD001007EF /* RecordsTableViewController.swift in Sources */,
 				E9628CD21E70991E008C9BF6 /* SettingViewController.swift in Sources */,
 				E9416AD51E771A6600EA17AD /* BillViewController.swift in Sources */,
 				E9628CCF1E709849008C9BF6 /* FlatColors.swift in Sources */,
+				E9C5D3111E8DFD38001007EF /* DatabaseUtility.swift in Sources */,
 				E9C73CB81E7628A600D90405 /* BillItem.swift in Sources */,
 				E90EE0631E77330A00B15F31 /* BillView.swift in Sources */,
+				E9C5D3191E8F301B001007EF /* StatisticsTableViewController.swift in Sources */,
 				E9C63A8C1E74AD3400258574 /* AboutViewController.swift in Sources */,
 				E9DDA13B1E6FCC000080F791 /* TipCalculator.swift in Sources */,
+				E9C5D3151E8F2F60001007EF /* BillsContainerViewController.swift in Sources */,
 				E9DDA0C21E6F90770080F791 /* AppDelegate.swift in Sources */,
 				E9628CCC1E70955C008C9BF6 /* TipCalcDataManager.swift in Sources */,
 			);

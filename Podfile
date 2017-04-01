@@ -10,6 +10,7 @@ target 'TipCalc' do
   pod 'IQKeyboardManagerSwift', '~> 4.0.8'
   pod 'LTMorphingLabel', '~> 0.4.0'
   pod 'DynamicButton', '~> 3.1.0'
+  pod 'FMDB', '~> 2.6.2'
 
   target 'TipCalcTests' do
     inherit! :search_paths

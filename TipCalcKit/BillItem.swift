@@ -10,8 +10,9 @@ import UIKit
 
 class BillItem: NSObject {
     
+    var id = 0
     var title = ""
-    var date = NSDate()
+    var date = Date()
     var subtotal = 0.0
     var tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
     var taxValue = 0.0
@@ -20,11 +21,16 @@ class BillItem: NSObject {
     var taxIncluded = true
     
     var result: (tip: Double, total: Double, tipPpl: Double, totalPpl: Double) {
-        if taxIncluded {
-            return TipCalculator.tip(of: subtotal.roundTo(places: 2), rate: tipRate, splitBy: ppl)
-        } else {
-            let subtotalWithTax = subtotal * (1 + taxRate)
-            return TipCalculator.tip(of: subtotalWithTax.roundTo(places: 2), rate: tipRate, splitBy: ppl)
+        get {
+            if taxIncluded {
+                return TipCalculator.tip(of: subtotal.roundTo(places: 2), rate: tipRate, splitBy: ppl)
+            } else {
+                let subtotalWithTax = subtotal * (1 + taxRate)
+                return TipCalculator.tip(of: subtotalWithTax.roundTo(places: 2), rate: tipRate, splitBy: ppl)
+            }
+        }
+        set {
+            self.result = newValue
         }
     }
     var shareString: String {

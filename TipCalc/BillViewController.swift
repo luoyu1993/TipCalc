@@ -223,8 +223,12 @@ class BillViewController: UIViewController {
     }
     
     @objc fileprivate func saveBtnPressed() {
-        UIImageWriteToSavedPhotosAlbum(billView.billImage(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        
+//        UIImageWriteToSavedPhotosAlbum(billView.billImage(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        if DatabaseUtility.save(billItem: billItem) {
+            let ac = UIAlertController(title: "Saved", message: "Bill saved to database.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
     @objc fileprivate func shareBtnPressed() {

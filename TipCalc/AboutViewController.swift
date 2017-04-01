@@ -73,7 +73,6 @@ extension AboutViewController: WKNavigationDelegate {
         if navigationAction.navigationType == .linkActivated {
             if let url = navigationAction.request.url {
                 if url.description.hasPrefix("http://") || url.description.hasPrefix("https://") || url.description.hasPrefix("mailto:") || url.description.hasPrefix("tel:") {
-//                if url.description.range(of: "http://") != nil || url.description.range(of: "https://") != nil || url.description.range(of: "mailto:") != nil || url.description.range(of: "tel:") != nil  {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
