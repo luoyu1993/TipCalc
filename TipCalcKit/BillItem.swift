@@ -30,7 +30,7 @@ class BillItem: NSObject {
             }
         }
         set {
-            self.result = newValue
+            // Nothing different
         }
     }
     var shareString: String {

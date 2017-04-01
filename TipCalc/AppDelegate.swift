@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TipCalcDataManager.setTintColors()
         IQKeyboardManager.sharedManager().enable = true
         
+        window?.backgroundColor = UIColor.white
+        
         DatabaseUtility.createTable()
         
         return true

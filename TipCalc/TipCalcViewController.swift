@@ -19,7 +19,7 @@ class TipCalcViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var resultsView: UIVisualEffectView!
     
-    fileprivate var subtotalField: UITextField = {
+    fileprivate let subtotalField: UITextField = {
         let subtotalField = UITextField(frame: .zero)
         subtotalField.placeholder = "$0.0"
         subtotalField.font = UIFont.boldSystemFont(ofSize: 24.0)
@@ -30,14 +30,14 @@ class TipCalcViewController: UIViewController {
         return subtotalField
     }()
     
-    fileprivate var taxIncludedSwitch: UISwitch = {
+    fileprivate let taxIncludedSwitch: UISwitch = {
         let taxIncludedSwitch = UISwitch()
         taxIncludedSwitch.addTarget(self, action: #selector(taxIncludedSwitchChanged), for: .valueChanged)
         taxIncludedSwitch.isOn = true
         return taxIncludedSwitch
     }()
     
-    fileprivate var taxValueField: UITextField = {
+    fileprivate let taxValueField: UITextField = {
         let taxValueField = UITextField(frame: .zero)
         taxValueField.placeholder = "$0.0"
         taxValueField.keyboardType = .decimalPad
@@ -47,7 +47,7 @@ class TipCalcViewController: UIViewController {
         return taxValueField
     }()
     
-    fileprivate var taxRateField: UITextField = {
+    fileprivate let taxRateField: UITextField = {
         let taxRateField = UITextField(frame: .zero)
         taxRateField.placeholder = "0%"
         taxRateField.keyboardType = .decimalPad
@@ -57,21 +57,21 @@ class TipCalcViewController: UIViewController {
         return taxRateField
     }()
     
-    fileprivate var tipRateTypeSegmentedControl: UISegmentedControl = {
+    fileprivate let tipRateTypeSegmentedControl: UISegmentedControl = {
         let tipRateTypeSegmentedControl = UISegmentedControl(items: ["Common", "Custom"])
         tipRateTypeSegmentedControl.selectedSegmentIndex = 0
         tipRateTypeSegmentedControl.addTarget(self, action: #selector(tipRateTypeSegmentedControlChanged), for: .valueChanged)
         return tipRateTypeSegmentedControl
     }()
     
-    fileprivate var commonRateSegmentedControl: UISegmentedControl = {
+    fileprivate let commonRateSegmentedControl: UISegmentedControl = {
         let commonRateSegmentedControl = UISegmentedControl(items: ["10%", "12%", "15%", "18%", "20%"])
         commonRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         commonRateSegmentedControl.addTarget(self, action: #selector(commonRateSegmentedControlChanged), for: .valueChanged)
         return commonRateSegmentedControl
     }()
     
-    fileprivate var customTipRateField: UITextField = {
+    fileprivate let customTipRateField: UITextField = {
         let customTipRateField = UITextField(frame: .zero)
         customTipRateField.placeholder = "0%"
         customTipRateField.keyboardType = .decimalPad
@@ -81,7 +81,7 @@ class TipCalcViewController: UIViewController {
         return customTipRateField
     }()
     
-    fileprivate var customTipRateSlider: UISlider = {
+    fileprivate let customTipRateSlider: UISlider = {
         let customTipRateSlider = UISlider(frame: .zero)
         customTipRateSlider.minimumValue = 0.0
         customTipRateSlider.maximumValue = 100.0
@@ -90,7 +90,7 @@ class TipCalcViewController: UIViewController {
         return customTipRateSlider
     }()
     
-    fileprivate var pplField: UITextField = {
+    fileprivate let pplField: UITextField = {
         let pplField = UITextField(frame: .zero)
         pplField.placeholder = "1"
         pplField.keyboardType = .numberPad
@@ -100,7 +100,7 @@ class TipCalcViewController: UIViewController {
         return pplField
     }()
     
-    fileprivate var pplStepper: UIStepper = {
+    fileprivate let pplStepper: UIStepper = {
         let pplStepper = UIStepper()
         pplStepper.minimumValue = 1
         pplStepper.stepValue = 1.0
@@ -109,7 +109,7 @@ class TipCalcViewController: UIViewController {
         return pplStepper
     }()
     
-    fileprivate var pplSlider: UISlider = {
+    fileprivate let pplSlider: UISlider = {
         let pplSlider = UISlider(frame: .zero)
         pplSlider.minimumValue = 1
         pplSlider.maximumValue = 10
@@ -118,7 +118,7 @@ class TipCalcViewController: UIViewController {
         return pplSlider
     }()
     
-    fileprivate var generateBillBtn: UIButton = {
+    fileprivate let generateBillBtn: UIButton = {
         let generateBillBtn = UIButton(type: .system)
         generateBillBtn.setTitle("Generate bill", for: .normal)
         generateBillBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -126,7 +126,7 @@ class TipCalcViewController: UIViewController {
         return generateBillBtn
     }()
     
-    fileprivate var clearBtn: UIButton = {
+    fileprivate let clearBtn: UIButton = {
         let clearBtn = UIButton(type: .system)
         clearBtn.setTitle("Clear all", for: .normal)
         clearBtn.addTarget(self, action: #selector(clearBtnPressed), for: .touchUpInside)

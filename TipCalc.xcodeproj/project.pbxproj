@@ -38,6 +38,10 @@
 		E9C5D3151E8F2F60001007EF /* BillsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */; };
 		E9C5D3171E8F2FBD001007EF /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */; };
 		E9C5D3191E8F301B001007EF /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */; };
+		E9C5D31C1E8F718F001007EF /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D31A1E8F718F001007EF /* RecordsTableViewCell.swift */; };
+		E9C5D31D1E8F718F001007EF /* RecordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C5D31B1E8F718F001007EF /* RecordsTableViewCell.xib */; };
+		E9C5D31F1E8F8208001007EF /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D31E1E8F8208001007EF /* RecordDetailViewController.swift */; };
+		E9C5D3211E8FB01C001007EF /* MsgDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5D3201E8FB01C001007EF /* MsgDisplay.swift */; };
 		E9C63A8A1E738C2400258574 /* TipCalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C63A891E738C2400258574 /* TipCalcViewController.swift */; };
 		E9C63A8C1E74AD3400258574 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C63A8B1E74AD3400258574 /* AboutViewController.swift */; };
 		E9C73CB71E7628A300D90405 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73CB61E7628A300D90405 /* BillItem.swift */; };
@@ -178,6 +182,10 @@
 		E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillsContainerViewController.swift; sourceTree = "<group>"; };
 		E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 		E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
+		E9C5D31A1E8F718F001007EF /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
+		E9C5D31B1E8F718F001007EF /* RecordsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordsTableViewCell.xib; sourceTree = "<group>"; };
+		E9C5D31E1E8F8208001007EF /* RecordDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		E9C5D3201E8FB01C001007EF /* MsgDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgDisplay.swift; sourceTree = "<group>"; };
 		E9C63A891E738C2400258574 /* TipCalcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalcViewController.swift; sourceTree = "<group>"; };
 		E9C63A8B1E74AD3400258574 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E9C73CB61E7628A300D90405 /* BillItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillItem.swift; sourceTree = "<group>"; };
@@ -370,6 +378,8 @@
 				E9DDA0CA1E6F90770080F791 /* LaunchScreen.storyboard */,
 				E90EE0621E77330A00B15F31 /* BillView.swift */,
 				E90EE0641E774BD400B15F31 /* BillContentView.xib */,
+				E9C5D31A1E8F718F001007EF /* RecordsTableViewCell.swift */,
+				E9C5D31B1E8F718F001007EF /* RecordsTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -384,6 +394,7 @@
 				E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */,
 				E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */,
 				E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */,
+				E9C5D31E1E8F8208001007EF /* RecordDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -392,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C5D3101E8DFD38001007EF /* DatabaseUtility.swift */,
+				E9C5D3201E8FB01C001007EF /* MsgDisplay.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -728,6 +740,7 @@
 				E9286F961E78CD2700784E2B /* about.html in Resources */,
 				E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */,
 				E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */,
+				E9C5D31D1E8F718F001007EF /* RecordsTableViewCell.xib in Resources */,
 				E9DDA0C71E6F90770080F791 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1025,7 +1038,10 @@
 				E9416AD51E771A6600EA17AD /* BillViewController.swift in Sources */,
 				E9628CCF1E709849008C9BF6 /* FlatColors.swift in Sources */,
 				E9C5D3111E8DFD38001007EF /* DatabaseUtility.swift in Sources */,
+				E9C5D31C1E8F718F001007EF /* RecordsTableViewCell.swift in Sources */,
 				E9C73CB81E7628A600D90405 /* BillItem.swift in Sources */,
+				E9C5D31F1E8F8208001007EF /* RecordDetailViewController.swift in Sources */,
+				E9C5D3211E8FB01C001007EF /* MsgDisplay.swift in Sources */,
 				E90EE0631E77330A00B15F31 /* BillView.swift in Sources */,
 				E9C5D3191E8F301B001007EF /* StatisticsTableViewController.swift in Sources */,
 				E9C63A8C1E74AD3400258574 /* AboutViewController.swift in Sources */,

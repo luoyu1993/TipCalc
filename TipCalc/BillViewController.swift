@@ -225,9 +225,9 @@ class BillViewController: UIViewController {
     @objc fileprivate func saveBtnPressed() {
 //        UIImageWriteToSavedPhotosAlbum(billView.billImage(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         if DatabaseUtility.save(billItem: billItem) {
-            let ac = UIAlertController(title: "Saved", message: "Bill saved to database.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
+            MsgDisplay.show(message: "Bill saved to database")
+        } else {
+            MsgDisplay.show(message: "Saving failed! Please try again")
         }
     }
     
@@ -258,7 +258,6 @@ class BillViewController: UIViewController {
             present(ac, animated: true)
         }
     }
-    
 
     /*
     // MARK: - Navigation

@@ -11,6 +11,8 @@ target 'TipCalc' do
   pod 'LTMorphingLabel', '~> 0.4.0'
   pod 'DynamicButton', '~> 3.1.0'
   pod 'FMDB', '~> 2.6.2'
+  pod 'Toaster', '~> 2.0.3'
+  pod 'Hero', '~> 0.3'
 
   target 'TipCalcTests' do
     inherit! :search_paths

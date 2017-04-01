@@ -15,13 +15,13 @@ class BillsContainerViewController: UIViewController {
     
     var currentViewController: UIViewController?
     
-    lazy var recordsViewController: RecordsTableViewController = {
-        var recordsViewController = RecordsTableViewController(style: .plain)
+    fileprivate let recordsViewController: RecordsTableViewController = {
+        let recordsViewController = RecordsTableViewController(style: .plain)
         return recordsViewController
     }()
     
-    lazy var statisticsViewController: StatisticsTableViewController = {
-        var statisticsViewController = StatisticsTableViewController(style: .plain)
+    fileprivate let statisticsViewController: StatisticsTableViewController = {
+        let statisticsViewController = StatisticsTableViewController(style: .plain)
         return statisticsViewController
     }()
 

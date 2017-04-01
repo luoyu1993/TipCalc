@@ -68,23 +68,9 @@ class DatabaseUtility: NSObject {
         }
         
         do {
-            let rs = try database.executeQuery("SELECT * FROM bills", values: nil)
+            let rs = try database.executeQuery("SELECT * FROM bills ORDER BY id DESC", values: nil)
             while rs.next() {
-                let item = BillItem()
-                
-                item.title = rs.string(forColumn: "title")
-                item.date = rs.date(forColumn: "date")
-                item.subtotal = rs.double(forColumn: "subtotal")
-                item.tipRate = rs.double(forColumn: "tipRate")
-                item.taxValue = rs.double(forColumn: "taxValue")
-                item.taxRate = rs.double(forColumn: "taxRate")
-                item.ppl = Int(rs.int(forColumn: "ppl"))
-                item.taxIncluded = rs.bool(forColumn: "taxIncluded")
-                item.id = Int(rs.int(forColumn: "id"))
-                
-                let result = (rs.double(forColumn: "tip"), rs.double(forColumn: "total"), rs.double(forColumn: "tipPpl"), rs.double(forColumn: "totalPpl"))
-                item.result = result
-                
+                let item = getBillItem(fromResultSet: rs)
                 billItems.append(item)
             }
         } catch {
@@ -114,23 +100,34 @@ class DatabaseUtility: NSObject {
         }
         
         do {
-            let rs = try database.executeQuery("SELECT * FROM bills LIMIT \(page * itemsPerPage),\(itemsPerPage)", values: nil)
+            let rs = try database.executeQuery("SELECT * FROM bills LIMIT \(page * itemsPerPage),\(itemsPerPage) ORDER BY id DESC", values: nil)
             while rs.next() {
-                let item = BillItem()
-                
-                item.title = rs.string(forColumn: "title")
-                item.date = rs.date(forColumn: "date")
-                item.subtotal = rs.double(forColumn: "subtotal")
-                item.tipRate = rs.double(forColumn: "tipRate")
-                item.taxValue = rs.double(forColumn: "taxValue")
-                item.taxRate = rs.double(forColumn: "taxRate")
-                item.ppl = Int(rs.int(forColumn: "ppl"))
-                item.taxIncluded = rs.bool(forColumn: "taxIncluded")
-                item.id = Int(rs.int(forColumn: "id"))
-                
-                let result = (rs.double(forColumn: "tip"), rs.double(forColumn: "total"), rs.double(forColumn: "tipPpl"), rs.double(forColumn: "totalPpl"))
-                item.result = result
-                
+                let item = getBillItem(fromResultSet: rs)
+                billItems.append(item)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        database.close()
+        return billItems
+    }
+    
+    class func search(keyword: String) -> [BillItem] {
+        var billItems: [BillItem] = []
+        
+        guard let database = createDatabase() else {
+            return []
+        }
+        
+        guard database.open() else {
+            return []
+        }
+        
+        do {
+            let rs = try database.executeQuery("SELECT * FROM bills WHERE title LIKE `%%?%%` ORDER BY id DESC", values: [keyword])
+            while rs.next() {
+                let item = getBillItem(fromResultSet: rs)
                 billItems.append(item)
             }
         } catch {
@@ -181,6 +178,25 @@ class DatabaseUtility: NSObject {
         
         database.close()
         return true
+    }
+    
+    fileprivate class func getBillItem(fromResultSet rs: FMResultSet) -> BillItem {
+        let item = BillItem()
+        
+        item.title = rs.string(forColumn: "title")
+        item.date = rs.date(forColumn: "date")
+        item.subtotal = rs.double(forColumn: "subtotal")
+        item.tipRate = rs.double(forColumn: "tipRate")
+        item.taxValue = rs.double(forColumn: "taxValue")
+        item.taxRate = rs.double(forColumn: "taxRate")
+        item.ppl = Int(rs.int(forColumn: "ppl"))
+        item.taxIncluded = rs.bool(forColumn: "taxIncluded")
+        item.id = Int(rs.int(forColumn: "id"))
+        
+        let result = (rs.double(forColumn: "tip"), rs.double(forColumn: "total"), rs.double(forColumn: "tipPpl"), rs.double(forColumn: "totalPpl"))
+        item.result = result
+        
+        return item
     }
 
 }

@@ -7,19 +7,52 @@
 //
 
 import UIKit
+import Hero
 
 class RecordsTableViewController: UITableViewController {
+    
+    var dataArr: [BillItem] = []
+    var searchResults: [BillItem] = []
+    
+    fileprivate let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        return searchController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        self.tableView.register(UINib(nibName: "RecordsTableViewCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
         
+        self.tableView.tableFooterView = UIView()
+        self.tableView.tableHeaderView = searchController.searchBar
+        
+        self.tableView.estimatedRowHeight = 74
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dataArr = DatabaseUtility.getBillItems()
+        self.tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.searchController.isActive {
+            self.searchController.isActive = false
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -42,44 +75,89 @@ class RecordsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return searchResults.count
+        } else {
+            return dataArr.count
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! RecordsTableViewCell
+        
+        let item: BillItem = {
+            if searchController.isActive && searchController.searchBar.text != "" {
+                return searchResults[indexPath.row]
+            } else {
+                return dataArr[indexPath.row]
+            }
+        }()
+        
+        cell.setItem(item: item)
+        cell.titleLabel.heroID = "titleLabel_\(item.id)"
+        cell.priceLabel.heroID = "totalPplLabel_\(item.id)"
+        
         return cell
     }
-    */
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }    
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { action, indexPath in
+            if self.searchController.isActive && self.searchController.searchBar.text != "" {
+                _ = DatabaseUtility.remove(billItem: self.searchResults[indexPath.row])
+                self.searchResults.remove(at: indexPath.row)
+            } else {
+                _ = DatabaseUtility.remove(billItem: self.dataArr[indexPath.row])
+                self.dataArr.remove(at: indexPath.row)
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.setEditing(false, animated: true)
+            
+            // For DZNEmpty
+            if self.dataArr.count == 0 {
+                tableView.reloadData()
+            }
+            if self.searchResults.count == 0 {
+                tableView.reloadData()
+            }
+        })
+        return [deleteAction]
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recordDetailViewController = RecordDetailViewController()
+//        recordDetailViewController.modalPresentationStyle = .overCurrentContext
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recordDetailViewController.billItem = self.searchResults[indexPath.row]
+        } else {
+            recordDetailViewController.billItem = self.dataArr[indexPath.row]
+        }
+        Hero.shared.setDefaultAnimationForNextTransition(.zoom)
+        self.tabBarController?.present(recordDetailViewController, animated: true, completion: {
+            tableView.deselectRow(at: indexPath, animated: false)
+            Hero.shared.setDefaultAnimationForNextTransition(.zoomOut)
+        })
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -96,14 +174,35 @@ class RecordsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
+    // MARK: - Navigation
+    
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
     }
     */
 
+}
+
+extension RecordsTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        searchResults = dataArr.filter({ $0.title.lowercased().contains(searchBar.text!.lowercased()) })
+        self.tableView.reloadData()
+    }
+    
+}
+
+extension RecordsTableViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        dataArr = DatabaseUtility.getBillItems()
+        self.tableView.reloadData()
+    }
+    
 }
