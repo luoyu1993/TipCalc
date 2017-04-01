@@ -148,7 +148,7 @@ class DatabaseUtility: NSObject {
         }
         
         do {
-            try database.executeUpdate("INSERT INTO bills (title, date, subtotal, tipRate, taxValue, taxRate, ppl, taxIncluded, tip, total, tipPpl, totalPpl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", values: [billItem.title, billItem.date, billItem.subtotal, billItem.tipRate, billItem.taxValue, billItem.taxRate, billItem.ppl, billItem.taxIncluded, billItem.result.tip, billItem.result.total, billItem.result.tipPpl, billItem.result.totalPpl])
+            try database.executeUpdate("INSERT INTO bills (title, date, subtotal, tipRate, taxValue, taxRate, ppl, taxIncluded, tip, total, tipPpl, totalPpl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", values: [(billItem.title == "") ? "Untitled" : billItem.title, billItem.date, billItem.subtotal, billItem.tipRate, billItem.taxValue, billItem.taxRate, billItem.ppl, billItem.taxIncluded, billItem.result.tip, billItem.result.total, billItem.result.tipPpl, billItem.result.totalPpl])
         } catch {
             print(error.localizedDescription)
             database.close()

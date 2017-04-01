@@ -393,8 +393,8 @@
 				E9C63A8B1E74AD3400258574 /* AboutViewController.swift */,
 				E9C5D3141E8F2F60001007EF /* BillsContainerViewController.swift */,
 				E9C5D3161E8F2FBD001007EF /* RecordsTableViewController.swift */,
-				E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */,
 				E9C5D31E1E8F8208001007EF /* RecordDetailViewController.swift */,
+				E9C5D3181E8F301B001007EF /* StatisticsTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

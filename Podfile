@@ -13,6 +13,7 @@ target 'TipCalc' do
   pod 'FMDB', '~> 2.6.2'
   pod 'Toaster', '~> 2.0.3'
   pod 'Hero', '~> 0.3'
+  pod 'Charts'
 
   target 'TipCalcTests' do
     inherit! :search_paths

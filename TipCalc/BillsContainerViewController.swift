@@ -21,7 +21,7 @@ class BillsContainerViewController: UIViewController {
     }()
     
     fileprivate let statisticsViewController: StatisticsTableViewController = {
-        let statisticsViewController = StatisticsTableViewController(style: .plain)
+        let statisticsViewController = StatisticsTableViewController(style: .grouped)
         return statisticsViewController
     }()
 

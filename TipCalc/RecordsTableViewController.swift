@@ -17,7 +17,6 @@ class RecordsTableViewController: UITableViewController {
     fileprivate let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
         return searchController
     }()
 
@@ -40,6 +39,8 @@ class RecordsTableViewController: UITableViewController {
         
         self.tableView.estimatedRowHeight = 74
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.layoutIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,14 +58,13 @@ class RecordsTableViewController: UITableViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        self.automaticallyAdjustsScrollViewInsets = false
-        
-        var insets = self.tableView.contentInset
-        insets.top = (self.navigationController?.navigationBar.bounds.size.height)! + UIApplication.shared.statusBarFrame.size.height
-        insets.bottom = (self.tabBarController?.tabBar.bounds.size.height)!
-        self.tableView.contentInset = insets
-        self.tableView.scrollIndicatorInsets = insets
+        self.automaticallyAdjustsScrollViewInsets = true
+
+//        var insets = self.tableView.contentInset
+//        insets.top = (self.navigationController?.navigationBar.bounds.size.height)! + UIApplication.shared.statusBarFrame.size.height
+//        insets.bottom = (self.tabBarController?.tabBar.bounds.size.height)!
+//        self.tableView.contentInset = insets
+//        self.tableView.scrollIndicatorInsets = insets
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,8 +145,8 @@ class RecordsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let recordDetailViewController = RecordDetailViewController()
-//        recordDetailViewController.modalPresentationStyle = .overCurrentContext
         if searchController.isActive && searchController.searchBar.text != "" {
             recordDetailViewController.billItem = self.searchResults[indexPath.row]
         } else {
@@ -154,7 +154,6 @@ class RecordsTableViewController: UITableViewController {
         }
         Hero.shared.setDefaultAnimationForNextTransition(.zoom)
         self.tabBarController?.present(recordDetailViewController, animated: true, completion: {
-            tableView.deselectRow(at: indexPath, animated: false)
             Hero.shared.setDefaultAnimationForNextTransition(.zoomOut)
         })
     }
