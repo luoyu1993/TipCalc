@@ -126,6 +126,14 @@ class TipCalcViewController: UIViewController {
         return generateBillBtn
     }()
     
+    fileprivate let saveAndClearBtn: UIButton = {
+        let saveAndClearBtn = UIButton(type: .system)
+        saveAndClearBtn.setTitle("Save and clear", for: .normal)
+        saveAndClearBtn.addTarget(self, action: #selector(saveAndClearBtnPressed), for: .touchUpInside)
+        saveAndClearBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        return saveAndClearBtn
+    }()
+    
     fileprivate let clearBtn: UIButton = {
         let clearBtn = UIButton(type: .system)
         clearBtn.setTitle("Clear all", for: .normal)
@@ -186,7 +194,11 @@ class TipCalcViewController: UIViewController {
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             if TipCalcDataManager.shakeToClear() {
-                clearAllValues()
+                if TipCalcDataManager.shakeToClearOption() == 0 {
+                    clearAllValues()
+                } else {
+                    saveAndClearBtnPressed()
+                }
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
         }
@@ -363,6 +375,27 @@ class TipCalcViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    @objc fileprivate func saveAndClearBtnPressed() {
+        let alertController = UIAlertController(title: "Save and Clear", message: "Please enter a title for your bill\nAll fileds will be cleared after saving", preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Monday lunch"
+        })
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action in
+            self.billItem.title = alertController.textFields![0].text!
+            if DatabaseUtility.save(billItem: self.billItem) {
+                self.clearAllValues()
+                MsgDisplay.show(message: "Bill saved to database")
+            } else {
+                MsgDisplay.show(message: "Sorry, cannot save bill to database")
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc fileprivate func generateBillBtnPressed() {
         performSegue(withIdentifier: "generateBill", sender: nil)
     }
@@ -399,6 +432,8 @@ class TipCalcViewController: UIViewController {
         
         updateAllSections()
         updateValues()
+        
+        mainTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     // Set an item for TipCalcViewController and update values
@@ -451,6 +486,8 @@ class TipCalcViewController: UIViewController {
 
 }
 
+// MARK: - UITableViewDataSource
+
 extension TipCalcViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -472,7 +509,7 @@ extension TipCalcViewController: UITableViewDataSource {
         case 3:
             return 1
         case 4:
-            return 1
+            return 2
         default:
             return 0
         }
@@ -543,7 +580,7 @@ extension TipCalcViewController: UITableViewDataSource {
         case 3:
             return "Generate a bill, then save or share it"
         case 4:
-            return "Clear all fields. Your progress will get lost\nIf \"Shake to clear\" switch is on, you can also shake the device to clear all fields"
+            return "If \"Shake to clear\" switch is on, you can also shake the device to clear all fields"
         default:
             return ""
         }
@@ -724,6 +761,14 @@ extension TipCalcViewController: UITableViewDataSource {
         case 4:
             switch row {
             case 0:
+                let cell = UITableViewCell()
+                cell.selectionStyle = .none
+                cell.addSubview(saveAndClearBtn)
+                saveAndClearBtn.snp.makeConstraints({ make in
+                    make.edges.equalToSuperview()
+                })
+                return cell
+            case 1:
                 let cell = UITableViewCell()
                 cell.selectionStyle = .none
                 cell.addSubview(clearBtn)

@@ -18,6 +18,7 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var animatedSwitch: UISwitch!
     @IBOutlet weak var defaultTipRateSegmentedControl: UISegmentedControl!
     @IBOutlet weak var shakeToClearSwitch: UISwitch!
+    @IBOutlet weak var shakeToClearOptionSegmentedControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class SettingViewController: UITableViewController {
         animatedSwitch.isOn = TipCalcDataManager.animatedLabel()
         defaultTipRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         shakeToClearSwitch.isOn = TipCalcDataManager.shakeToClear()
+        shakeToClearOptionSegmentedControl.selectedSegmentIndex = TipCalcDataManager.shakeToClearOption()
         
         let mainTintColor = TipCalcDataManager.widgetTintColor()
         
@@ -67,6 +69,7 @@ class SettingViewController: UITableViewController {
             self.navigationController!.navigationBar.tintColor = mainTintColor
             self.shakeToClearSwitch.tintColor = mainTintColor
             self.shakeToClearSwitch.onTintColor = mainTintColor
+            self.shakeToClearOptionSegmentedControl.tintColor = mainTintColor
         })
         
         TipCalcDataManager.setTintColors()
@@ -90,6 +93,10 @@ class SettingViewController: UITableViewController {
     
     @IBAction func shakeToClearSwitchChanged() {
         UserDefaults(suiteName: APP_GROUP_NAME)?.set(shakeToClearSwitch.isOn, forKey: SETTING_SHAKE_TO_CLEAR)
+    }
+    
+    @IBAction func shakeToClearSegmentedControlChanged() {
+        UserDefaults(suiteName: APP_GROUP_NAME)?.set(shakeToClearOptionSegmentedControl.selectedSegmentIndex, forKey: SETTING_SHAKE_TO_CLEAR_OPTION)
     }
     
     fileprivate func selectMainTintColor() {

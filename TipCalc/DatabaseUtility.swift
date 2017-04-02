@@ -22,6 +22,19 @@ class DatabaseUtility: NSObject {
         return database
     }
     
+    class func resetDatabase() -> Bool {
+        do {
+            let dbURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
+            try FileManager.default.removeItem(at: dbURL)
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
+        createTable()
+        return true
+    }
+    
     class func createTable() {
         guard let database = createDatabase() else {
             return

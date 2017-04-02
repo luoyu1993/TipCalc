@@ -16,6 +16,7 @@ let SETTING_ROUND_TYPE = "roundType" // 0: standard, 1: down, 2: up
 let SETTING_ANIMATED_LABEL = "animatedLabel"
 let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
 let SETTING_SHAKE_TO_CLEAR = "shakeToClear"
+let SETTING_SHAKE_TO_CLEAR_OPTION = "shakeToClearOption" // 0: clear all, 1: save and clear
 
 //let SHARED_BILL_ITEM = "sharedBillItem"
 
@@ -70,6 +71,14 @@ class TipCalcDataManager: NSObject {
             userDefault?.set(true, forKey: SETTING_SHAKE_TO_CLEAR)
         }
         return userDefault!.bool(forKey: SETTING_SHAKE_TO_CLEAR)
+    }
+    
+    class func shakeToClearOption() -> Int {
+        let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
+        if userDefault?.object(forKey: SETTING_SHAKE_TO_CLEAR_OPTION) == nil {
+            userDefault?.set(0, forKey: SETTING_SHAKE_TO_CLEAR_OPTION)
+        }
+        return userDefault!.integer(forKey: SETTING_SHAKE_TO_CLEAR_OPTION)
     }
     
     /*
