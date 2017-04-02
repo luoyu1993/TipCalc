@@ -14,6 +14,7 @@ target 'TipCalc' do
   pod 'Toaster', '~> 2.0.3'
   pod 'Hero', '~> 0.3'
   pod 'Charts'
+  pod 'DateToolsSwift'
 
   target 'TipCalcTests' do
     inherit! :search_paths
@@ -32,6 +33,7 @@ target 'TipCalcKit' do
   use_frameworks!
 
   # Pods for TipCalcKit
+
 
   target 'TipCalcKitTests' do
     inherit! :search_paths

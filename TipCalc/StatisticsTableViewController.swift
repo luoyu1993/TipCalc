@@ -16,6 +16,7 @@ class StatisticsTableViewController: UITableViewController {
         let recentBarView = BarChartView()
         recentBarView.setScaleEnabled(false)
         recentBarView.highlightPerTapEnabled = false
+        recentBarView.dragEnabled = false
         
         recentBarView.xAxis.drawGridLinesEnabled = false
         recentBarView.xAxis.labelPosition = XAxis.LabelPosition.bottom
@@ -28,7 +29,30 @@ class StatisticsTableViewController: UITableViewController {
         recentBarView.rightAxis.enabled = false
         
         recentBarView.chartDescription?.text = ""
+        recentBarView.noDataText = "You need to save several bills before getting statistics."
         return recentBarView
+    }()
+    
+    fileprivate let recentLineView: LineChartView = {
+        let lineView = LineChartView()
+        lineView.setScaleEnabled(false)
+        lineView.dragEnabled = false
+        lineView.highlightPerTapEnabled = false
+        lineView.chartDescription?.text = ""
+        
+        lineView.noDataText = "You need to save several bills before getting statistics."
+        
+        lineView.xAxis.drawGridLinesEnabled = false
+        lineView.xAxis.labelPosition = .bottom
+        lineView.xAxis.granularity = 1.0
+        lineView.xAxis.drawLabelsEnabled = false
+        
+        lineView.leftAxis.drawGridLinesEnabled = false
+        lineView.leftAxis.axisMinimum = 0.0
+        
+        lineView.rightAxis.enabled = false
+        
+        return lineView
     }()
     
     fileprivate let tipRatePieView: PieChartView = {
@@ -37,15 +61,21 @@ class StatisticsTableViewController: UITableViewController {
         tipRatePieView.chartDescription?.text = ""
         tipRatePieView.highlightPerTapEnabled = false
         
+        tipRatePieView.drawEntryLabelsEnabled = false
+        tipRatePieView.noDataText = "You need to save several bills before getting statistics."
+        
         return tipRatePieView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setData()
         
         self.tableView.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setData()
     }
     
     override func viewWillLayoutSubviews() {
@@ -66,48 +96,32 @@ class StatisticsTableViewController: UITableViewController {
     }
     
     fileprivate func setData() {
-        // recent bar view
-        setBarData(barView: recentBarView, xLabels: [], values: [11.4, 26.4, 18.1, 25.2, 37.5, 8.4])
+        let stat = DatabaseUtility.getStatistics()
+        
+        // recent line view
+//        StatisticsUtility.setLineData(lineView: recentLineView, values: [11.4, 26.4, 18.1, 25.2, 37.5, 8.4], label: "Recent bills")
+        if stat.recentBills.count > 0 {
+            StatisticsUtility.setLineData(lineView: recentLineView, values: stat.recentBills, label: "Recent bills")
+        }
         
         // tip rate pie view
-        setPieData(pieView: tipRatePieView, labels: ["10%", "12%", "15%", "18%", "20%", "Others"], values: [15, 23, 64, 25, 11, 4])
-    }
-    
-    fileprivate func setBarData(barView: BarChartView, xLabels: [String], values: [Double]) {
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0 ..< values.count {
-            let dataEntry = BarChartDataEntry(x: Double(i + 1), y: values[i])
-            dataEntries.append(dataEntry)
+        //        StatisticsUtility.setPieData(pieView: tipRatePieView, labels: ["10%", "12%", "15%", "18%", "20%", "Others"], values: [15, 23, 64, 25, 11, 4])
+        if stat.tipRatesFrequency.count > 0 {
+            StatisticsUtility.setPieData(pieView: tipRatePieView, labels: ["10%", "12%", "15%", "18%", "20%", "Others"], values: stat.tipRatesFrequency)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Recent bills")
-        chartDataSet.colors = [TipCalcDataManager.widgetTintColor()]
-        let chartData = BarChartData(dataSets: [chartDataSet])
-        
-        barView.data = chartData
-        
+        // recent bar view
+//        StatisticsUtility.setBarData(barView: recentBarView, xLabels: [], values: [0, 0, 11.4, 26.4, 18.1, 25.2, 37.5, 8.4], title: "Recent 10 weeks")
+        if stat.recent10Weeks.count > 0 {
+            StatisticsUtility.setBarData(barView: recentBarView, xLabels: [], values: stat.recent10Weeks, title: "Recent 10 weeks")
+        }
     }
     
-    fileprivate func setPieData(pieView: PieChartView, labels: [String], values: [Double]) {
-        var dataEntries: [PieChartDataEntry] = []
-        
-        for i in 0 ..< labels.count {
-            let dataEntry = PieChartDataEntry(value: values[i], label: labels[i])
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
-        chartDataSet.colors = [UIColor.flatRed, UIColor.flatYellow, UIColor.flatGreen, UIColor.flatSkyBlue, UIColor.flatMagenta, UIColor.flatPink]
-        let chartData = PieChartData(dataSets: [chartDataSet])
-        
-        pieView.data = chartData
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,7 +129,7 @@ class StatisticsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let headers = ["Recent bills", "Tip rates"]
+        let headers = ["Recent bills", "Tip rates", "Recent 10 weeks"]
         return headers[section]
     }
     
@@ -125,7 +139,7 @@ class StatisticsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let heights: [CGFloat] = [280.0, 320.0]
+        let heights: [CGFloat] = [280.0, 320.0, 280.0]
         return heights[indexPath.section]
     }
 
@@ -135,13 +149,18 @@ class StatisticsTableViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
-            cell.addSubview(recentBarView)
-            recentBarView.snp.makeConstraints({ make in
+            cell.addSubview(recentLineView)
+            recentLineView.snp.makeConstraints({ make in
                 make.edges.equalToSuperview().inset(8)
             })
         case 1:
             cell.addSubview(tipRatePieView)
             tipRatePieView.snp.makeConstraints({ make in
+                make.edges.equalToSuperview().inset(8)
+            })
+        case 2:
+            cell.addSubview(recentBarView)
+            recentBarView.snp.makeConstraints({ make in
                 make.edges.equalToSuperview().inset(8)
             })
         default:

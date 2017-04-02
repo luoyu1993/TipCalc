@@ -8,8 +8,11 @@
 
 import UIKit
 import FMDB
+import DateToolsSwift
 
 class DatabaseUtility: NSObject {
+    
+    // MARK: - Foundamental utilities
     
     class fileprivate func createDatabase() -> FMDatabase? {
         let dbURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
@@ -197,6 +200,79 @@ class DatabaseUtility: NSObject {
         item.result = result
         
         return item
+    }
+    
+    // MARK: - Get statistic data
+    
+    class func getStatistics() -> (recentBills: [Double], tipRatesFrequency: [Double], recent10Weeks: [Double]) {
+        var recentBills: [Double] = []
+        var tipRatesFrequency: [Double] = []
+        var recent10Weeks: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        
+        guard let database = createDatabase() else {
+            return ([], [], [])
+        }
+        
+        guard database.open() else {
+            return ([], [], [])
+        }
+        
+        var rs = try! database.executeQuery("SELECT totalPpl FROM bills ORDER BY id DESC LIMIT 0,15", values: nil)
+        while rs.next() {
+            let totalPpl = rs.double(forColumn: "totalPpl")
+            recentBills.append(totalPpl)
+        }
+        recentBills.reverse()
+        
+        rs = try! database.executeQuery("SELECT COUNT(*) AS count, tipRate FROM bills GROUP BY tipRate", values: nil)
+        
+        var freq10 = 0
+        var freq12 = 0
+        var freq15 = 0
+        var freq18 = 0
+        var freq20 = 0
+        var freqOthers = 0
+        
+        while rs.next() {
+            let count = Int(rs.int(forColumn: "count"))
+            let tipRate = rs.double(forColumn: "tipRate")
+            
+            if tipRate == 0.10 {
+                freq10 += count
+            } else if tipRate == 0.12 {
+                freq12 += count
+            } else if tipRate == 0.15 {
+                freq15 += count
+            } else if tipRate == 0.18 {
+                freq18 += count
+            } else if tipRate == 0.20 {
+                freq20 += count
+            } else {
+                freqOthers += count
+            }
+        }
+        
+        tipRatesFrequency = [freq10, freq12, freq15, freq18, freq20, freqOthers].map {
+            return Double($0)
+        }
+        
+        rs = try! database.executeQuery("SELECT date, totalPpl FROM bills ORDER BY id DESC", values: nil)
+        let now = Date()
+        while rs.next() {
+            let date = rs.date(forColumn: "date")!
+            let totalPpl = rs.double(forColumn: "totalPpl")
+            let weeksFromNow = date.weeks(from: now)
+            if weeksFromNow > 9 {
+                break
+            } else {
+                let tmpCount = recent10Weeks[weeksFromNow]
+                recent10Weeks[weeksFromNow] = tmpCount + totalPpl
+            }
+        }
+        recent10Weeks.reverse()
+        
+        database.close()
+        return (recentBills, tipRatesFrequency, recent10Weeks)
     }
 
 }
