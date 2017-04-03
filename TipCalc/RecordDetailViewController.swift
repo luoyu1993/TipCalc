@@ -15,11 +15,14 @@ class RecordDetailViewController: UIViewController {
     
     var billItem: BillItem!
     
-//    fileprivate let backgroundView: UIVisualEffectView = {
+    fileprivate let backgroundView: UIView = {
 //        let blurEffect = UIBlurEffect(style: .light)
 //        let visualEffectView = UIVisualEffectView(effect: blurEffect)
 //        return visualEffectView
-//    }()
+        let bgView = UIControl()
+        bgView.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
+        return bgView
+    }()
     
     fileprivate let leftBtn: DynamicButton = {
         let leftBtn = DynamicButton(style: DynamicButtonStyle.close)
@@ -47,10 +50,10 @@ class RecordDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.white
         
-//        self.view.addSubview(backgroundView)
-//        backgroundView.snp.makeConstraints({ make in
-//            make.edges.equalToSuperview()
-//        })
+        self.view.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints({ make in
+            make.edges.equalToSuperview()
+        })
         
         self.view.addSubview(leftBtn)
         leftBtn.snp.makeConstraints({ make in

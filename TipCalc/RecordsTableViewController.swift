@@ -23,6 +23,8 @@ class RecordsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = true
+        
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
 
@@ -55,7 +57,6 @@ class RecordsTableViewController: UITableViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.automaticallyAdjustsScrollViewInsets = true
 
 //        var insets = self.tableView.contentInset
 //        insets.top = (self.navigationController?.navigationBar.bounds.size.height)! + UIApplication.shared.statusBarFrame.size.height
@@ -149,9 +150,9 @@ class RecordsTableViewController: UITableViewController {
         } else {
             recordDetailViewController.billItem = self.dataArr[indexPath.row]
         }
-        Hero.shared.setDefaultAnimationForNextTransition(.zoom)
+        recordDetailViewController.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
         self.tabBarController?.present(recordDetailViewController, animated: true, completion: {
-            Hero.shared.setDefaultAnimationForNextTransition(.zoomOut)
+            
         })
     }
 

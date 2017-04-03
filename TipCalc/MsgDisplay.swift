@@ -17,8 +17,8 @@ class MsgDisplay: NSObject {
         toast.view.cornerRadius = 15.0
         toast.view.textInsets = UIEdgeInsetsMake(8, 16, 8, 16)
         toast.view.font = UIFont.systemFont(ofSize: 16.0)
-        toast.view.bottomOffsetPortrait = 54
-        toast.view.bottomOffsetLandscape = 54
+        toast.view.bottomOffsetPortrait = 56
+        toast.view.bottomOffsetLandscape = 56
         toast.show()
     }
     

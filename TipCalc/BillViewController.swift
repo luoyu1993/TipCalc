@@ -9,6 +9,7 @@
 import UIKit
 import DynamicButton
 import SnapKit
+import Hero
 
 class BillViewController: UIViewController {
     
@@ -45,6 +46,12 @@ class BillViewController: UIViewController {
     fileprivate let billView: BillView = {
         let billView = BillView()
         billView.backgroundColor = UIColor.clear
+        
+        billView.tipLabel.heroID = "tipLabel"
+        billView.totalLabel.heroID = "totalLabel"
+        billView.tipPplLabel.heroID = "tipPplLabel"
+        billView.totalPplLabel.heroID = "totalPplLabel"
+        
         return billView
     }()
     
@@ -219,6 +226,9 @@ class BillViewController: UIViewController {
     }
     
     @objc fileprivate func doneBtnPressed() {
+        self.isHeroEnabled = true
+        self.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+        
         dismiss(animated: true, completion: nil)
     }
     

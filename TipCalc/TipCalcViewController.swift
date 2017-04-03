@@ -11,6 +11,7 @@ import SnapKit
 import TipCalcKit
 import LTMorphingLabel
 import AudioToolbox
+import Hero
 
 class TipCalcViewController: UIViewController {
     
@@ -158,6 +159,11 @@ class TipCalcViewController: UIViewController {
         mainTableView.dataSource = self
         mainTableView.delegate = self
         mainTableView.contentInset = UIEdgeInsets(top: 144, left: 0, bottom: 44, right: 0)
+        
+        tipLabel.heroID = "tipLabel"
+        totalLabel.heroID = "totalLabel"
+        tipPplLabel.heroID = "tipPplLabel"
+        totalPplLabel.heroID = "totalPplLabel"
         
         let lineView = UIView()
         lineView.backgroundColor = UIColor.lightGray
