@@ -111,12 +111,11 @@ class StatisticsTableViewController: UITableViewController {
         }
         
         // recent bar view
-//        StatisticsUtility.setBarData(barView: recentBarView, xLabels: [], values: [0, 0, 11.4, 26.4, 18.1, 25.2, 37.5, 8.4], title: "Recent 10 weeks")
+//        StatisticsUtility.setBarData(barView: recentBarView, xLabels: [], values: [99, 150, 132, 114, 267, 233, 165, 172, 284], title: "Recent 10 weeks")
         if stat.recent10Weeks.count > 0 {
             StatisticsUtility.setBarData(barView: recentBarView, xLabels: [], values: stat.recent10Weeks, title: "Recent 10 weeks")
         }
     }
-    
 
     // MARK: - Table view data source
 

@@ -12,7 +12,7 @@ import DateToolsSwift
 
 class DatabaseUtility: NSObject {
     
-    // MARK: - Foundamental utilities
+    // MARK: - Fundamental utilities
     
     class fileprivate func createDatabase() -> FMDatabase? {
         let dbURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
@@ -274,7 +274,7 @@ class DatabaseUtility: NSObject {
         while rs.next() {
             let date = rs.date(forColumn: "date")!
             let totalPpl = rs.double(forColumn: "totalPpl")
-            let weeksFromNow = date.weeks(from: now)
+            let weeksFromNow = abs(date.weeks(from: now))
             if weeksFromNow > 9 {
                 break
             } else {

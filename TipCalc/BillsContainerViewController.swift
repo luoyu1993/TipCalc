@@ -15,7 +15,7 @@ class BillsContainerViewController: UIViewController {
     // Parameters
     // Firstly set this to 0 and modify it in ViewDidLoad
     // therefore animation won't load at the first time of launch
-    var transitionInterval = 0.0
+    fileprivate var transitionInterval = 0.0
     
     @IBOutlet weak var switchControllerSegmentedControl: UISegmentedControl!
     @IBOutlet weak var contentView: UIView!
