@@ -44,7 +44,7 @@ class RecordsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dataArr = DatabaseUtility.getBillItems()
+        dataArr = DatabaseUtility.shared.getBillItems()
         self.tableView.reloadData()
     }
     
@@ -121,10 +121,10 @@ class RecordsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { action, indexPath in
             if self.searchController.isActive && self.searchController.searchBar.text != "" {
-                _ = DatabaseUtility.remove(billItem: self.searchResults[indexPath.row])
+                _ = DatabaseUtility.shared.remove(billItem: self.searchResults[indexPath.row])
                 self.searchResults.remove(at: indexPath.row)
             } else {
-                _ = DatabaseUtility.remove(billItem: self.dataArr[indexPath.row])
+                _ = DatabaseUtility.shared.remove(billItem: self.dataArr[indexPath.row])
                 self.dataArr.remove(at: indexPath.row)
             }
             
@@ -191,7 +191,7 @@ extension RecordsTableViewController: UISearchResultsUpdating {
 extension RecordsTableViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        dataArr = DatabaseUtility.getBillItems()
+        dataArr = DatabaseUtility.shared.getBillItems()
         self.tableView.reloadData()
     }
     

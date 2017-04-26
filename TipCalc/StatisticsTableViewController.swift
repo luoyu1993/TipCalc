@@ -96,7 +96,7 @@ class StatisticsTableViewController: UITableViewController {
     }
     
     fileprivate func setData() {
-        let stat = DatabaseUtility.getStatistics()
+        let stat = DatabaseUtility.shared.getStatistics()
         
         // recent line view
 //        StatisticsUtility.setLineData(lineView: recentLineView, values: [11.4, 26.4, 18.1, 25.2, 37.5, 8.4], label: "Recent bills")

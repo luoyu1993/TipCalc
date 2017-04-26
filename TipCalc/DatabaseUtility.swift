@@ -12,34 +12,25 @@ import DateToolsSwift
 
 class DatabaseUtility: NSObject {
     
+    static let shared: DatabaseUtility = DatabaseUtility()
+    
+    let dbURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
+    var database: FMDatabase!
+    
+    override init() {
+        super.init()
+        
+        if FileManager.default.fileExists(atPath: dbURL.path) {
+            database = FMDatabase(path: dbURL.path)
+        } else {
+            database = FMDatabase(path: dbURL.path)
+            createTable()
+        }
+    }
+    
     // MARK: - Fundamental utilities
     
-    class fileprivate func createDatabase() -> FMDatabase? {
-        let dbURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
-        guard let database = FMDatabase(path: dbURL.path) else {
-            return nil
-        }
-        return database
-    }
-    
-    class func resetDatabase() -> Bool {
-        do {
-            let dbURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
-            try FileManager.default.removeItem(at: dbURL)
-        } catch {
-            print(error.localizedDescription)
-            return false
-        }
-        
-        createTable()
-        return true
-    }
-    
-    class func createTable() {
-        guard let database = createDatabase() else {
-            return
-        }
-        
+    func createTable() {
         guard database.open() else {
             return
         }
@@ -53,11 +44,28 @@ class DatabaseUtility: NSObject {
         database.close()
     }
     
-    class func itemsCount() -> Int {
-        guard let database = createDatabase() else {
-            return 0
+//    class fileprivate func createDatabase() -> FMDatabase? {
+//        let dbURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("bills.sqlite")
+//        guard let database = FMDatabase(path: dbURL.path) else {
+//            return nil
+//        }
+//        return database
+//    }
+    
+    func resetDatabase() -> Bool {
+        do {
+            try FileManager.default.removeItem(at: dbURL)
+        } catch {
+            print(error.localizedDescription)
+            return false
         }
         
+        database = FMDatabase(path: dbURL.path)
+        createTable()
+        return true
+    }
+    
+    func itemsCount() -> Int {
         guard database.open() else {
             return 0
         }
@@ -72,13 +80,9 @@ class DatabaseUtility: NSObject {
         return count
     }
     
-    class func getBillItems() -> [BillItem] {
+    func getBillItems() -> [BillItem] {
         var billItems: [BillItem] = []
-        
-        guard let database = createDatabase() else {
-            return []
-        }
-        
+
         guard database.open() else {
             return []
         }
@@ -102,15 +106,11 @@ class DatabaseUtility: NSObject {
     ///
     /// - Parameter page: the index of page, start from 0
     /// - Returns: the array of bill item objects
-    class func getBillItems(forPage page: Int) -> [BillItem] {
+    func getBillItems(forPage page: Int) -> [BillItem] {
         let itemsPerPage = 20
         
         var billItems: [BillItem] = []
-        
-        guard let database = createDatabase() else {
-            return []
-        }
-        
+
         guard database.open() else {
             return []
         }
@@ -129,13 +129,9 @@ class DatabaseUtility: NSObject {
         return billItems
     }
     
-    class func search(keyword: String) -> [BillItem] {
+    func search(keyword: String) -> [BillItem] {
         var billItems: [BillItem] = []
-        
-        guard let database = createDatabase() else {
-            return []
-        }
-        
+
         guard database.open() else {
             return []
         }
@@ -154,11 +150,7 @@ class DatabaseUtility: NSObject {
         return billItems
     }
     
-    class func save(billItem: BillItem) -> Bool {
-        guard let database = createDatabase() else {
-            return false
-        }
-        
+    func save(billItem: BillItem) -> Bool {
         guard database.open() else {
             return false
         }
@@ -175,11 +167,7 @@ class DatabaseUtility: NSObject {
         return true
     }
     
-    class func remove(billItem: BillItem) -> Bool {
-        guard let database = createDatabase() else {
-            return false
-        }
-        
+    func remove(billItem: BillItem) -> Bool {
         guard database.open() else {
             return false
         }
@@ -196,7 +184,7 @@ class DatabaseUtility: NSObject {
         return true
     }
     
-    fileprivate class func getBillItem(fromResultSet rs: FMResultSet) -> BillItem {
+    fileprivate func getBillItem(fromResultSet rs: FMResultSet) -> BillItem {
         let item = BillItem()
         
         item.title = rs.string(forColumn: "title")
@@ -217,15 +205,11 @@ class DatabaseUtility: NSObject {
     
     // MARK: - Get statistic data
     
-    class func getStatistics() -> (recentBills: [Double], tipRatesFrequency: [Double], recent10Weeks: [Double]) {
+    func getStatistics() -> (recentBills: [Double], tipRatesFrequency: [Double], recent10Weeks: [Double]) {
         var recentBills: [Double] = []
         var tipRatesFrequency: [Double] = []
         var recent10Weeks: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        
-        guard let database = createDatabase() else {
-            return ([], [], [])
-        }
-        
+
         guard database.open() else {
             return ([], [], [])
         }

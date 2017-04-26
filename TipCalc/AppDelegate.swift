@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.backgroundColor = UIColor.white
         
-        DatabaseUtility.createTable()
-        
         return true
     }
 

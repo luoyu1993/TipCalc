@@ -234,7 +234,7 @@ class BillViewController: UIViewController {
     
     @objc fileprivate func saveBtnPressed() {
 //        UIImageWriteToSavedPhotosAlbum(billView.billImage(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        if DatabaseUtility.save(billItem: billItem) {
+        if DatabaseUtility.shared.save(billItem: billItem) {
             MsgDisplay.show(message: "Bill saved to database")
         } else {
             MsgDisplay.show(message: "Saving failed! Please try again")

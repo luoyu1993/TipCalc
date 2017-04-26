@@ -388,7 +388,7 @@ class TipCalcViewController: UIViewController {
         })
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { action in
             self.billItem.title = alertController.textFields![0].text!
-            if DatabaseUtility.save(billItem: self.billItem) {
+            if DatabaseUtility.shared.save(billItem: self.billItem) {
                 self.clearAllValues()
                 MsgDisplay.show(message: "Bill saved to database")
             } else {
