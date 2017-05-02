@@ -4,6 +4,7 @@ PODS:
   - Charts/Core (3.0.2)
   - DateToolsSwift (2.0.3)
   - DynamicButton (3.1.0)
+  - DZNEmptyDataSet (1.8.1)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - Charts
   - DateToolsSwift
   - DynamicButton (~> 3.1.0)
+  - DZNEmptyDataSet (~> 1.8.1)
   - FMDB (~> 2.6.2)
   - Hero (~> 0.3)
   - IQKeyboardManagerSwift (~> 4.0.8)
@@ -28,6 +30,7 @@ SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
   DynamicButton: 37968af761a31274aeac427f40204688fa810342
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
@@ -35,6 +38,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
 
-PODFILE CHECKSUM: 2b07ba40244f4236047c7061499311e0a819818a
+PODFILE CHECKSUM: b9d679f9f48c7ad99014631e5f9d8ce736ea8bfe
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

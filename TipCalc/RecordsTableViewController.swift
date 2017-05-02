@@ -8,6 +8,7 @@
 
 import UIKit
 import Hero
+import DZNEmptyDataSet
 
 class RecordsTableViewController: UITableViewController {
     
@@ -38,6 +39,9 @@ class RecordsTableViewController: UITableViewController {
         
         self.tableView.estimatedRowHeight = 74
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
         
         self.tableView.layoutIfNeeded()
     }
@@ -194,5 +198,41 @@ extension RecordsTableViewController: UISearchBarDelegate {
         dataArr = DatabaseUtility.shared.getBillItems()
         self.tableView.reloadData()
     }
+    
+}
+
+extension RecordsTableViewController: DZNEmptyDataSetSource {
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        var str = ""
+        if searchController.isActive && searchController.searchBar.text != "" {
+            str = "Nothing Found"
+        } else {
+            str = "No Data"
+        }
+        
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0),
+                          NSForegroundColorAttributeName: UIColor.darkGray]
+        let attrStr = NSAttributedString(string: str, attributes: attributes)
+        return attrStr
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        var str = ""
+        if searchController.isActive && searchController.searchBar.text != "" {
+            str = "Please enter another keyword and retry."
+        } else {
+            str = "You can save some bills from the main view."
+        }
+        
+        let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0),
+                          NSForegroundColorAttributeName: UIColor.lightGray]
+        let attrStr = NSAttributedString(string: str, attributes: attributes)
+        return attrStr
+    }
+    
+}
+
+extension RecordsTableViewController: DZNEmptyDataSetDelegate {
     
 }

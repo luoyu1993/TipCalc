@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class StatisticsUtility: NSObject {
+class StatisticsUtility {
     
     class func setBarData(barView: BarChartView, xLabels: [String], values: [Double], title: String) {
         var dataEntries: [BarChartDataEntry] = []

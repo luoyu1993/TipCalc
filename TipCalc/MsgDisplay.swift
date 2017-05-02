@@ -9,7 +9,7 @@
 import UIKit
 import Toaster
 
-class MsgDisplay: NSObject {
+class MsgDisplay {
     
     class func show(message: String) {
         let toast = Toast(text: message, duration: Delay.short)

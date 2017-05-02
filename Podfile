@@ -15,6 +15,7 @@ target 'TipCalc' do
   pod 'Hero', '~> 0.3'
   pod 'Charts'
   pod 'DateToolsSwift'
+  pod 'DZNEmptyDataSet', '~> 1.8.1'
 
   target 'TipCalcTests' do
     inherit! :search_paths

@@ -24,12 +24,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
-//        showActualController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
