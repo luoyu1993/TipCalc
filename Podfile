@@ -16,6 +16,7 @@ target 'TipCalc' do
   pod 'Charts'
   pod 'DateToolsSwift'
   pod 'DZNEmptyDataSet', '~> 1.8.1'
+  # pod 'Venmo-iOS-SDK'
 
   target 'TipCalcTests' do
     inherit! :search_paths

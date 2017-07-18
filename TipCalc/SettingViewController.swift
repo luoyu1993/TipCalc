@@ -73,6 +73,7 @@ class SettingViewController: UITableViewController {
         })
         
         TipCalcDataManager.setTintColors()
+        UIApplication.shared.keyWindow?.tintColor = mainTintColor
     }
     
     @IBAction func roundSwitchChanged() {

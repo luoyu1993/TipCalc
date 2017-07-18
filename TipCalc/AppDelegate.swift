@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         TipCalcDataManager.setTintColors()
+        window?.tintColor = TipCalcDataManager.widgetTintColor()
+        
         IQKeyboardManager.sharedManager().enable = true
         
         window?.backgroundColor = UIColor.white

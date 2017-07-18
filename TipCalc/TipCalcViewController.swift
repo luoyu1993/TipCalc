@@ -370,7 +370,7 @@ class TipCalcViewController: UIViewController {
     }
     
     @objc fileprivate func clearBtnPressed() {
-        let alertController = UIAlertController(title: "Clear all fileds?", message: "Your progress will lost.", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Clear all fileds?", message: "Your progress will be lost.", preferredStyle: .actionSheet)
         let clearAction = UIAlertAction(title: "Clear", style: .destructive, handler: { action in
             self.clearAllValues()
         })
