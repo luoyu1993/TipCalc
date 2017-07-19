@@ -18,7 +18,7 @@ class TipCalcViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var resultsView: UIVisualEffectView!
+    @IBOutlet weak var resultsView: UIView!
     
     fileprivate let subtotalField: UITextField = {
         let subtotalField = UITextField(frame: .zero)

@@ -24,6 +24,10 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         self.view.addSubview(aboutWebView)
         aboutWebView.snp.makeConstraints({ make in
             make.edges.equalToSuperview()

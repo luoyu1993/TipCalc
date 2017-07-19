@@ -32,6 +32,11 @@ class SettingViewController: UITableViewController {
         reloadSettings(animated: false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundReload), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .automatic
+        }
     }
 
     override func didReceiveMemoryWarning() {
