@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Mx-IM-LBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Mx-IM-LBx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -337,14 +338,11 @@ TipCalc 2017 (C) Yubo Qin</string>
         <scene sceneID="LB9-az-5Zk">
             <objects>
                 <viewController id="Amq-Jc-B9D" customClass="AboutViewController" customModule="TipCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Lpq-16-ib2"/>
-                        <viewControllerLayoutGuide type="bottom" id="RRb-eP-Ynw"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Y8G-S5-oax">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="FYl-i2-oLE"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="hVe-lm-ls9"/>
                 </viewController>
@@ -358,7 +356,7 @@ TipCalc 2017 (C) Yubo Qin</string>
                 <navigationController id="I6R-kx-Oa3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bills" image="TabBills" id="eWX-pf-UQi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="02f-Sw-xTw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -373,10 +371,6 @@ TipCalc 2017 (C) Yubo Qin</string>
         <scene sceneID="Idx-BM-Czx">
             <objects>
                 <viewController id="a7C-g2-6dh" customClass="BillsContainerViewController" customModule="TipCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bdC-pt-qyH"/>
-                        <viewControllerLayoutGuide type="bottom" id="BF9-s9-ty6"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DcG-lT-hBg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,11 +382,12 @@ TipCalc 2017 (C) Yubo Qin</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dpN-vX-ZzO" firstAttribute="leading" secondItem="DcG-lT-hBg" secondAttribute="leading" id="6HD-X8-RPO"/>
-                            <constraint firstAttribute="trailing" secondItem="dpN-vX-ZzO" secondAttribute="trailing" id="GoV-QA-bw5"/>
+                            <constraint firstItem="dpN-vX-ZzO" firstAttribute="leading" secondItem="Bqu-HD-mfl" secondAttribute="leading" id="6HD-X8-RPO"/>
+                            <constraint firstItem="Bqu-HD-mfl" firstAttribute="trailing" secondItem="dpN-vX-ZzO" secondAttribute="trailing" id="GoV-QA-bw5"/>
                             <constraint firstAttribute="bottom" secondItem="dpN-vX-ZzO" secondAttribute="bottom" id="QyJ-ms-Aqx"/>
                             <constraint firstItem="dpN-vX-ZzO" firstAttribute="top" secondItem="DcG-lT-hBg" secondAttribute="top" id="ZGj-X8-gxK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bqu-HD-mfl"/>
                     </view>
                     <navigationItem key="navigationItem" id="6C3-UB-D12">
                         <nil key="title"/>
@@ -423,11 +418,10 @@ TipCalc 2017 (C) Yubo Qin</string>
                 <navigationController id="Bhc-Rj-RfG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="TabSetting" id="ivJ-iC-pzO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rcx-c7-po7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4gf-vA-Umx">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -461,16 +455,12 @@ TipCalc 2017 (C) Yubo Qin</string>
         <scene sceneID="gsb-Bd-vZ2">
             <objects>
                 <viewController id="F3o-5D-fh7" customClass="TipCalcViewController" customModule="TipCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WvA-Am-t7U"/>
-                        <viewControllerLayoutGuide type="bottom" id="ADA-yR-K8E"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OnN-tG-3M4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vu1-jv-zQp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="F3o-5D-fh7" id="6HK-ya-znR"/>
@@ -478,19 +468,18 @@ TipCalc 2017 (C) Yubo Qin</string>
                                 </connections>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usv-2v-C9r">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gIx-ek-7P5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="EYx-hs-a5Y"/>
                                     <constraint firstAttribute="width" constant="375" id="ZiK-OI-LwT"/>
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qab-Lu-3VZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="144"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g9h-O5-7cb">
                                         <rect key="frame" x="8" y="16" width="359" height="120"/>
@@ -651,17 +640,19 @@ TipCalc 2017 (C) Yubo Qin</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Qab-Lu-3VZ" secondAttribute="trailing" id="31e-3G-lYN"/>
-                            <constraint firstItem="vu1-jv-zQp" firstAttribute="top" secondItem="OnN-tG-3M4" secondAttribute="top" id="64u-os-QLh"/>
+                            <constraint firstItem="f2U-xC-v1X" firstAttribute="trailing" secondItem="Qab-Lu-3VZ" secondAttribute="trailing" id="31e-3G-lYN"/>
+                            <constraint firstItem="vu1-jv-zQp" firstAttribute="top" secondItem="f2U-xC-v1X" secondAttribute="top" id="64u-os-QLh"/>
                             <constraint firstItem="usv-2v-C9r" firstAttribute="top" secondItem="OnN-tG-3M4" secondAttribute="top" id="7kO-Bh-OTS"/>
-                            <constraint firstAttribute="trailing" secondItem="usv-2v-C9r" secondAttribute="trailing" id="KKV-hh-lEZ"/>
-                            <constraint firstItem="Qab-Lu-3VZ" firstAttribute="leading" secondItem="OnN-tG-3M4" secondAttribute="leading" id="TWt-P9-7cC"/>
-                            <constraint firstItem="Qab-Lu-3VZ" firstAttribute="top" secondItem="usv-2v-C9r" secondAttribute="top" id="U6F-qS-Azl"/>
-                            <constraint firstItem="vu1-jv-zQp" firstAttribute="leading" secondItem="OnN-tG-3M4" secondAttribute="leading" id="YcM-Fs-taT"/>
-                            <constraint firstItem="usv-2v-C9r" firstAttribute="leading" secondItem="OnN-tG-3M4" secondAttribute="leading" id="Z50-48-8YZ"/>
-                            <constraint firstAttribute="trailing" secondItem="vu1-jv-zQp" secondAttribute="trailing" id="oAX-xh-M8w"/>
+                            <constraint firstItem="f2U-xC-v1X" firstAttribute="trailing" secondItem="usv-2v-C9r" secondAttribute="trailing" id="KKV-hh-lEZ"/>
+                            <constraint firstItem="Qab-Lu-3VZ" firstAttribute="leading" secondItem="f2U-xC-v1X" secondAttribute="leading" id="TWt-P9-7cC"/>
+                            <constraint firstItem="Qab-Lu-3VZ" firstAttribute="top" secondItem="f2U-xC-v1X" secondAttribute="top" id="U6F-qS-Azl"/>
+                            <constraint firstItem="vu1-jv-zQp" firstAttribute="leading" secondItem="f2U-xC-v1X" secondAttribute="leading" id="YcM-Fs-taT"/>
+                            <constraint firstItem="usv-2v-C9r" firstAttribute="leading" secondItem="f2U-xC-v1X" secondAttribute="leading" id="Z50-48-8YZ"/>
+                            <constraint firstItem="Qab-Lu-3VZ" firstAttribute="bottom" secondItem="usv-2v-C9r" secondAttribute="bottom" id="ZDZ-0e-6U9"/>
+                            <constraint firstItem="f2U-xC-v1X" firstAttribute="trailing" secondItem="vu1-jv-zQp" secondAttribute="trailing" id="oAX-xh-M8w"/>
                             <constraint firstAttribute="bottom" secondItem="vu1-jv-zQp" secondAttribute="bottom" id="wRm-6e-9ov"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="f2U-xC-v1X"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tip" image="TabTip" id="N2y-Gf-eYu"/>
                     <navigationItem key="navigationItem" title="Calculator" id="86Y-aW-Aco"/>
@@ -683,10 +674,6 @@ TipCalc 2017 (C) Yubo Qin</string>
         <scene sceneID="Fcn-qR-6LR">
             <objects>
                 <viewController id="pVf-9M-KOl" customClass="BillViewController" customModule="TipCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9lO-Am-SG9"/>
-                        <viewControllerLayoutGuide type="bottom" id="td9-UB-IDU"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qUT-uJ-83T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -703,10 +690,11 @@ TipCalc 2017 (C) Yubo Qin</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Unl-a8-twq" firstAttribute="top" secondItem="qUT-uJ-83T" secondAttribute="top" id="CFM-uK-O6x"/>
-                            <constraint firstItem="td9-UB-IDU" firstAttribute="top" secondItem="Unl-a8-twq" secondAttribute="bottom" id="Gya-2I-qrY"/>
-                            <constraint firstItem="Unl-a8-twq" firstAttribute="leading" secondItem="qUT-uJ-83T" secondAttribute="leading" id="ZuA-xC-AY8"/>
-                            <constraint firstAttribute="trailing" secondItem="Unl-a8-twq" secondAttribute="trailing" id="ciN-BD-DZh"/>
+                            <constraint firstItem="iDi-hQ-TSc" firstAttribute="bottom" secondItem="Unl-a8-twq" secondAttribute="bottom" id="Gya-2I-qrY"/>
+                            <constraint firstItem="Unl-a8-twq" firstAttribute="leading" secondItem="iDi-hQ-TSc" secondAttribute="leading" id="ZuA-xC-AY8"/>
+                            <constraint firstItem="iDi-hQ-TSc" firstAttribute="trailing" secondItem="Unl-a8-twq" secondAttribute="trailing" id="ciN-BD-DZh"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="iDi-hQ-TSc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Te-Eh-Q4L" userLabel="First Responder" sceneMemberID="firstResponder"/>

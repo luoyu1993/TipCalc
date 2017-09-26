@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'TipCalc' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -13,10 +13,9 @@ target 'TipCalc' do
   pod 'FMDB', '~> 2.6.2'
   pod 'Toaster', '~> 2.0.3'
   pod 'Hero', '~> 0.3'
-  pod 'Charts'
+  pod 'Charts', '~> 3.0.4'
   pod 'DateToolsSwift'
   pod 'DZNEmptyDataSet', '~> 1.8.1'
-  # pod 'Venmo-iOS-SDK'
 
   target 'TipCalcTests' do
     inherit! :search_paths

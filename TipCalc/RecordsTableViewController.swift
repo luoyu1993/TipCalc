@@ -211,8 +211,8 @@ extension RecordsTableViewController: DZNEmptyDataSetSource {
             str = "No Data"
         }
         
-        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0),
-                          NSForegroundColorAttributeName: UIColor.darkGray]
+        let attributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18.0),
+                          NSAttributedStringKey.foregroundColor: UIColor.darkGray]
         let attrStr = NSAttributedString(string: str, attributes: attributes)
         return attrStr
     }
@@ -225,8 +225,8 @@ extension RecordsTableViewController: DZNEmptyDataSetSource {
             str = "You can save some bills from the main view."
         }
         
-        let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0),
-                          NSForegroundColorAttributeName: UIColor.lightGray]
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0),
+                          NSAttributedStringKey.foregroundColor: UIColor.lightGray]
         let attrStr = NSAttributedString(string: str, attributes: attributes)
         return attrStr
     }

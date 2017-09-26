@@ -81,13 +81,17 @@ class StatisticsTableViewController: UITableViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        self.automaticallyAdjustsScrollViewInsets = false
-        
-        var insets = self.tableView.contentInset
-        insets.top = (self.navigationController?.navigationBar.bounds.size.height)! + UIApplication.shared.statusBarFrame.size.height
-        insets.bottom = (self.tabBarController?.tabBar.bounds.size.height)!
-        self.tableView.contentInset = insets
-        self.tableView.scrollIndicatorInsets = insets
+        if #available(iOS 11.0, *) {
+            self.automaticallyAdjustsScrollViewInsets = true
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+            
+            var insets = self.tableView.contentInset
+            insets.top = (self.navigationController?.navigationBar.bounds.size.height)! + UIApplication.shared.statusBarFrame.size.height
+            insets.bottom = (self.tabBarController?.tabBar.bounds.size.height)!
+            self.tableView.contentInset = insets
+            self.tableView.scrollIndicatorInsets = insets
+        }
     }
 
     override func didReceiveMemoryWarning() {
