@@ -6,7 +6,7 @@ target 'TipCalc' do
   use_frameworks!
 
   # Pods for TipCalc
-  pod 'SnapKit', '~> 3.2.0'
+  pod 'SnapKit', '~> 4.0.0'
   pod 'IQKeyboardManagerSwift', '~> 4.0.8'
   pod 'LTMorphingLabel', '~> 0.4.0'
   pod 'DynamicButton', '~> 3.1.0'
@@ -48,7 +48,7 @@ target 'TipCalcTodayWidget' do
   use_frameworks!
 
   # Pods for TipCalcTodayWidget
-  pod 'SnapKit', '~> 3.2.0'
+  pod 'SnapKit', '~> 4.0.0'
   pod 'LTMorphingLabel', '~> 0.4.0'
 
 end

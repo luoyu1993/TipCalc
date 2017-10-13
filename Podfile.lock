@@ -11,11 +11,11 @@ PODS:
   - Hero (0.3.6)
   - IQKeyboardManagerSwift (4.0.13)
   - LTMorphingLabel (0.4.0)
-  - SnapKit (3.2.0)
+  - SnapKit (4.0.0)
   - Toaster (2.0.4)
 
 DEPENDENCIES:
-  - Charts (~> 3.0.3)
+  - Charts (~> 3.0.4)
   - DateToolsSwift
   - DynamicButton (~> 3.1.0)
   - DZNEmptyDataSet (~> 1.8.1)
@@ -23,7 +23,7 @@ DEPENDENCIES:
   - Hero (~> 0.3)
   - IQKeyboardManagerSwift (~> 4.0.8)
   - LTMorphingLabel (~> 0.4.0)
-  - SnapKit (~> 3.2.0)
+  - SnapKit (~> 4.0.0)
   - Toaster (~> 2.0.3)
 
 SPEC CHECKSUMS:
@@ -35,9 +35,9 @@ SPEC CHECKSUMS:
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
   LTMorphingLabel: d9a85f16ac306f0e07321d6819964deb2dc69638
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Toaster: f13031c636ef065281bc11857be9a16c7659e04f
 
-PODFILE CHECKSUM: 3cff264807deb1136c13145bffd63d504abde1c7
+PODFILE CHECKSUM: 7225322ee569b506e517cead572536d4d4409cc8
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.beta.1
