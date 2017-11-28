@@ -6,16 +6,16 @@ target 'TipCalc' do
   use_frameworks!
 
   # Pods for TipCalc
-  pod 'SnapKit', '~> 4.0.0'
-  pod 'IQKeyboardManagerSwift', '~> 4.0.8'
-  pod 'LTMorphingLabel', '~> 0.4.0'
-  pod 'DynamicButton', '~> 3.1.0'
-  pod 'FMDB', '~> 2.6.2'
-  pod 'Toaster', '~> 2.0.3'
-  pod 'Hero', '~> 0.3'
-  pod 'Charts', '~> 3.0.4'
+  pod 'SnapKit'
+  pod 'IQKeyboardManagerSwift'
+  pod 'LTMorphingLabel'
+  pod 'DynamicButton'
+  pod 'FMDB'
+  pod 'Toaster'
+  pod 'Hero'
+  pod 'Charts'
   pod 'DateToolsSwift'
-  pod 'DZNEmptyDataSet', '~> 1.8.1'
+  pod 'DZNEmptyDataSet'
 
   target 'TipCalcTests' do
     inherit! :search_paths
@@ -48,7 +48,7 @@ target 'TipCalcTodayWidget' do
   use_frameworks!
 
   # Pods for TipCalcTodayWidget
-  pod 'SnapKit', '~> 4.0.0'
-  pod 'LTMorphingLabel', '~> 0.4.0'
+  pod 'SnapKit'
+  pod 'LTMorphingLabel'
 
 end

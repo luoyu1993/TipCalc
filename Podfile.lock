@@ -3,41 +3,41 @@ PODS:
     - Charts/Core (= 3.0.4)
   - Charts/Core (3.0.4)
   - DateToolsSwift (2.0.3)
-  - DynamicButton (3.1.0)
+  - DynamicButton (5.0.0)
   - DZNEmptyDataSet (1.8.1)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
-  - Hero (0.3.6)
-  - IQKeyboardManagerSwift (4.0.13)
-  - LTMorphingLabel (0.4.0)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - Hero (1.0.1)
+  - IQKeyboardManagerSwift (5.0.6)
+  - LTMorphingLabel (0.5.5)
   - SnapKit (4.0.0)
-  - Toaster (2.0.4)
+  - Toaster (2.1.1)
 
 DEPENDENCIES:
-  - Charts (~> 3.0.4)
+  - Charts
   - DateToolsSwift
-  - DynamicButton (~> 3.1.0)
-  - DZNEmptyDataSet (~> 1.8.1)
-  - FMDB (~> 2.6.2)
-  - Hero (~> 0.3)
-  - IQKeyboardManagerSwift (~> 4.0.8)
-  - LTMorphingLabel (~> 0.4.0)
-  - SnapKit (~> 4.0.0)
-  - Toaster (~> 2.0.3)
+  - DynamicButton
+  - DZNEmptyDataSet
+  - FMDB
+  - Hero
+  - IQKeyboardManagerSwift
+  - LTMorphingLabel
+  - SnapKit
+  - Toaster
 
 SPEC CHECKSUMS:
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
-  DynamicButton: 37968af761a31274aeac427f40204688fa810342
+  DynamicButton: 4c2fef968e4aa0a8a6ed7ca6b8a58c8e21a36cdc
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
-  IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
-  LTMorphingLabel: d9a85f16ac306f0e07321d6819964deb2dc69638
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  Hero: cee286821578e170d8c0c9c9cda7897357401112
+  IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
+  LTMorphingLabel: 86464e41c3394dbf1ad098442ed4dcf8891ba975
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Toaster: f13031c636ef065281bc11857be9a16c7659e04f
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 7225322ee569b506e517cead572536d4d4409cc8
+PODFILE CHECKSUM: 85c6069f75e31237f50010e5f5d353b2b35a6b28
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.4.0.beta.2

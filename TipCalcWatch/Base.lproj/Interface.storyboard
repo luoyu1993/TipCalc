@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TipCalcWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="WIR-lH-qyK">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Subtotal" textAlignment="left" id="AOy-5i-ncq">
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="right" verticalAlignment="center" text="0" textAlignment="right" id="4nC-oJ-dHf"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="CIl-dr-QwV">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Tip" textAlignment="left" id="y5b-8s-JVD">
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="right" verticalAlignment="center" text="0" id="gdM-OZ-1vI"/>
+                            </items>
+                        </group>
+                        <group width="1" height="30" alignment="left" id="K46-kz-KU3">
+                            <items>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="1" id="wOr-w9-lbs">
+                                    <connections>
+                                        <action selector="numPressed1" destination="AgC-eL-Hgc" id="ncB-eG-UuE"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="2" id="vRX-cu-1H6">
+                                    <connections>
+                                        <action selector="numPressed2" destination="AgC-eL-Hgc" id="39h-Cw-2et"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="3" id="Q4o-Qv-eVT">
+                                    <connections>
+                                        <action selector="numPressed3" destination="AgC-eL-Hgc" id="0dH-HE-XLq"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" height="30" alignment="left" id="v1f-Xj-n1K">
+                            <items>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="4" id="Z39-zO-oOq">
+                                    <connections>
+                                        <action selector="numPressed4" destination="AgC-eL-Hgc" id="sib-G6-H0I"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="5" id="sys-hR-bd5">
+                                    <connections>
+                                        <action selector="numPressed5" destination="AgC-eL-Hgc" id="6ff-xZ-7gF"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="6" id="8ef-5b-tfi">
+                                    <connections>
+                                        <action selector="numPressed6" destination="AgC-eL-Hgc" id="onx-sN-OkG"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" height="30" alignment="left" id="Ehe-xB-KUA">
+                            <items>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="7" id="kqn-TX-oXe">
+                                    <connections>
+                                        <action selector="numPressed7" destination="AgC-eL-Hgc" id="aWa-dh-50i"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="8" id="NOW-88-r8M">
+                                    <connections>
+                                        <action selector="numPressed8" destination="AgC-eL-Hgc" id="dXn-0v-SCf"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="9" id="ylc-wI-Nkq">
+                                    <connections>
+                                        <action selector="numPressed9" destination="AgC-eL-Hgc" id="uCd-j1-noX"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" height="30" alignment="left" id="Jh4-k0-Ioc">
+                            <items>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="DEL" id="N2n-j1-ftO">
+                                    <connections>
+                                        <action selector="delPressed" destination="AgC-eL-Hgc" id="7T6-Cz-nM3"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="0" id="u0X-xJ-itv">
+                                    <connections>
+                                        <action selector="numPressed0" destination="AgC-eL-Hgc" id="zPA-c2-s3e"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33329999999999999" height="1" alignment="left" title="." id="gih-tY-bkp">
+                                    <connections>
+                                        <action selector="dotPressed" destination="AgC-eL-Hgc" id="EIc-8E-zZh"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Clear" id="ksB-28-HU3">
+                            <connections>
+                                <action selector="clearPressed" destination="AgC-eL-Hgc" id="Rha-mz-hOv"/>
+                            </connections>
+                        </button>
+                        <label width="1" alignment="center" verticalAlignment="center" text="Force Touch to select tip rate" textAlignment="center" numberOfLines="0" id="1FA-uj-Sq9">
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                    </items>
+                    <menu key="menu" id="5eI-bn-qsf">
+                        <items>
+                            <menuItem title="12%" icon="accept" id="BA3-Ck-YbL">
+                                <connections>
+                                    <action selector="rateSelected12" destination="AgC-eL-Hgc" id="h48-5n-RK5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="15%" icon="accept" id="iA4-vQ-nu3">
+                                <connections>
+                                    <action selector="rateSelected15" destination="AgC-eL-Hgc" id="oHt-hr-NqZ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="18%" icon="accept" id="IQT-rI-ccb">
+                                <connections>
+                                    <action selector="rateSelected18" destination="AgC-eL-Hgc" id="Z5C-Tm-2Za"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="20%" icon="accept" id="41Q-qq-waQ">
+                                <connections>
+                                    <action selector="rateSelected20" destination="AgC-eL-Hgc" id="f4G-iJ-oM3"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="subtotalLabel" destination="4nC-oJ-dHf" id="vT4-Ib-VuC"/>
+                        <outlet property="tipLabel" destination="gdM-OZ-1vI" id="d8t-zh-T0i"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="344"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="TipCalcWatch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>

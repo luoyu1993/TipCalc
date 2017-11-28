@@ -85,7 +85,7 @@ class TodayActualViewController: UIViewController {
     fileprivate func setColors() {
         let mainTintColor = TipCalcDataManager.widgetTintColor()
         
-        TipCalcDataManager.setTintColors()
+        UIShare.setTintColors()
         
         let animatedEnabled = TipCalcDataManager.animatedLabel()
         

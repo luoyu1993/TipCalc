@@ -77,7 +77,7 @@ class SettingViewController: UITableViewController {
             self.shakeToClearOptionSegmentedControl.tintColor = mainTintColor
         })
         
-        TipCalcDataManager.setTintColors()
+        UIShare.setTintColors()
         UIApplication.shared.keyWindow?.tintColor = mainTintColor
     }
     

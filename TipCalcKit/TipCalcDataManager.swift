@@ -50,21 +50,6 @@ class TipCalcDataManager: NSObject {
         return userDefault!.integer(forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
     }
     
-    class func setTintColors() {
-        let mainTintColor = TipCalcDataManager.widgetTintColor()
-        
-        UISegmentedControl.appearance().tintColor = mainTintColor
-        UIToolbar.appearance().tintColor = mainTintColor
-        UIStepper.appearance().tintColor = mainTintColor
-        UITextField.appearance().tintColor = mainTintColor
-        UITabBar.appearance().tintColor = mainTintColor
-        UISwitch.appearance().tintColor = mainTintColor
-        UISwitch.appearance().onTintColor = mainTintColor
-        UISlider.appearance().tintColor = mainTintColor
-        UIButton.appearance().tintColor = mainTintColor
-        UINavigationBar.appearance().tintColor = mainTintColor
-    }
-    
     class func shakeToClear() -> Bool {
         let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
         if userDefault?.object(forKey: SETTING_SHAKE_TO_CLEAR) == nil {
