@@ -16,11 +16,8 @@
 		E90EE0631E77330A00B15F31 /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90EE0621E77330A00B15F31 /* BillView.swift */; };
 		E90EE0651E774BD400B15F31 /* BillContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90EE0641E774BD400B15F31 /* BillContentView.xib */; };
 		E9286F961E78CD2700784E2B /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E9286F861E78CD2700784E2B /* about.html */; };
-		E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F891E78CD2700784E2B /* bootstrap-theme.css */; };
 		E9286F981E78CD2700784E2B /* bootstrap-theme.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */; };
-		E9286F991E78CD2700784E2B /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8D1E78CD2700784E2B /* bootstrap.css */; };
 		E9286F9A1E78CD2700784E2B /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8F1E78CD2700784E2B /* bootstrap.min.css */; };
-		E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F921E78CD2700784E2B /* bootstrap.js */; };
 		E9286F9C1E78CD2700784E2B /* bootstrap.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F931E78CD2700784E2B /* bootstrap.min.js */; };
 		E9286F9D1E78CD2700784E2B /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F941E78CD2700784E2B /* jquery.js */; };
 		E9286F9E1E78CD2700784E2B /* npm.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F951E78CD2700784E2B /* npm.js */; };
@@ -217,15 +214,10 @@
 		E90EE0621E77330A00B15F31 /* BillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
 		E90EE0641E774BD400B15F31 /* BillContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillContentView.xib; sourceTree = "<group>"; };
 		E9286F861E78CD2700784E2B /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
-		E9286F891E78CD2700784E2B /* bootstrap-theme.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.css"; sourceTree = "<group>"; };
-		E9286F8A1E78CD2700784E2B /* bootstrap-theme.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.css.map"; sourceTree = "<group>"; };
 		E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.min.css"; sourceTree = "<group>"; };
 		E9286F8C1E78CD2700784E2B /* bootstrap-theme.min.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.min.css.map"; sourceTree = "<group>"; };
-		E9286F8D1E78CD2700784E2B /* bootstrap.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.css; sourceTree = "<group>"; };
-		E9286F8E1E78CD2700784E2B /* bootstrap.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = bootstrap.css.map; sourceTree = "<group>"; };
 		E9286F8F1E78CD2700784E2B /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
 		E9286F901E78CD2700784E2B /* bootstrap.min.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = bootstrap.min.css.map; sourceTree = "<group>"; };
-		E9286F921E78CD2700784E2B /* bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bootstrap.js; sourceTree = "<group>"; };
 		E9286F931E78CD2700784E2B /* bootstrap.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bootstrap.min.js; sourceTree = "<group>"; };
 		E9286F941E78CD2700784E2B /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		E9286F951E78CD2700784E2B /* npm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = npm.js; sourceTree = "<group>"; };
@@ -428,12 +420,8 @@
 		E9286F881E78CD2700784E2B /* css */ = {
 			isa = PBXGroup;
 			children = (
-				E9286F891E78CD2700784E2B /* bootstrap-theme.css */,
-				E9286F8A1E78CD2700784E2B /* bootstrap-theme.css.map */,
 				E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */,
 				E9286F8C1E78CD2700784E2B /* bootstrap-theme.min.css.map */,
-				E9286F8D1E78CD2700784E2B /* bootstrap.css */,
-				E9286F8E1E78CD2700784E2B /* bootstrap.css.map */,
 				E9286F8F1E78CD2700784E2B /* bootstrap.min.css */,
 				E9286F901E78CD2700784E2B /* bootstrap.min.css.map */,
 			);
@@ -443,7 +431,6 @@
 		E9286F911E78CD2700784E2B /* js */ = {
 			isa = PBXGroup;
 			children = (
-				E9286F921E78CD2700784E2B /* bootstrap.js */,
 				E9286F931E78CD2700784E2B /* bootstrap.min.js */,
 				E9286F941E78CD2700784E2B /* jquery.js */,
 				E9286F951E78CD2700784E2B /* npm.js */,
@@ -915,12 +902,9 @@
 				E90EE0651E774BD400B15F31 /* BillContentView.xib in Resources */,
 				E9286FA01E78D07F00784E2B /* AppIcon.png in Resources */,
 				E969E6531E79F677007D07F4 /* Settings.bundle in Resources */,
-				E9286F991E78CD2700784E2B /* bootstrap.css in Resources */,
 				E9286F981E78CD2700784E2B /* bootstrap-theme.min.css in Resources */,
 				E9DDA0C91E6F90770080F791 /* Assets.xcassets in Resources */,
 				E9286F961E78CD2700784E2B /* about.html in Resources */,
-				E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */,
-				E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */,
 				E9C5D31D1E8F718F001007EF /* RecordsTableViewCell.xib in Resources */,
 				E9DDA0C71E6F90770080F791 /* Main.storyboard in Resources */,
 			);

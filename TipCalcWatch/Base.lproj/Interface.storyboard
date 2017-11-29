@@ -91,9 +91,9 @@
                         </group>
                         <group width="1" height="30" alignment="left" id="Jh4-k0-Ioc">
                             <items>
-                                <button width="0.33329999999999999" height="1" alignment="left" title="DEL" id="N2n-j1-ftO">
+                                <button width="0.33329999999999999" height="1" alignment="left" title="." id="gih-tY-bkp">
                                     <connections>
-                                        <action selector="delPressed" destination="AgC-eL-Hgc" id="7T6-Cz-nM3"/>
+                                        <action selector="dotPressed" destination="AgC-eL-Hgc" id="EIc-8E-zZh"/>
                                     </connections>
                                 </button>
                                 <button width="0.33329999999999999" height="1" alignment="left" title="0" id="u0X-xJ-itv">
@@ -101,9 +101,9 @@
                                         <action selector="numPressed0" destination="AgC-eL-Hgc" id="zPA-c2-s3e"/>
                                     </connections>
                                 </button>
-                                <button width="0.33329999999999999" height="1" alignment="left" title="." id="gih-tY-bkp">
+                                <button width="0.33329999999999999" height="1" alignment="left" title="DEL" id="N2n-j1-ftO">
                                     <connections>
-                                        <action selector="dotPressed" destination="AgC-eL-Hgc" id="EIc-8E-zZh"/>
+                                        <action selector="delPressed" destination="AgC-eL-Hgc" id="7T6-Cz-nM3"/>
                                     </connections>
                                 </button>
                             </items>
@@ -113,7 +113,7 @@
                                 <action selector="clearPressed" destination="AgC-eL-Hgc" id="Rha-mz-hOv"/>
                             </connections>
                         </button>
-                        <label width="1" alignment="center" verticalAlignment="center" text="Force Touch to select tip rate" textAlignment="center" numberOfLines="0" id="1FA-uj-Sq9">
+                        <label width="1" alignment="center" verticalAlignment="center" text="Force Touch to change tip rate" textAlignment="center" numberOfLines="0" id="1FA-uj-Sq9">
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                         </label>
@@ -148,7 +148,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="344"/>
+            <point key="canvasLocation" x="220" y="296"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

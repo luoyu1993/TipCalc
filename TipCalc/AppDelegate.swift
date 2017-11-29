@@ -10,6 +10,7 @@ import UIKit
 import TipCalcKit
 import IQKeyboardManagerSwift
 import WatchConnectivity
+import Hero
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         window?.backgroundColor = UIColor.white
+        Hero.shared.containerColor = .white
         
         if WCSession.isSupported() {
             WCSession.default.delegate = self
