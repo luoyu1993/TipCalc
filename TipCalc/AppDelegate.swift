@@ -9,9 +9,10 @@
 import UIKit
 import TipCalcKit
 import IQKeyboardManagerSwift
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
@@ -24,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         window?.backgroundColor = UIColor.white
+        
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
+        }
         
         return true
     }
@@ -70,7 +76,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        session.activate()
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        if message["cmd"] as! String == "update" {
+            if session.isPaired && session.isWatchAppInstalled && session.activationState == .activated {
+                replyHandler([
+                    SETTING_WATCH_FEEDBACK: TipCalcDataManager.shared.watchFeedback,
+                    SETTING_DEFAULT_TIP_RATE_INDEX: TipCalcDataManager.defaultTipRateIndex()
+                ])
+            }
+        }
+    }
 }
 
 extension String {

@@ -7,11 +7,23 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+let NOTIFICATION_SETTINGS_UPDATED = "NOTIFICATION_SETTINGS_UPDATED"
+
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        WCSession.default.delegate = self
+        WCSession.default.activate()
+        WCSession.default.sendMessage(["cmd": "update"], replyHandler: { dict in
+            TipCalcDataManager.shared.watchFeedback = dict[SETTING_WATCH_FEEDBACK] as! Bool
+            TipCalcDataManager.shared.defaults.set(dict[SETTING_DEFAULT_TIP_RATE_INDEX], forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_SETTINGS_UPDATED), object: nil)
+        }, errorHandler: { error in
+            print(error)
+        })
     }
 
     func applicationDidBecomeActive() {
@@ -45,6 +57,17 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 task.setTaskCompletedWithSnapshot(false)
             }
         }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+//        if message["cmd"] as! String == "update" {
+//            TipCalcDataManager.shared.watchFeedback = message[SETTING_WATCH_FEEDBACK] as! Bool
+//            TipCalcDataManager.shared.defaults.set(message[SETTING_DEFAULT_TIP_RATE_INDEX], forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
+//        }
     }
 
 }

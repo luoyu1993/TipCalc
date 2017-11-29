@@ -17,11 +17,13 @@ class InterfaceController: WKInterfaceController {
     var subtotalString = "0"
     var dotFlag = false
     var tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
+    var shouldFeedback = TipCalcDataManager.shared.watchFeedback
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSettings), name: NSNotification.Name(rawValue: NOTIFICATION_SETTINGS_UPDATED), object: nil)
     }
     
     override func willActivate() {
@@ -32,6 +34,12 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    
+    @objc private func updateSettings() {
+        tipRate = rateList[TipCalcDataManager.defaultTipRateIndex()]
+        shouldFeedback = TipCalcDataManager.shared.watchFeedback
+        updateTip()
     }
     
     @IBAction func numPressed1() {
@@ -75,7 +83,9 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func dotPressed() {
-        WKInterfaceDevice.current().play(.click)
+        if shouldFeedback {
+            WKInterfaceDevice.current().play(.click)
+        }
         if !dotFlag {
             dotFlag = true
             subtotalString = "\(subtotalString)."
@@ -84,7 +94,9 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func clearPressed() {
-        WKInterfaceDevice.current().play(.click)
+        if shouldFeedback {
+            WKInterfaceDevice.current().play(.click)
+        }
         subtotalString = "0"
         dotFlag = false
         subtotalLabel.setText("0")
@@ -92,7 +104,9 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func delPressed() {
-        WKInterfaceDevice.current().play(.click)
+        if shouldFeedback {
+            WKInterfaceDevice.current().play(.click)
+        }
         if subtotalString == "0" {
             return
         }
@@ -126,7 +140,9 @@ class InterfaceController: WKInterfaceController {
     }
     
     private func numPressed(num: Int) {
-        WKInterfaceDevice.current().play(.click)
+        if shouldFeedback {
+            WKInterfaceDevice.current().play(.click)
+        }
         if subtotalString == "0" {
             subtotalString = "\(num)"
         } else {

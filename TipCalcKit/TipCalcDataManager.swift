@@ -17,12 +17,29 @@ let SETTING_ANIMATED_LABEL = "animatedLabel"
 let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
 let SETTING_SHAKE_TO_CLEAR = "shakeToClear"
 let SETTING_SHAKE_TO_CLEAR_OPTION = "shakeToClearOption" // 0: clear all, 1: save and clear
+let SETTING_WATCH_FEEDBACK = "watchFeedback"
 
 //let SHARED_BILL_ITEM = "sharedBillItem"
 
 let ANIMATION_DURATION: Float = 0.25
 
 class TipCalcDataManager: NSObject {
+    
+    static let shared = TipCalcDataManager()
+    
+    let defaults = UserDefaults(suiteName: APP_GROUP_NAME)!
+    
+    var watchFeedback: Bool {
+        get {
+            if defaults.object(forKey: SETTING_WATCH_FEEDBACK) == nil {
+                defaults.set(true, forKey: SETTING_WATCH_FEEDBACK)
+            }
+            return defaults.bool(forKey: SETTING_WATCH_FEEDBACK)
+        }
+        set {
+            defaults.set(newValue, forKey: SETTING_WATCH_FEEDBACK)
+        }
+    }
     
     class func widgetTintColor() -> UIColor {
         let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)

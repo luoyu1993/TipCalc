@@ -289,6 +289,8 @@
 		E9E0CF651FCD6466004A6DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E0CF661FCD6466004A6DE5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		E9E0CF781FCDD4D5004A6DE5 /* UIShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShare.swift; sourceTree = "<group>"; };
+		E9E0CF7D1FCDE589004A6DE5 /* TipCalcWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TipCalcWatch Extension.entitlements"; sourceTree = "<group>"; };
+		E9E0CF7E1FCDE594004A6DE5 /* TipCalcWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipCalcWatch.entitlements; sourceTree = "<group>"; };
 		F41369EC887354B29B64A94E /* Pods-TipCalcUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcUITests/Pods-TipCalcUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FAC8E3235F8144FA536E3627 /* Pods_TipCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -599,6 +601,7 @@
 		E9E0CF4D1FCD6466004A6DE5 /* TipCalcWatch */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0CF7E1FCDE594004A6DE5 /* TipCalcWatch.entitlements */,
 				E9E0CF4E1FCD6466004A6DE5 /* Interface.storyboard */,
 				E9E0CF511FCD6466004A6DE5 /* Assets.xcassets */,
 				E9E0CF531FCD6466004A6DE5 /* Info.plist */,
@@ -609,6 +612,7 @@
 		E9E0CF5C1FCD6466004A6DE5 /* TipCalcWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0CF7D1FCDE589004A6DE5 /* TipCalcWatch Extension.entitlements */,
 				E9E0CF5D1FCD6466004A6DE5 /* InterfaceController.swift */,
 				E9E0CF5F1FCD6466004A6DE5 /* ExtensionDelegate.swift */,
 				E9E0CF611FCD6466004A6DE5 /* NotificationController.swift */,
@@ -855,11 +859,21 @@
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = 3998KQRV7C;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					E9E0CF571FCD6466004A6DE5 = {
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = 3998KQRV7C;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1738,6 +1752,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TipCalcWatch/TipCalcWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3998KQRV7C;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1749,7 +1764,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1761,6 +1776,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TipCalcWatch/TipCalcWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3998KQRV7C;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1772,7 +1788,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -1783,6 +1799,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "TipCalcWatch Extension/TipCalcWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3998KQRV7C;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1794,7 +1811,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1805,6 +1822,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "TipCalcWatch Extension/TipCalcWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3998KQRV7C;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1816,7 +1834,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
