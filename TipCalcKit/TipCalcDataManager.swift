@@ -41,6 +41,30 @@ class TipCalcDataManager: NSObject {
         }
     }
     
+    var roundTotal: Bool {
+        get {
+            if defaults.object(forKey: SETTING_ROUND_TOTAL) == nil {
+                defaults.set(false, forKey: SETTING_ROUND_TOTAL)
+            }
+            return defaults.bool(forKey: SETTING_ROUND_TOTAL)
+        }
+        set {
+            defaults.set(newValue, forKey: SETTING_ROUND_TOTAL)
+        }
+    }
+    
+    var roundType: Int {
+        get {
+            if defaults.object(forKey: SETTING_ROUND_TYPE) == nil {
+                defaults.set(0, forKey: SETTING_ROUND_TYPE)
+            }
+            return defaults.integer(forKey: SETTING_ROUND_TYPE)
+        }
+        set {
+            defaults.set(newValue, forKey: SETTING_ROUND_TYPE)
+        }
+    }
+    
     class func widgetTintColor() -> UIColor {
         let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
         if let widgetTintColorArchieve = userDefault?.object(forKey: SETTING_WIDGET_TINT_COLOR) {

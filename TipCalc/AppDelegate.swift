@@ -75,6 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         return true
     }
+    
+    // MARK: - WatchConnectivity
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
@@ -93,7 +95,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             if session.isPaired && session.isWatchAppInstalled && session.activationState == .activated {
                 replyHandler([
                     SETTING_WATCH_FEEDBACK: TipCalcDataManager.shared.watchFeedback,
-                    SETTING_DEFAULT_TIP_RATE_INDEX: TipCalcDataManager.defaultTipRateIndex()
+                    SETTING_DEFAULT_TIP_RATE_INDEX: TipCalcDataManager.defaultTipRateIndex(),
+                    SETTING_ROUND_TYPE: TipCalcDataManager.shared.roundType,
+                    SETTING_ROUND_TOTAL: TipCalcDataManager.shared.roundTotal
                 ])
             }
         }

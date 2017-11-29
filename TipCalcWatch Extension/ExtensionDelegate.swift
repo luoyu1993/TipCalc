@@ -20,6 +20,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         WCSession.default.sendMessage(["cmd": "update"], replyHandler: { dict in
             TipCalcDataManager.shared.watchFeedback = dict[SETTING_WATCH_FEEDBACK] as! Bool
             TipCalcDataManager.shared.defaults.set(dict[SETTING_DEFAULT_TIP_RATE_INDEX], forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
+            TipCalcDataManager.shared.roundType = dict[SETTING_ROUND_TYPE] as! Int
+            TipCalcDataManager.shared.roundTotal = dict[SETTING_ROUND_TOTAL] as! Bool
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_SETTINGS_UPDATED), object: nil)
         }, errorHandler: { error in
             print(error)

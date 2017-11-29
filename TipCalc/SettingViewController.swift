@@ -50,8 +50,8 @@ class SettingViewController: UITableViewController {
     }
     
     fileprivate func reloadSettings(animated: Bool) {
-        roundSwitch.isOn = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) ?? false
-        roundSegmentedControl.selectedSegmentIndex = (UserDefaults(suiteName: APP_GROUP_NAME)?.integer(forKey: SETTING_ROUND_TYPE))!
+        roundSwitch.isOn = TipCalcDataManager.shared.roundTotal
+        roundSegmentedControl.selectedSegmentIndex = TipCalcDataManager.shared.roundType
         animatedSwitch.isOn = TipCalcDataManager.animatedLabel()
         watchFeedbackSwitch.isOn = TipCalcDataManager.shared.watchFeedback
         defaultTipRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
@@ -86,11 +86,11 @@ class SettingViewController: UITableViewController {
     }
     
     @IBAction func roundSwitchChanged() {
-        UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSwitch.isOn, forKey: SETTING_ROUND_TOTAL)
+        TipCalcDataManager.shared.roundTotal = roundSwitch.isOn
     }
     
     @IBAction func roundSegmentedControlValueChanged() {
-        UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSegmentedControl.selectedSegmentIndex, forKey: SETTING_ROUND_TYPE)
+        TipCalcDataManager.shared.roundType = roundSegmentedControl.selectedSegmentIndex
     }
     
     @IBAction func animatedSwitchChanged() {
