@@ -16,14 +16,14 @@ class BillViewController: UIViewController {
     var billItem: BillItem!
 
     fileprivate let leftBtn: DynamicButton = {
-        let leftBtn = DynamicButton(style: DynamicButtonStyle.close)
+        let leftBtn = DynamicButton(style: .close)
         leftBtn.strokeColor = TipCalcDataManager.widgetTintColor()
         leftBtn.bounceButtonOnTouch = false
         return leftBtn
     }()
 
     fileprivate let rightBtn: DynamicButton = {
-        let rightBtn = DynamicButton(style: DynamicButtonStyle.arrowRight)
+        let rightBtn = DynamicButton(style: .arrowRight)
         rightBtn.strokeColor = TipCalcDataManager.widgetTintColor()
         rightBtn.bounceButtonOnTouch = false
         return rightBtn
@@ -149,7 +149,7 @@ class BillViewController: UIViewController {
         leftBtn.removeTarget(self, action: #selector(closeBtnPressed), for: .touchDown)
         leftBtn.addTarget(self, action: #selector(prevBtnPressed), for: .touchDown)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + dynamicButtonDelayInterval, execute: {
-            self.leftBtn.setStyle(DynamicButtonStyle.arrowLeft, animated: true)
+            self.leftBtn.setStyle(.arrowLeft, animated: true)
             self.leftBtn.isUserInteractionEnabled = true
         })
         
@@ -159,7 +159,7 @@ class BillViewController: UIViewController {
         self.rightBtn.removeTarget(self, action: #selector(self.nextBtnPressed), for: .touchDown)
         self.rightBtn.addTarget(self, action: #selector(self.doneBtnPressed), for: .touchDown)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + dynamicButtonDelayInterval, execute: {
-            self.rightBtn.setStyle(DynamicButtonStyle.checkMark, animated: true)
+            self.rightBtn.setStyle(.checkMark, animated: true)
             self.rightBtn.isUserInteractionEnabled = true
         })
         
@@ -194,7 +194,7 @@ class BillViewController: UIViewController {
         leftBtn.removeTarget(self, action: #selector(prevBtnPressed), for: .touchDown)
         leftBtn.addTarget(self, action: #selector(closeBtnPressed), for: .touchDown)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + dynamicButtonDelayInterval, execute: {
-            self.leftBtn.setStyle(DynamicButtonStyle.close, animated: true)
+            self.leftBtn.setStyle(.close, animated: true)
             self.leftBtn.isUserInteractionEnabled = true
         })
         
@@ -204,7 +204,7 @@ class BillViewController: UIViewController {
         rightBtn.removeTarget(self, action: #selector(doneBtnPressed), for: .touchDown)
         rightBtn.addTarget(self, action: #selector(nextBtnPressed), for: .touchDown)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + dynamicButtonDelayInterval, execute: {
-            self.rightBtn.setStyle(DynamicButtonStyle.arrowRight, animated: true)
+            self.rightBtn.setStyle(.arrowRight, animated: true)
             self.rightBtn.isUserInteractionEnabled = true
         })
         

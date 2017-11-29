@@ -17,12 +17,53 @@ let SETTING_ANIMATED_LABEL = "animatedLabel"
 let SETTING_DEFAULT_TIP_RATE_INDEX = "defaultTipRateIndex"
 let SETTING_SHAKE_TO_CLEAR = "shakeToClear"
 let SETTING_SHAKE_TO_CLEAR_OPTION = "shakeToClearOption" // 0: clear all, 1: save and clear
+let SETTING_WATCH_FEEDBACK = "watchFeedback"
 
 //let SHARED_BILL_ITEM = "sharedBillItem"
 
 let ANIMATION_DURATION: Float = 0.25
 
 class TipCalcDataManager: NSObject {
+    
+    static let shared = TipCalcDataManager()
+    
+    let defaults = UserDefaults(suiteName: APP_GROUP_NAME)!
+    
+    var watchFeedback: Bool {
+        get {
+            if defaults.object(forKey: SETTING_WATCH_FEEDBACK) == nil {
+                defaults.set(true, forKey: SETTING_WATCH_FEEDBACK)
+            }
+            return defaults.bool(forKey: SETTING_WATCH_FEEDBACK)
+        }
+        set {
+            defaults.set(newValue, forKey: SETTING_WATCH_FEEDBACK)
+        }
+    }
+    
+    var roundTotal: Bool {
+        get {
+            if defaults.object(forKey: SETTING_ROUND_TOTAL) == nil {
+                defaults.set(false, forKey: SETTING_ROUND_TOTAL)
+            }
+            return defaults.bool(forKey: SETTING_ROUND_TOTAL)
+        }
+        set {
+            defaults.set(newValue, forKey: SETTING_ROUND_TOTAL)
+        }
+    }
+    
+    var roundType: Int {
+        get {
+            if defaults.object(forKey: SETTING_ROUND_TYPE) == nil {
+                defaults.set(0, forKey: SETTING_ROUND_TYPE)
+            }
+            return defaults.integer(forKey: SETTING_ROUND_TYPE)
+        }
+        set {
+            defaults.set(newValue, forKey: SETTING_ROUND_TYPE)
+        }
+    }
     
     class func widgetTintColor() -> UIColor {
         let userDefault = UserDefaults(suiteName: APP_GROUP_NAME)
@@ -48,21 +89,6 @@ class TipCalcDataManager: NSObject {
             userDefault?.set(0, forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
         }
         return userDefault!.integer(forKey: SETTING_DEFAULT_TIP_RATE_INDEX)
-    }
-    
-    class func setTintColors() {
-        let mainTintColor = TipCalcDataManager.widgetTintColor()
-        
-        UISegmentedControl.appearance().tintColor = mainTintColor
-        UIToolbar.appearance().tintColor = mainTintColor
-        UIStepper.appearance().tintColor = mainTintColor
-        UITextField.appearance().tintColor = mainTintColor
-        UITabBar.appearance().tintColor = mainTintColor
-        UISwitch.appearance().tintColor = mainTintColor
-        UISwitch.appearance().onTintColor = mainTintColor
-        UISlider.appearance().tintColor = mainTintColor
-        UIButton.appearance().tintColor = mainTintColor
-        UINavigationBar.appearance().tintColor = mainTintColor
     }
     
     class func shakeToClear() -> Bool {

@@ -8,7 +8,6 @@
 
 import UIKit
 import TipCalcKit
-import StoreKit
 
 class SettingViewController: UITableViewController {
     
@@ -16,6 +15,7 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var roundSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tintColorView: UIView!
     @IBOutlet weak var animatedSwitch: UISwitch!
+    @IBOutlet weak var watchFeedbackSwitch: UISwitch!
     @IBOutlet weak var defaultTipRateSegmentedControl: UISegmentedControl!
     @IBOutlet weak var shakeToClearSwitch: UISwitch!
     @IBOutlet weak var shakeToClearOptionSegmentedControl: UISegmentedControl!
@@ -49,9 +49,10 @@ class SettingViewController: UITableViewController {
     }
     
     fileprivate func reloadSettings(animated: Bool) {
-        roundSwitch.isOn = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL) ?? false
-        roundSegmentedControl.selectedSegmentIndex = (UserDefaults(suiteName: APP_GROUP_NAME)?.integer(forKey: SETTING_ROUND_TYPE))!
+        roundSwitch.isOn = TipCalcDataManager.shared.roundTotal
+        roundSegmentedControl.selectedSegmentIndex = TipCalcDataManager.shared.roundType
         animatedSwitch.isOn = TipCalcDataManager.animatedLabel()
+        watchFeedbackSwitch.isOn = TipCalcDataManager.shared.watchFeedback
         defaultTipRateSegmentedControl.selectedSegmentIndex = TipCalcDataManager.defaultTipRateIndex()
         shakeToClearSwitch.isOn = TipCalcDataManager.shakeToClear()
         shakeToClearOptionSegmentedControl.selectedSegmentIndex = TipCalcDataManager.shakeToClearOption()
@@ -69,6 +70,8 @@ class SettingViewController: UITableViewController {
             self.roundSegmentedControl.tintColor = mainTintColor
             self.animatedSwitch.tintColor = mainTintColor
             self.animatedSwitch.onTintColor = mainTintColor
+            self.watchFeedbackSwitch.tintColor = mainTintColor
+            self.watchFeedbackSwitch.onTintColor = mainTintColor
             self.defaultTipRateSegmentedControl.tintColor = mainTintColor
             self.navigationController!.tabBarController!.tabBar.tintColor = mainTintColor
             self.navigationController!.navigationBar.tintColor = mainTintColor
@@ -77,20 +80,24 @@ class SettingViewController: UITableViewController {
             self.shakeToClearOptionSegmentedControl.tintColor = mainTintColor
         })
         
-        TipCalcDataManager.setTintColors()
+        UIShare.setTintColors()
         UIApplication.shared.keyWindow?.tintColor = mainTintColor
     }
     
     @IBAction func roundSwitchChanged() {
-        UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSwitch.isOn, forKey: SETTING_ROUND_TOTAL)
+        TipCalcDataManager.shared.roundTotal = roundSwitch.isOn
     }
     
     @IBAction func roundSegmentedControlValueChanged() {
-        UserDefaults(suiteName: APP_GROUP_NAME)?.set(roundSegmentedControl.selectedSegmentIndex, forKey: SETTING_ROUND_TYPE)
+        TipCalcDataManager.shared.roundType = roundSegmentedControl.selectedSegmentIndex
     }
     
     @IBAction func animatedSwitchChanged() {
         UserDefaults(suiteName: APP_GROUP_NAME)?.set(animatedSwitch.isOn, forKey: SETTING_ANIMATED_LABEL)
+    }
+    
+    @IBAction func watchFeedbackSwitchChanged() {
+        TipCalcDataManager.shared.watchFeedback = watchFeedbackSwitch.isOn
     }
     
     @IBAction func defaultTipRateSegmentedControlValueChanged() {
@@ -160,12 +167,8 @@ class SettingViewController: UITableViewController {
         case 4:
             switch indexPath.row {
             case 1:
-                if #available(iOS 10.3, *) {
-                    SKStoreReviewController.requestReview()
-                } else {
-                    let url = URL(string: "itms-apps://itunes.apple.com/us/app/tipcalc-quick-tip-calculator-and-bill-splitter/id1214666400")
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                }
+                let url = URL(string: "itms-apps://itunes.apple.com/us/app/tipcalc-quick-tip-calculator-and-bill-splitter/id1214666400")
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
             default:
                 break
             }

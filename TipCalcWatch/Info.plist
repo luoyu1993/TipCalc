@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>TipCalc</string>
 	<key>CFBundleExecutable</key>
@@ -15,17 +15,19 @@
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>XPC!</string>
+	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.1</string>
 	<key>CFBundleVersion</key>
 	<string>1129</string>
-	<key>NSExtension</key>
-	<dict>
-		<key>NSExtensionMainStoryboard</key>
-		<string>MainInterface</string>
-		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.widget-extension</string>
-	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>WKCompanionAppBundleIdentifier</key>
+	<string>cmu.yuboqin.TipCalc</string>
+	<key>WKWatchKitApp</key>
+	<true/>
 </dict>
 </plist>

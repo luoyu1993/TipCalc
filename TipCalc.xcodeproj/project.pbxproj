@@ -16,11 +16,8 @@
 		E90EE0631E77330A00B15F31 /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90EE0621E77330A00B15F31 /* BillView.swift */; };
 		E90EE0651E774BD400B15F31 /* BillContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90EE0641E774BD400B15F31 /* BillContentView.xib */; };
 		E9286F961E78CD2700784E2B /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E9286F861E78CD2700784E2B /* about.html */; };
-		E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F891E78CD2700784E2B /* bootstrap-theme.css */; };
 		E9286F981E78CD2700784E2B /* bootstrap-theme.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */; };
-		E9286F991E78CD2700784E2B /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8D1E78CD2700784E2B /* bootstrap.css */; };
 		E9286F9A1E78CD2700784E2B /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E9286F8F1E78CD2700784E2B /* bootstrap.min.css */; };
-		E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F921E78CD2700784E2B /* bootstrap.js */; };
 		E9286F9C1E78CD2700784E2B /* bootstrap.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F931E78CD2700784E2B /* bootstrap.min.js */; };
 		E9286F9D1E78CD2700784E2B /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F941E78CD2700784E2B /* jquery.js */; };
 		E9286F9E1E78CD2700784E2B /* npm.js in Resources */ = {isa = PBXBuildFile; fileRef = E9286F951E78CD2700784E2B /* npm.js */; };
@@ -69,6 +66,21 @@
 		E9DDA1361E6FC5110080F791 /* TipCalcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DDA1091E6F92FF0080F791 /* TipCalcKit.framework */; };
 		E9DDA1391E6FC5DE0080F791 /* TipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DDA1331E6FBBC60080F791 /* TipCalculator.swift */; };
 		E9DDA13B1E6FCC000080F791 /* TipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DDA1331E6FBBC60080F791 /* TipCalculator.swift */; };
+		E9E0CF501FCD6466004A6DE5 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CF4E1FCD6466004A6DE5 /* Interface.storyboard */; };
+		E9E0CF521FCD6466004A6DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CF511FCD6466004A6DE5 /* Assets.xcassets */; };
+		E9E0CF591FCD6466004A6DE5 /* TipCalcWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E9E0CF581FCD6466004A6DE5 /* TipCalcWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E9E0CF5E1FCD6466004A6DE5 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CF5D1FCD6466004A6DE5 /* InterfaceController.swift */; };
+		E9E0CF601FCD6466004A6DE5 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CF5F1FCD6466004A6DE5 /* ExtensionDelegate.swift */; };
+		E9E0CF621FCD6466004A6DE5 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CF611FCD6466004A6DE5 /* NotificationController.swift */; };
+		E9E0CF641FCD6466004A6DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CF631FCD6466004A6DE5 /* Assets.xcassets */; };
+		E9E0CF691FCD6466004A6DE5 /* TipCalcWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E9E0CF4C1FCD6466004A6DE5 /* TipCalcWatch.app */; };
+		E9E0CF721FCDD210004A6DE5 /* TipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DDA1331E6FBBC60080F791 /* TipCalculator.swift */; };
+		E9E0CF741FCDD218004A6DE5 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C73CB61E7628A300D90405 /* BillItem.swift */; };
+		E9E0CF771FCDD388004A6DE5 /* TipCalcDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CC91E709555008C9BF6 /* TipCalcDataManager.swift */; };
+		E9E0CF791FCDD4D5004A6DE5 /* UIShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CF781FCDD4D5004A6DE5 /* UIShare.swift */; };
+		E9E0CF7A1FCDD4D5004A6DE5 /* UIShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CF781FCDD4D5004A6DE5 /* UIShare.swift */; };
+		E9E0CF7B1FCDD4D5004A6DE5 /* UIShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CF781FCDD4D5004A6DE5 /* UIShare.swift */; };
+		E9E0CF7C1FCDD4E4004A6DE5 /* FlatColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +126,20 @@
 			remoteGlobalIDString = E9DDA1081E6F92FF0080F791;
 			remoteInfo = TipCalcKit;
 		};
+		E9E0CF5A1FCD6466004A6DE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9DDA0B61E6F90770080F791 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9E0CF571FCD6466004A6DE5;
+			remoteInfo = "TipCalcWatch Extension";
+		};
+		E9E0CF671FCD6466004A6DE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9DDA0B61E6F90770080F791 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9E0CF4B1FCD6466004A6DE5;
+			remoteInfo = TipCalcWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -139,16 +165,43 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E9E0CF6F1FCD6466004A6DE5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E9E0CF591FCD6466004A6DE5 /* TipCalcWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9E0CF711FCD6466004A6DE5 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E9E0CF691FCD6466004A6DE5 /* TipCalcWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		182C85EC010D7C4883BA9B20 /* Pods-TipCalcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcTests/Pods-TipCalcTests.release.xcconfig"; sourceTree = "<group>"; };
+		1BE60E5FC51D0AD6BE14272D /* Pods-TipCalcWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcWatch Extension/Pods-TipCalcWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		2C67C5547E29F102341034F7 /* Pods_TipCalcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D86C034A1001CDA1570A07F /* Pods-TipCalcKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcKit/Pods-TipCalcKit.release.xcconfig"; sourceTree = "<group>"; };
+		2D8DC9E00AA70A686FB5029A /* Pods-TipCalcWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcWatch Extension/Pods-TipCalcWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		38D5F17AB73B50DBC94EC5F9 /* Pods-TipCalcTodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcTodayWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcTodayWidget/Pods-TipCalcTodayWidget.release.xcconfig"; sourceTree = "<group>"; };
 		3E0B6AE017313575D3D25339 /* Pods_TipCalcKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EC9487D3F050F9912A6EAF /* libPods-TipCalcWatch Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TipCalcWatch Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FC2D6291D242ADD7621873 /* Pods-TipCalcUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcUITests/Pods-TipCalcUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A0CA3FF129CE6E07D59ECDA /* Pods-TipCalcKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcKitTests/Pods-TipCalcKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		5AF6D854F2A5F3474F977C74 /* Pods_TipCalcWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A5B5649418F99ED29DF4CE /* Pods_TipCalcWatch_TipCalcWatchExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcWatch_TipCalcWatchExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		784BA7D0704B2C427B4A1CAC /* Pods-TipCalcKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcKit/Pods-TipCalcKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8647F5AC6E0E630086317164 /* Pods_TipCalcTodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcTodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		961FC59749B82B21F3F26278 /* Pods-TipCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalc.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalc/Pods-TipCalc.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,15 +214,10 @@
 		E90EE0621E77330A00B15F31 /* BillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
 		E90EE0641E774BD400B15F31 /* BillContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillContentView.xib; sourceTree = "<group>"; };
 		E9286F861E78CD2700784E2B /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
-		E9286F891E78CD2700784E2B /* bootstrap-theme.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.css"; sourceTree = "<group>"; };
-		E9286F8A1E78CD2700784E2B /* bootstrap-theme.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.css.map"; sourceTree = "<group>"; };
 		E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.min.css"; sourceTree = "<group>"; };
 		E9286F8C1E78CD2700784E2B /* bootstrap-theme.min.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.min.css.map"; sourceTree = "<group>"; };
-		E9286F8D1E78CD2700784E2B /* bootstrap.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.css; sourceTree = "<group>"; };
-		E9286F8E1E78CD2700784E2B /* bootstrap.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = bootstrap.css.map; sourceTree = "<group>"; };
 		E9286F8F1E78CD2700784E2B /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
 		E9286F901E78CD2700784E2B /* bootstrap.min.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = bootstrap.min.css.map; sourceTree = "<group>"; };
-		E9286F921E78CD2700784E2B /* bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bootstrap.js; sourceTree = "<group>"; };
 		E9286F931E78CD2700784E2B /* bootstrap.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bootstrap.min.js; sourceTree = "<group>"; };
 		E9286F941E78CD2700784E2B /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		E9286F951E78CD2700784E2B /* npm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = npm.js; sourceTree = "<group>"; };
@@ -221,11 +269,32 @@
 		E9DDA1331E6FBBC60080F791 /* TipCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalculator.swift; sourceTree = "<group>"; };
 		E9DDA1371E6FC5900080F791 /* TipCalc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipCalc.entitlements; sourceTree = "<group>"; };
 		E9DDA1381E6FC5AB0080F791 /* TipCalcTodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipCalcTodayWidget.entitlements; sourceTree = "<group>"; };
+		E9E0CF4C1FCD6466004A6DE5 /* TipCalcWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalcWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9E0CF4F1FCD6466004A6DE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E9E0CF511FCD6466004A6DE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9E0CF531FCD6466004A6DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9E0CF581FCD6466004A6DE5 /* TipCalcWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TipCalcWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9E0CF5D1FCD6466004A6DE5 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E9E0CF5F1FCD6466004A6DE5 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E9E0CF611FCD6466004A6DE5 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		E9E0CF631FCD6466004A6DE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9E0CF651FCD6466004A6DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9E0CF661FCD6466004A6DE5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E9E0CF781FCDD4D5004A6DE5 /* UIShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShare.swift; sourceTree = "<group>"; };
+		E9E0CF7D1FCDE589004A6DE5 /* TipCalcWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TipCalcWatch Extension.entitlements"; sourceTree = "<group>"; };
+		E9E0CF7E1FCDE594004A6DE5 /* TipCalcWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipCalcWatch.entitlements; sourceTree = "<group>"; };
 		F41369EC887354B29B64A94E /* Pods-TipCalcUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipCalcUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipCalcUITests/Pods-TipCalcUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FAC8E3235F8144FA536E3627 /* Pods_TipCalcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipCalcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E99B3CD22FD2676B97850C73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9DDA0BB1E6F90770080F791 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +347,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E9E0CF551FCD6466004A6DE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -296,6 +372,8 @@
 				5A0CA3FF129CE6E07D59ECDA /* Pods-TipCalcKitTests.release.xcconfig */,
 				D41CB37794D3361F50D4F505 /* Pods-TipCalcTodayWidget.debug.xcconfig */,
 				38D5F17AB73B50DBC94EC5F9 /* Pods-TipCalcTodayWidget.release.xcconfig */,
+				2D8DC9E00AA70A686FB5029A /* Pods-TipCalcWatch Extension.debug.xcconfig */,
+				1BE60E5FC51D0AD6BE14272D /* Pods-TipCalcWatch Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -312,6 +390,9 @@
 				3E0B6AE017313575D3D25339 /* Pods_TipCalcKit.framework */,
 				D50407267F33E4C9FDF4AB21 /* Pods_TipCalcKitTests.framework */,
 				8647F5AC6E0E630086317164 /* Pods_TipCalcTodayWidget.framework */,
+				5AF6D854F2A5F3474F977C74 /* Pods_TipCalcWatch.framework */,
+				50EC9487D3F050F9912A6EAF /* libPods-TipCalcWatch Extension.a */,
+				63A5B5649418F99ED29DF4CE /* Pods_TipCalcWatch_TipCalcWatchExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -339,12 +420,8 @@
 		E9286F881E78CD2700784E2B /* css */ = {
 			isa = PBXGroup;
 			children = (
-				E9286F891E78CD2700784E2B /* bootstrap-theme.css */,
-				E9286F8A1E78CD2700784E2B /* bootstrap-theme.css.map */,
 				E9286F8B1E78CD2700784E2B /* bootstrap-theme.min.css */,
 				E9286F8C1E78CD2700784E2B /* bootstrap-theme.min.css.map */,
-				E9286F8D1E78CD2700784E2B /* bootstrap.css */,
-				E9286F8E1E78CD2700784E2B /* bootstrap.css.map */,
 				E9286F8F1E78CD2700784E2B /* bootstrap.min.css */,
 				E9286F901E78CD2700784E2B /* bootstrap.min.css.map */,
 			);
@@ -354,7 +431,6 @@
 		E9286F911E78CD2700784E2B /* js */ = {
 			isa = PBXGroup;
 			children = (
-				E9286F921E78CD2700784E2B /* bootstrap.js */,
 				E9286F931E78CD2700784E2B /* bootstrap.min.js */,
 				E9286F941E78CD2700784E2B /* jquery.js */,
 				E9286F951E78CD2700784E2B /* npm.js */,
@@ -420,6 +496,8 @@
 				E9DDA0F61E6F92DE0080F791 /* TipCalcTodayWidget */,
 				E9DDA10A1E6F92FF0080F791 /* TipCalcKit */,
 				E9DDA1171E6F92FF0080F791 /* TipCalcKitTests */,
+				E9E0CF4D1FCD6466004A6DE5 /* TipCalcWatch */,
+				E9E0CF5C1FCD6466004A6DE5 /* TipCalcWatch Extension */,
 				E9DDA0BF1E6F90770080F791 /* Products */,
 				51D2A81B4D52D6CFF9EFAEEA /* Pods */,
 				8DE944EC5FC2B3915121AACD /* Frameworks */,
@@ -435,6 +513,8 @@
 				E9DDA0F31E6F92DE0080F791 /* TipCalcTodayWidget.appex */,
 				E9DDA1091E6F92FF0080F791 /* TipCalcKit.framework */,
 				E9DDA1111E6F92FF0080F791 /* TipCalcKitTests.xctest */,
+				E9E0CF4C1FCD6466004A6DE5 /* TipCalcWatch.app */,
+				E9E0CF581FCD6466004A6DE5 /* TipCalcWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -491,6 +571,7 @@
 				E9628CC91E709555008C9BF6 /* TipCalcDataManager.swift */,
 				E9C73CB61E7628A300D90405 /* BillItem.swift */,
 				E9628CCD1E7097CD008C9BF6 /* FlatColors.swift */,
+				E9E0CF781FCDD4D5004A6DE5 /* UIShare.swift */,
 			);
 			path = TipCalcKit;
 			sourceTree = "<group>";
@@ -502,6 +583,31 @@
 				E9DDA11A1E6F92FF0080F791 /* Info.plist */,
 			);
 			path = TipCalcKitTests;
+			sourceTree = "<group>";
+		};
+		E9E0CF4D1FCD6466004A6DE5 /* TipCalcWatch */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CF7E1FCDE594004A6DE5 /* TipCalcWatch.entitlements */,
+				E9E0CF4E1FCD6466004A6DE5 /* Interface.storyboard */,
+				E9E0CF511FCD6466004A6DE5 /* Assets.xcassets */,
+				E9E0CF531FCD6466004A6DE5 /* Info.plist */,
+			);
+			path = TipCalcWatch;
+			sourceTree = "<group>";
+		};
+		E9E0CF5C1FCD6466004A6DE5 /* TipCalcWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CF7D1FCDE589004A6DE5 /* TipCalcWatch Extension.entitlements */,
+				E9E0CF5D1FCD6466004A6DE5 /* InterfaceController.swift */,
+				E9E0CF5F1FCD6466004A6DE5 /* ExtensionDelegate.swift */,
+				E9E0CF611FCD6466004A6DE5 /* NotificationController.swift */,
+				E9E0CF631FCD6466004A6DE5 /* Assets.xcassets */,
+				E9E0CF651FCD6466004A6DE5 /* Info.plist */,
+				E9E0CF661FCD6466004A6DE5 /* PushNotificationPayload.apns */,
+			);
+			path = "TipCalcWatch Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,12 +636,14 @@
 				AE8295889B65301624925B16 /* [CP] Copy Pods Resources */,
 				E9DDA1031E6F92DE0080F791 /* Embed App Extensions */,
 				E9DDA1231E6F92FF0080F791 /* Embed Frameworks */,
+				E9E0CF711FCD6466004A6DE5 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E9DDA0FE1E6F92DE0080F791 /* PBXTargetDependency */,
 				E9DDA11D1E6F92FF0080F791 /* PBXTargetDependency */,
+				E9E0CF681FCD6466004A6DE5 /* PBXTargetDependency */,
 			);
 			name = TipCalc;
 			productName = TipCalc;
@@ -645,13 +753,48 @@
 			productReference = E9DDA1111E6F92FF0080F791 /* TipCalcKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E9E0CF4B1FCD6466004A6DE5 /* TipCalcWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9E0CF701FCD6466004A6DE5 /* Build configuration list for PBXNativeTarget "TipCalcWatch" */;
+			buildPhases = (
+				E9E0CF4A1FCD6466004A6DE5 /* Resources */,
+				E9E0CF6F1FCD6466004A6DE5 /* Embed App Extensions */,
+				E99B3CD22FD2676B97850C73 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E9E0CF5B1FCD6466004A6DE5 /* PBXTargetDependency */,
+			);
+			name = TipCalcWatch;
+			productName = TipCalcWatch;
+			productReference = E9E0CF4C1FCD6466004A6DE5 /* TipCalcWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E9E0CF571FCD6466004A6DE5 /* TipCalcWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9E0CF6E1FCD6466004A6DE5 /* Build configuration list for PBXNativeTarget "TipCalcWatch Extension" */;
+			buildPhases = (
+				E9E0CF541FCD6466004A6DE5 /* Sources */,
+				E9E0CF551FCD6466004A6DE5 /* Frameworks */,
+				E9E0CF561FCD6466004A6DE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TipCalcWatch Extension";
+			productName = "TipCalcWatch Extension";
+			productReference = E9E0CF581FCD6466004A6DE5 /* TipCalcWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E9DDA0B61E6F90770080F791 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Yubo Qin";
 				TargetAttributes = {
@@ -699,6 +842,26 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = E9DDA0BD1E6F90770080F791;
 					};
+					E9E0CF4B1FCD6466004A6DE5 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 3998KQRV7C;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					E9E0CF571FCD6466004A6DE5 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 3998KQRV7C;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = E9DDA0B91E6F90770080F791 /* Build configuration list for PBXProject "TipCalc" */;
@@ -720,6 +883,8 @@
 				E9DDA0F21E6F92DE0080F791 /* TipCalcTodayWidget */,
 				E9DDA1081E6F92FF0080F791 /* TipCalcKit */,
 				E9DDA1101E6F92FF0080F791 /* TipCalcKitTests */,
+				E9E0CF4B1FCD6466004A6DE5 /* TipCalcWatch */,
+				E9E0CF571FCD6466004A6DE5 /* TipCalcWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -737,12 +902,9 @@
 				E90EE0651E774BD400B15F31 /* BillContentView.xib in Resources */,
 				E9286FA01E78D07F00784E2B /* AppIcon.png in Resources */,
 				E969E6531E79F677007D07F4 /* Settings.bundle in Resources */,
-				E9286F991E78CD2700784E2B /* bootstrap.css in Resources */,
 				E9286F981E78CD2700784E2B /* bootstrap-theme.min.css in Resources */,
 				E9DDA0C91E6F90770080F791 /* Assets.xcassets in Resources */,
 				E9286F961E78CD2700784E2B /* about.html in Resources */,
-				E9286F9B1E78CD2700784E2B /* bootstrap.js in Resources */,
-				E9286F971E78CD2700784E2B /* bootstrap-theme.css in Resources */,
 				E9C5D31D1E8F718F001007EF /* RecordsTableViewCell.xib in Resources */,
 				E9DDA0C71E6F90770080F791 /* Main.storyboard in Resources */,
 			);
@@ -782,6 +944,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9E0CF4A1FCD6466004A6DE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E0CF521FCD6466004A6DE5 /* Assets.xcassets in Resources */,
+				E9E0CF501FCD6466004A6DE5 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9E0CF561FCD6466004A6DE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E0CF641FCD6466004A6DE5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,6 +1270,7 @@
 				E9C5D3151E8F2F60001007EF /* BillsContainerViewController.swift in Sources */,
 				E9DDA0C21E6F90770080F791 /* AppDelegate.swift in Sources */,
 				E9628CCC1E70955C008C9BF6 /* TipCalcDataManager.swift in Sources */,
+				E9E0CF791FCDD4D5004A6DE5 /* UIShare.swift in Sources */,
 				E9A0D5981E9114BA000A1067 /* StatisticsUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1119,6 +1299,7 @@
 				E9D031311E707E6000C720B4 /* TodayActualViewController.swift in Sources */,
 				E9DDA1391E6FC5DE0080F791 /* TipCalculator.swift in Sources */,
 				E9C73CB91E7628A800D90405 /* BillItem.swift in Sources */,
+				E9E0CF7A1FCDD4D5004A6DE5 /* UIShare.swift in Sources */,
 				E9628CD01E70984A008C9BF6 /* FlatColors.swift in Sources */,
 				E9DDA0F81E6F92DE0080F791 /* TodayViewController.swift in Sources */,
 			);
@@ -1130,6 +1311,7 @@
 			files = (
 				E9628CCE1E7097CD008C9BF6 /* FlatColors.swift in Sources */,
 				E9628CCA1E709555008C9BF6 /* TipCalcDataManager.swift in Sources */,
+				E9E0CF7B1FCDD4D5004A6DE5 /* UIShare.swift in Sources */,
 				E9DDA1341E6FBBC60080F791 /* TipCalculator.swift in Sources */,
 				E9C73CB71E7628A300D90405 /* BillItem.swift in Sources */,
 			);
@@ -1140,6 +1322,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9DDA1191E6F92FF0080F791 /* TipCalcKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9E0CF541FCD6466004A6DE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E0CF7C1FCDD4E4004A6DE5 /* FlatColors.swift in Sources */,
+				E9E0CF621FCD6466004A6DE5 /* NotificationController.swift in Sources */,
+				E9E0CF721FCDD210004A6DE5 /* TipCalculator.swift in Sources */,
+				E9E0CF771FCDD388004A6DE5 /* TipCalcDataManager.swift in Sources */,
+				E9E0CF741FCDD218004A6DE5 /* BillItem.swift in Sources */,
+				E9E0CF601FCD6466004A6DE5 /* ExtensionDelegate.swift in Sources */,
+				E9E0CF5E1FCD6466004A6DE5 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,6 +1372,16 @@
 			target = E9DDA1081E6F92FF0080F791 /* TipCalcKit */;
 			targetProxy = E9DDA11C1E6F92FF0080F791 /* PBXContainerItemProxy */;
 		};
+		E9E0CF5B1FCD6466004A6DE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E9E0CF571FCD6466004A6DE5 /* TipCalcWatch Extension */;
+			targetProxy = E9E0CF5A1FCD6466004A6DE5 /* PBXContainerItemProxy */;
+		};
+		E9E0CF681FCD6466004A6DE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E9E0CF4B1FCD6466004A6DE5 /* TipCalcWatch */;
+			targetProxy = E9E0CF671FCD6466004A6DE5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1193,6 +1399,14 @@
 				E9DDA0CB1E6F90770080F791 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E9E0CF4E1FCD6466004A6DE5 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9E0CF4F1FCD6466004A6DE5 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1514,6 +1728,100 @@
 			};
 			name = Release;
 		};
+		E9E0CF6A1FCD6466004A6DE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TipCalcWatch/TipCalcWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3998KQRV7C;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = TipCalcWatch_Extension;
+				INFOPLIST_FILE = TipCalcWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.yuboqin.TipCalc.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		E9E0CF6B1FCD6466004A6DE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TipCalcWatch/TipCalcWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3998KQRV7C;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = TipCalcWatch_Extension;
+				INFOPLIST_FILE = TipCalcWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.yuboqin.TipCalc.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		E9E0CF6C1FCD6466004A6DE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "TipCalcWatch Extension/TipCalcWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3998KQRV7C;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TipCalcWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.yuboqin.TipCalc.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		E9E0CF6D1FCD6466004A6DE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "TipCalcWatch Extension/TipCalcWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3998KQRV7C;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TipCalcWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.yuboqin.TipCalc.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1576,6 +1884,24 @@
 			buildConfigurations = (
 				E9DDA1251E6F92FF0080F791 /* Debug */,
 				E9DDA1261E6F92FF0080F791 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9E0CF6E1FCD6466004A6DE5 /* Build configuration list for PBXNativeTarget "TipCalcWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9E0CF6C1FCD6466004A6DE5 /* Debug */,
+				E9E0CF6D1FCD6466004A6DE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9E0CF701FCD6466004A6DE5 /* Build configuration list for PBXNativeTarget "TipCalcWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9E0CF6A1FCD6466004A6DE5 /* Debug */,
+				E9E0CF6B1FCD6466004A6DE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

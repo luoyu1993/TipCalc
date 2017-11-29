@@ -60,9 +60,14 @@ class TipCalculator: NSObject {
     }
     
     class func tip(of subtotal: Double, rate: Double, splitBy ppl: Int) -> (tip: Double, total: Double, tipPpl: Double, totalPpl: Double) {
-        let round = UserDefaults(suiteName: APP_GROUP_NAME)?.bool(forKey: SETTING_ROUND_TOTAL)
-        let roundRule = RoundRule(rawValue: UserDefaults(suiteName: APP_GROUP_NAME)!.integer(forKey: SETTING_ROUND_TYPE))
-        return tip(of: subtotal, rate: rate, splitBy: ppl, round: round!, roundRule: roundRule!)
+        let round = TipCalcDataManager.shared.roundTotal
+        let roundRule = RoundRule(rawValue: TipCalcDataManager.shared.roundType)
+        return tip(of: subtotal, rate: rate, splitBy: ppl, round: round, roundRule: roundRule!)
+    }
+    
+    class func tip(of subtotal: Double, rate: Double) -> (tip: Double, total: Double) {
+        let tuple = tip(of: subtotal, rate: rate, splitBy: 1)
+        return (tuple.tip, tuple.total)
     }
 
 }

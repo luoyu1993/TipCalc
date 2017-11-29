@@ -25,7 +25,7 @@ class RecordDetailViewController: UIViewController {
     }()
     
     fileprivate let leftBtn: DynamicButton = {
-        let leftBtn = DynamicButton(style: DynamicButtonStyle.close)
+        let leftBtn = DynamicButton(style: .close)
         leftBtn.strokeColor = TipCalcDataManager.widgetTintColor()
         leftBtn.bounceButtonOnTouch = false
         return leftBtn

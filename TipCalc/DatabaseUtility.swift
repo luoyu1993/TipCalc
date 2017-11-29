@@ -187,8 +187,8 @@ class DatabaseUtility: NSObject {
     fileprivate func getBillItem(fromResultSet rs: FMResultSet) -> BillItem {
         let item = BillItem()
         
-        item.title = rs.string(forColumn: "title")
-        item.date = rs.date(forColumn: "date")
+        item.title = rs.string(forColumn: "title")!
+        item.date = rs.date(forColumn: "date")!
         item.subtotal = rs.double(forColumn: "subtotal")
         item.tipRate = rs.double(forColumn: "tipRate")
         item.taxValue = rs.double(forColumn: "taxValue")
